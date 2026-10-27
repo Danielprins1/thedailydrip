@@ -14,7 +14,7 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Lots of parallax** — full-bleed background photos moving slower than content; photos stacked on top of each other at different speeds.
 - Font: **Coolvetica** (Typodermic) for headings/labels, Inter Tight for body. Headings in sentence case, weight 400 (no faux bold).
 - **Not brutalist**: Daniël found the first version too in-your-face. Keep type calm and orderly (`clamp()` max ~168px for the biggest titles), rounded corners (`--radius`), pill-shaped buttons, label column + content column grids. Small uppercase only for labels/corners.
-- Fixed white sidebar on the right: hamburger, vertical ticker text, catering icon, language toggle — shown only while the first section is on screen. On phones it is a bottom bar (hamburger + NL, no bag icon).
+- Fixed white sidebar on the right: hamburger, vertical ticker text, language toggle (no bag/cart icon — Daniël asked to remove it everywhere) — shown only while the first section is on screen. On phones it is a bottom bar (hamburger + NL).
 - **Menu** links (pill + overlay) open the menu PDF in a new tab.
 - **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone.
 - White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
@@ -47,7 +47,8 @@ Removed on Daniël's request — don't bring back: the "A day at the Drip" stack
 Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed backgrounds also have a 1000px `-sm.webp` used via `srcset`). CSS/JS links carry `?v=N` — bump it when you change them so browsers/GitHub Pages don't serve a stale copy. Placeholders show the expected filename until the file exists. Filled so far from Daniël's first 5 photos (latte art top-down, storefront, interior seating, baguettes, bar counter) — mission-2/3 and the door images are crops of those and should be replaced by real photos:
 - Home: all filled (hero-bg, hero-card, mission-1..3, statement-bg, door-company, door-training, catering, logo.svg)
 - Company coffee: company-bg ✓, beans-bg — missing (Daniël has a beans close-up)
-- Training: training-bg ✓, course-basics/latteart/brew/team ✓ (reused shots), training-1..3 — missing (Daniël has grinder / iced latte / counter photos)
+- Training: all filled (training-bg, course-*, training-1..3 = iced latte pour, latte + yellow lamp, can sealer)
+- Spare: `drinks.webp` (TDD juice cans) — for a future menu page. Still to receive from Daniël: counter with customers, busy bar, beans close-up (→ beans-bg), grinder.
 
 ## Open / to do
 - [x] Logo in + fade-in check
