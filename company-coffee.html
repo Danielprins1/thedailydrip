@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Company coffee — The Daily Drip</title>
+  <meta name="description" content="The Daily Drip beans for your office coffee machine. Order online, delivered in Amsterdam Zuidas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a href="index.html" class="logo" aria-label="The Daily Drip">
+    <img src="img/logo.svg" alt="The Daily Drip" onerror="this.remove()">
+    <span class="logo__placeholder">THE DAILY DRIP</span>
+  </a>
+
+  <nav class="menu" id="menu-overlay" aria-hidden="true">
+    <ol class="menu__list">
+      <li><a href="index.html"><small>01</small>HOME</a></li>
+      <li><a href="index.html#menu"><small>02</small>MENU</a></li>
+      <li><a href="index.html#catering"><small>03</small>CATERING</a></li>
+      <li><a href="company-coffee.html" aria-current="page"><small>04</small>COMPANY COFFEE</a></li>
+      <li><a href="training.html"><small>05</small>COFFEE TRAINING</a></li>
+      <li><a href="#visit"><small>06</small>VISIT</a></li>
+    </ol>
+    <div class="menu__foot">
+      <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
+      <p>Mon–Fri<br>08:00 – 16:00</p>
+      <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </nav>
+
+  <aside class="sidebar">
+    <button class="sidebar__menu" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="sidebar__ticker" aria-hidden="true">
+      <span>Our beans, your machine &nbsp;|&nbsp; Delivered in the Zuidas &nbsp;|&nbsp; Weekly or monthly</span>
+    </div>
+    <a class="sidebar__icon" href="#order" aria-label="Order">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </a>
+    <button class="sidebar__lang">NL</button>
+  </aside>
+
+  <main id="top">
+
+    <!-- HERO — huge title over slow background -->
+    <section class="page-hero">
+      <div class="page-hero__bg media" data-label="company-bg.jpg — bags of beans / office machine">
+        <img src="img/company-bg.jpg" alt="" onerror="this.remove()">
+      </div>
+      <p class="corner corner--tl">COMPANY COFFEE.<br>THE DRIP AT YOUR DESK.</p>
+      <p class="corner corner--tr">ORDER FOR<br>YOUR MACHINE.</p>
+      <h1 class="page-hero__title">
+        <span class="line">OUR</span>
+        <span class="line">BEANS,</span>
+        <span class="line">YOUR</span>
+        <span class="line">MACHINE</span>
+      </h1>
+    </section>
+
+    <!-- INTRO — words light up -->
+    <section class="intro">
+      <p class="label">THE<br>IDEA</p>
+      <p class="intro__text js-words">Bad office coffee is a choice. Fill your bean-to-cup or espresso machine with the same beans we pour at the bar, roasted fresh and delivered to your door in the Zuidas. No contracts, just good coffee on repeat. <a href="#order" class="tag">ORDER NOW</a></p>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="steps">
+      <p class="label steps__label">HOW IT<br>WORKS</p>
+      <ol class="steps__list">
+        <li class="step"><span class="step__no">01</span><h3>PICK YOUR BEANS</h3><p>House espresso, a lighter filter roast or decaf. Not sure? We'll taste with you first.</p></li>
+        <li class="step"><span class="step__no">02</span><h3>SET YOUR RHYTHM</h3><p>Choose how much and how often. Weekly, every two weeks or monthly. Change it anytime.</p></li>
+        <li class="step"><span class="step__no">03</span><h3>WE DROP IT OFF</h3><p>Delivered to your office in the Zuidas. Out of beans early? One email and we're there.</p></li>
+      </ol>
+    </section>
+
+    <!-- BEANS — product cards over parallax bg -->
+    <section class="beans">
+      <div class="beans__bg media" data-label="beans-bg.jpg — close-up of beans / grinder">
+        <img src="img/beans-bg.jpg" alt="" onerror="this.remove()">
+      </div>
+      <h2 class="beans__title"><span class="line">THE</span><span class="line">BEANS</span></h2>
+      <div class="cards cards--3">
+        <article class="card card--tall">
+          <div><h3>HOUSE ESPRESSO</h3><p>Chocolate, hazelnut, a hint of red fruit. Built for milk.</p></div>
+          <span>1 KG · € –,–</span>
+        </article>
+        <article class="card card--tall">
+          <div><h3>BRIGHT FILTER</h3><p>Light roast for batch brew and filter machines.</p></div>
+          <span>1 KG · € –,–</span>
+        </article>
+        <article class="card card--tall">
+          <div><h3>SWISS WATER DECAF</h3><p>All the taste, none of the 3 PM jitters.</p></div>
+          <span>1 KG · € –,–</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ORDER FORM -->
+    <section class="order" id="order">
+      <div class="order__intro">
+        <p class="label">ORDER</p>
+        <h2>FILL THE<br>MACHINE</h2>
+        <p>Tell us what you need and we'll confirm price and first delivery within one working day.</p>
+      </div>
+      <form class="form js-mailform" data-subject="Company coffee order">
+        <label>Company<input name="Company" required autocomplete="organization"></label>
+        <label>Contact person<input name="Contact person" required autocomplete="name"></label>
+        <label>Email<input type="email" name="Email" required autocomplete="email"></label>
+        <label>Phone<input type="tel" name="Phone" autocomplete="tel"></label>
+        <label>Machine type
+          <select name="Machine type">
+            <option>Bean-to-cup</option><option>Espresso machine</option><option>Filter / batch brew</option><option>Not sure</option>
+          </select>
+        </label>
+        <label>Beans
+          <select name="Beans">
+            <option>House espresso</option><option>Bright filter</option><option>Swiss water decaf</option><option>Mix / advise me</option>
+          </select>
+        </label>
+        <label>Kg per delivery<input type="number" name="Kg per delivery" min="1" value="2"></label>
+        <label>How often
+          <select name="Frequency">
+            <option>Weekly</option><option>Every two weeks</option><option>Monthly</option><option>One-off</option>
+          </select>
+        </label>
+        <label class="form__wide">Delivery address<input name="Delivery address" autocomplete="street-address"></label>
+        <label class="form__wide">Anything else?<textarea name="Notes" rows="3"></textarea></label>
+        <button class="tag tag--lg" type="submit">SEND ORDER</button>
+      </form>
+    </section>
+
+    <footer class="footer" id="visit">
+      <div class="footer__cols">
+        <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
+        <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
+        <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p></div>
+      </div>
+      <p class="footer__word">THE DAILY DRIP</p>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

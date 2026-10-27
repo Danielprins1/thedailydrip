@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coffee training — The Daily Drip</title>
+  <meta name="description" content="Barista and coffee training by The Daily Drip in Amsterdam Zuidas. At our bar or at your office.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a href="index.html" class="logo" aria-label="The Daily Drip">
+    <img src="img/logo.svg" alt="The Daily Drip" onerror="this.remove()">
+    <span class="logo__placeholder">THE DAILY DRIP</span>
+  </a>
+
+  <nav class="menu" id="menu-overlay" aria-hidden="true">
+    <ol class="menu__list">
+      <li><a href="index.html"><small>01</small>HOME</a></li>
+      <li><a href="index.html#menu"><small>02</small>MENU</a></li>
+      <li><a href="index.html#catering"><small>03</small>CATERING</a></li>
+      <li><a href="company-coffee.html"><small>04</small>COMPANY COFFEE</a></li>
+      <li><a href="training.html" aria-current="page"><small>05</small>COFFEE TRAINING</a></li>
+      <li><a href="#visit"><small>06</small>VISIT</a></li>
+    </ol>
+    <div class="menu__foot">
+      <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
+      <p>Mon–Fri<br>08:00 – 16:00</p>
+      <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </nav>
+
+  <aside class="sidebar">
+    <button class="sidebar__menu" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="sidebar__ticker" aria-hidden="true">
+      <span>Barista basics &nbsp;|&nbsp; Latte art &nbsp;|&nbsp; Brew at home &nbsp;|&nbsp; Team sessions at your office</span>
+    </div>
+    <a class="sidebar__icon" href="#book" aria-label="Book a training">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </a>
+    <button class="sidebar__lang">NL</button>
+  </aside>
+
+  <main id="top">
+
+    <section class="page-hero">
+      <div class="page-hero__bg media" data-label="training-bg.jpg — barista at the machine">
+        <img src="img/training-bg.jpg" alt="" onerror="this.remove()">
+      </div>
+      <p class="corner corner--tl">COFFEE TRAINING.<br>FROM BEAN TO CUP.</p>
+      <p class="corner corner--tr">AT OUR BAR<br>OR AT YOUR OFFICE.</p>
+      <h1 class="page-hero__title">
+        <span class="line">LEARN</span>
+        <span class="line">THE</span>
+        <span class="line">GRIND</span>
+      </h1>
+    </section>
+
+    <section class="intro intro--yellow">
+      <p class="label">THE<br>CLASS</p>
+      <p class="intro__text js-words">Good coffee isn't magic, it's practice. Our baristas show you how to dial in a grinder, pull a balanced shot and pour milk that actually looks like something. Small groups, real machines, lots of tasting. <a href="#book" class="tag">BOOK A SPOT</a></p>
+    </section>
+
+    <!-- COURSES — rows that open on hover, like a menu list -->
+    <section class="courses">
+      <p class="label courses__label">THE<br>COURSES</p>
+      <ul class="courses__list">
+        <li class="course">
+          <div class="course__media media" data-label="course-basics.jpg"><img src="img/course-basics.jpg" alt="" onerror="this.remove()"></div>
+          <h3>BARISTA BASICS</h3>
+          <p>Grind, dose, tamp, extract. The foundation of every good cup.</p>
+          <ul class="course__meta"><li>2.5 HRS</li><li>MAX 6</li><li>€ –,–</li></ul>
+        </li>
+        <li class="course">
+          <div class="course__media media" data-label="course-latteart.jpg"><img src="img/course-latteart.jpg" alt="" onerror="this.remove()"></div>
+          <h3>MILK &amp; LATTE ART</h3>
+          <p>Silky microfoam, then hearts, tulips and rosettas.</p>
+          <ul class="course__meta"><li>2 HRS</li><li>MAX 4</li><li>€ –,–</li></ul>
+        </li>
+        <li class="course">
+          <div class="course__media media" data-label="course-brew.jpg"><img src="img/course-brew.jpg" alt="" onerror="this.remove()"></div>
+          <h3>BREW AT HOME</h3>
+          <p>V60, AeroPress, French press. Café coffee with the gear you own.</p>
+          <ul class="course__meta"><li>1.5 HRS</li><li>MAX 8</li><li>€ –,–</li></ul>
+        </li>
+        <li class="course">
+          <div class="course__media media" data-label="course-team.jpg"><img src="img/course-team.jpg" alt="" onerror="this.remove()"></div>
+          <h3>TEAM SESSION</h3>
+          <p>We come to your office. Get the most out of your machine, or make it a team outing.</p>
+          <ul class="course__meta"><li>ON REQUEST</li><li>UP TO 20</li><li>QUOTE</li></ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- PHOTO STRIP — parallax -->
+    <section class="strip">
+      <div class="media strip__img" data-speed="-0.3" data-label="training-1.jpg"><img src="img/training-1.jpg" alt="" onerror="this.remove()"></div>
+      <div class="media strip__img" data-speed="0.2" data-label="training-2.jpg"><img src="img/training-2.jpg" alt="" onerror="this.remove()"></div>
+      <div class="media strip__img" data-speed="-0.5" data-label="training-3.jpg"><img src="img/training-3.jpg" alt="" onerror="this.remove()"></div>
+    </section>
+
+    <section class="order" id="book">
+      <div class="order__intro">
+        <p class="label">BOOK</p>
+        <h2>SAVE<br>A SPOT</h2>
+        <p>Pick a course and a few dates that work. We'll confirm within one working day.</p>
+      </div>
+      <form class="form js-mailform" data-subject="Coffee training request">
+        <label>Name<input name="Name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="Email" required autocomplete="email"></label>
+        <label>Course
+          <select name="Course">
+            <option>Barista basics</option><option>Milk &amp; latte art</option><option>Brew at home</option><option>Team session (at your office)</option>
+          </select>
+        </label>
+        <label>Number of people<input type="number" name="People" min="1" value="1"></label>
+        <label>Preferred date<input type="date" name="Preferred date"></label>
+        <label>Company (optional)<input name="Company" autocomplete="organization"></label>
+        <label class="form__wide">Anything else?<textarea name="Notes" rows="3"></textarea></label>
+        <button class="tag tag--lg" type="submit">SEND REQUEST</button>
+      </form>
+    </section>
+
+    <footer class="footer" id="visit">
+      <div class="footer__cols">
+        <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
+        <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
+        <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p></div>
+      </div>
+      <p class="footer__word">THE DAILY DRIP</p>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

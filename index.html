@@ -12,14 +12,32 @@
 </head>
 <body>
 
-  <!-- Fixed logo: fades in on load. Replace the <span> with <img src="img/logo.svg"> once the logo is in. -->
-  <a href="#top" class="logo" aria-label="The Daily Drip">
+  <!-- Fixed logo: fades in on load. Uses img/logo.svg; falls back to the text wordmark if the file is missing. -->
+  <a href="index.html" class="logo" aria-label="The Daily Drip">
+    <img src="img/logo.svg" alt="The Daily Drip" onerror="this.remove()">
     <span class="logo__placeholder">THE DAILY DRIP</span>
   </a>
 
+  <!-- Menu overlay (opened from the sidebar hamburger) -->
+  <nav class="menu" id="menu-overlay" aria-hidden="true">
+    <ol class="menu__list">
+      <li><a href="index.html"><small>01</small>HOME</a></li>
+      <li><a href="index.html#menu"><small>02</small>MENU</a></li>
+      <li><a href="index.html#catering"><small>03</small>CATERING</a></li>
+      <li><a href="company-coffee.html"><small>04</small>COMPANY COFFEE</a></li>
+      <li><a href="training.html"><small>05</small>COFFEE TRAINING</a></li>
+      <li><a href="#visit"><small>06</small>VISIT</a></li>
+    </ol>
+    <div class="menu__foot">
+      <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
+      <p>Mon–Fri<br>08:00 – 16:00</p>
+      <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </nav>
+
   <!-- Right sidebar (like the reference) -->
   <aside class="sidebar">
-    <button class="sidebar__menu" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="sidebar__menu" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="sidebar__ticker" aria-hidden="true">
       <span>Mon–Fri 08:00–16:00 &nbsp;|&nbsp; Antonio Vivaldistraat 58 &nbsp;|&nbsp; Catering for offices</span>
     </div>
@@ -95,6 +113,24 @@
       </div>
     </section>
 
+    <!-- 4b. BEYOND THE CUP — doorways to the sub pages -->
+    <section class="doors">
+      <a class="door" href="company-coffee.html">
+        <div class="door__media media" data-label="door-company.jpg — beans / office machine"><img src="img/door-company.jpg" alt="" onerror="this.remove()"></div>
+        <p class="label">FOR OFFICES</p>
+        <h2>COMPANY<br>COFFEE</h2>
+        <p class="door__sub">Our beans for your machine. Delivered in the Zuidas.</p>
+        <span class="tag tag--lg">ORDER BEANS</span>
+      </a>
+      <a class="door" href="training.html">
+        <div class="door__media media" data-label="door-training.jpg — barista teaching"><img src="img/door-training.jpg" alt="" onerror="this.remove()"></div>
+        <p class="label">LEARN</p>
+        <h2>COFFEE<br>TRAINING</h2>
+        <p class="door__sub">From first shot to latte art. At the bar or at your office.</p>
+        <span class="tag tag--lg">BOOK A TRAINING</span>
+      </a>
+    </section>
+
     <!-- 5. CATERING -->
     <section class="catering" id="catering">
       <div class="catering__media media" data-speed="-0.2" data-label="catering.jpg — lunch spread for a team"><img src="img/catering.jpg" alt="" onerror="this.remove()"></div>
@@ -103,11 +139,12 @@
         <h2>FUEL THE<br>DAILY DRIP</h2>
         <p>Fresh lunches and coffee for your team. Meetings, workshops, Friday drinks. We bring the energy, you keep the office grind moving.</p>
         <a class="tag tag--lg" href="mailto:info@thedailydrip.nl?subject=Catering%20request">REQUEST CATERING</a>
+        <a class="tag tag--lg tag--ghost" href="company-coffee.html">COFFEE FOR YOUR MACHINE</a>
       </div>
     </section>
 
     <!-- 6. FOOTER / VISIT -->
-    <footer class="footer">
+    <footer class="footer" id="visit">
       <div class="footer__cols">
         <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
         <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
