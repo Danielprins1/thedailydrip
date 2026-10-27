@@ -21,12 +21,12 @@
   <!-- Menu overlay (opened from the sidebar hamburger) -->
   <nav class="menu" id="menu-overlay" aria-hidden="true">
     <ol class="menu__list">
-      <li><a href="index.html"><small>01</small>HOME</a></li>
-      <li><a href="index.html#menu"><small>02</small>MENU</a></li>
-      <li><a href="index.html#catering"><small>03</small>CATERING</a></li>
-      <li><a href="company-coffee.html"><small>04</small>COMPANY COFFEE</a></li>
-      <li><a href="training.html"><small>05</small>COFFEE TRAINING</a></li>
-      <li><a href="#visit"><small>06</small>VISIT</a></li>
+      <li><a href="index.html"><small>01</small>Home</a></li>
+      <li><a href="index.html#menu"><small>02</small>Menu</a></li>
+      <li><a href="index.html#catering"><small>03</small>Catering</a></li>
+      <li><a href="company-coffee.html"><small>04</small>Company coffee</a></li>
+      <li><a href="training.html"><small>05</small>Coffee training</a></li>
+      <li><a href="#visit"><small>06</small>Visit</a></li>
     </ol>
     <div class="menu__foot">
       <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
@@ -74,15 +74,14 @@
         <div class="hero__card media" data-label="hero-card.jpg — portrait, someone with a coffee">
           <img src="img/hero-card.jpg" alt="Coffee to go at The Daily Drip" onerror="this.remove()">
         </div>
-        <p class="hero__coords">52.3366° N — 4.8726° E</p>
       </div>
     </section>
 
-    <!-- 2. MISSION — big text, words light up while scrolling, stacked photos drift -->
-    <section class="mission">
+    <!-- 2. MISSION — words light up while scrolling, photos drift -->
+    <section class="mission" data-logo="dark">
       <div class="mission__inner">
         <p class="label">OUR<br>DRIP</p>
-        <p class="mission__text js-words">In the fast lane of the Zuidas, we're the pause button. One perfectly balanced cup between meetings, a fresh lunch before the next deadline. Every bean is ground, brewed and dialled in, so your day keeps its rhythm. <a href="#menu" class="tag">SEE MENU</a></p>
+        <p class="mission__text js-words">In the fast lane of the Zuidas, we're the pause button. One perfectly balanced cup between meetings, a fresh lunch before the next deadline. Every bean is ground, brewed and dialled in, so your day keeps its rhythm. <a href="#menu" class="tag">See menu</a></p>
       </div>
       <div class="mission__photos">
         <div class="media float float--a" data-speed="-0.25" data-label="mission-1.jpg"><img src="img/mission-1.jpg" alt="" onerror="this.remove()"></div>
@@ -91,57 +90,36 @@
       </div>
     </section>
 
-    <!-- 3. BIG STATEMENT — huge type over full-bleed photo/video, menu cards -->
+    <!-- 3. STATEMENT — title over full-bleed photo/video -->
     <section class="statement" id="menu">
       <div class="statement__bg media" data-label="statement-bg.jpg / .mp4 — bar, espresso machine">
         <img src="img/statement-bg.jpg" alt="" onerror="this.remove()">
       </div>
       <h2 class="statement__title">
-        <span class="line">KEEP</span>
-        <span class="line">THE</span>
-        <span class="line">GRIND</span>
-        <span class="line">GOING</span>
+        <span class="line">Keep the</span>
+        <span class="line">grind going</span>
       </h2>
       <div class="statement__side">
-        <p>CAREFULLY GROUND, BREWED AND BALANCED. YOUR DAILY BOOST, FROM THE FIRST ESPRESSO TO THE LAST AFTERNOON FLAT WHITE.</p>
-        <a class="tag tag--lg" href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">SEE MENU</a>
-      </div>
-      <div class="cards">
-        <article class="card"><h3>FLAT WHITE</h3><span>€ –,–</span></article>
-        <article class="card"><h3>ICED LATTE</h3><span>€ –,–</span></article>
-        <article class="card"><h3>LUNCH BOWL</h3><span>€ –,–</span></article>
-        <article class="card"><h3>SANDWICH OF THE DAY</h3><span>€ –,–</span></article>
+        <p>Carefully ground, brewed and balanced. Your daily boost, from the first espresso to the last afternoon flat white.</p>
+        <a class="tag tag--lg" href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">See menu</a>
       </div>
     </section>
 
-    <!-- 4. STACK — pinned; photos slide up and land on top of each other -->
-    <section class="stack" data-logo="dark">
-      <div class="stack__sticky">
-        <p class="label stack__label">A DAY<br>AT THE DRIP</p>
-        <div class="stack__cards">
-          <figure class="stack__card media" data-label="day-1.jpg"><img src="img/day-1.jpg" alt="" onerror="this.remove()"><figcaption>08:00 — FIRST POUR</figcaption></figure>
-          <figure class="stack__card media" data-label="day-2.jpg"><img src="img/day-2.jpg" alt="" onerror="this.remove()"><figcaption>10:30 — BETWEEN MEETINGS</figcaption></figure>
-          <figure class="stack__card media" data-label="day-3.jpg"><img src="img/day-3.jpg" alt="" onerror="this.remove()"><figcaption>12:30 — LUNCH RUSH</figcaption></figure>
-          <figure class="stack__card media" data-label="day-4.jpg"><img src="img/day-4.jpg" alt="" onerror="this.remove()"><figcaption>15:30 — LAST CALL</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4b. BEYOND THE CUP — doorways to the sub pages -->
+    <!-- 4. DOORS — to the sub pages -->
     <section class="doors" data-logo="dark">
       <a class="door" href="company-coffee.html">
         <div class="door__media media" data-label="door-company.jpg — beans / office machine"><img src="img/door-company.jpg" alt="" onerror="this.remove()"></div>
         <p class="label">FOR OFFICES</p>
-        <h2>COMPANY<br>COFFEE</h2>
+        <h2>Company coffee</h2>
         <p class="door__sub">Our beans for your machine. Delivered in the Zuidas.</p>
-        <span class="tag tag--lg">ORDER BEANS</span>
+        <span class="tag tag--lg">Order beans</span>
       </a>
       <a class="door" href="training.html">
         <div class="door__media media" data-label="door-training.jpg — barista teaching"><img src="img/door-training.jpg" alt="" onerror="this.remove()"></div>
         <p class="label">LEARN</p>
-        <h2>COFFEE<br>TRAINING</h2>
+        <h2>Coffee training</h2>
         <p class="door__sub">From first shot to latte art. At the bar or at your office.</p>
-        <span class="tag tag--lg">BOOK A TRAINING</span>
+        <span class="tag tag--lg">Book a training</span>
       </a>
     </section>
 
@@ -150,10 +128,10 @@
       <div class="catering__media media" data-speed="-0.2" data-label="catering.jpg — lunch spread for a team"><img src="img/catering.jpg" alt="" onerror="this.remove()"></div>
       <div class="catering__text">
         <p class="label">CATERING</p>
-        <h2>FUEL THE<br>DAILY DRIP</h2>
+        <h2>Fuel the<br>Daily Drip</h2>
         <p>Fresh lunches and coffee for your team. Meetings, workshops, Friday drinks. We bring the energy, you keep the office grind moving.</p>
-        <a class="tag tag--lg" href="mailto:info@thedailydrip.nl?subject=Catering%20request">REQUEST CATERING</a>
-        <a class="tag tag--lg tag--ghost" href="company-coffee.html">COFFEE FOR YOUR MACHINE</a>
+        <a class="tag tag--lg" href="mailto:info@thedailydrip.nl?subject=Catering%20request">Request catering</a>
+        <a class="tag tag--lg tag--ghost" href="company-coffee.html">Coffee for your machine</a>
       </div>
     </section>
 
@@ -164,7 +142,7 @@
         <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
         <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p></div>
       </div>
-      <p class="footer__word">THE DAILY DRIP</p>
+      <img class="footer__logo" src="img/logo.svg" alt="The Daily Drip">
     </footer>
   </main>
 

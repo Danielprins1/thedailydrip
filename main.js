@@ -38,10 +38,29 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(fa
 
 /* ---------- Sidebar → pill nav ----------
    On load you see the escape-style sidebar + big logo; then the sidebar slides out,
-   the page widens and the LAP-style pill drops in. Tune the delay here. */
+   the LAP-style pill drops in and the big logo flies into its slot in the pill.
+   Tune the delay here. */
 const PILL_DELAY = reduceMotion ? 0 : 2200;
+const dockLogo = () => document.body.classList.add('logo-docked');
 setTimeout(() => {
-  document.body.classList.add('nav-pill');
+  const body = document.body, pill = $('.pill'), logo = $('.logo');
+  // Measure where the pill logo will end up (pill in its final state, no transition)
+  pill.style.transition = 'none';
+  body.classList.add('nav-pill');
+  const to = $('.pill__logo img').getBoundingClientRect();
+  body.classList.remove('nav-pill');
+  void pill.offsetWidth;
+  pill.style.transition = '';
+  body.classList.add('nav-pill');
+
+  const from = logo.getBoundingClientRect();
+  if (reduceMotion || !from.height) { dockLogo(); }
+  else {
+    gsap.to(logo, {
+      x: to.left - from.left, y: to.top - from.top, scale: to.height / from.height, transformOrigin: '0 0',
+      duration: 1.2, delay: 0.25, ease: 'power3.inOut', onComplete: dockLogo,
+    });
+  }
   setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000); // page got wider
 }, PILL_DELAY);
 
@@ -76,7 +95,7 @@ gsap.fromTo('.logo',
   { opacity: 0, y: -10, filter: 'blur(8px)' },
   { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.8, delay: 0.3, ease: 'power3.out' }
 );
-gsap.from('.corner, .hero__coords', { opacity: 0, y: 20, duration: 1.4, delay: 0.9, stagger: 0.15, ease: 'power3.out' });
+gsap.from('.corner', { opacity: 0, y: 20, duration: 1.4, delay: 0.9, stagger: 0.15, ease: 'power3.out' });
 
 if (!reduceMotion) {
   /* ---------- Home 1. Hero: card rises through a slow background ---------- */
@@ -158,35 +177,21 @@ if (!reduceMotion) {
   });
 
   /* ---------- Steps / courses / doors slide up one after another ---------- */
-  ['.step', '.course', '.door'].forEach((sel) => {
+  // Side-by-side items (steps, doors) get staggered offsets; stacked rows (courses) one
+  // equal offset, so a row never slides over the one below it.
+  ['.step', '.door', '.course'].forEach((sel) => {
     gsap.utils.toArray(sel).forEach((el, i) => {
-      gsap.from(el, { y: 80 + (i % 3) * 60, ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 55%', scrub: true } });
+      gsap.from(el, { y: sel === '.course' ? 50 : 60 + (i % 3) * 50, ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 60%', scrub: true } });
     });
   });
 
-  /* ---------- Home 4. Stack: photos slide up and land on top of each other ---------- */
-  if ($('.stack')) {
-    const cards = gsap.utils.toArray('.stack__card');
-    gsap.set(cards.slice(1), { y: () => window.innerHeight * 1.1 });
-    const rot = [-3, 2.5, -1.5, 3];
-    const stackTl = gsap.timeline({
-      scrollTrigger: { trigger: '.stack', start: 'top top', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true },
-    });
-    cards.forEach((card, i) => {
-      if (i === 0) return;
-      stackTl
-        .to(card, { y: 0, rotation: rot[i % rot.length], ease: 'none' }, i - 1)
-        .to(cards.slice(0, i), { scale: '-=0.04', filter: 'brightness(0.85)', ease: 'none' }, i - 1);
-    });
-  }
-
-  /* ---------- Big headings + footer wordmark ---------- */
-  document.querySelectorAll('.catering__text h2, .order__intro h2').forEach((h) => {
-    gsap.from(h, { y: 120, ease: 'none',
-      scrollTrigger: { trigger: h.closest('section'), start: 'top bottom', end: 'center center', scrub: true } });
+  /* ---------- Text blocks + footer logo ---------- */
+  document.querySelectorAll('.catering__text, .order__intro').forEach((block) => {
+    gsap.from(block, { y: 100, ease: 'none',
+      scrollTrigger: { trigger: block.closest('section'), start: 'top bottom', end: 'top 30%', scrub: true } });
   });
-  gsap.from('.footer__word', { yPercent: 60, ease: 'none',
+  gsap.from('.footer__logo', { yPercent: 40, ease: 'none',
     scrollTrigger: { trigger: '.footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
 }
 
