@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -24,15 +24,13 @@
     <ol class="menu__list">
       <li><a href="index.html"><small>01</small>Home</a></li>
       <li><a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener"><small>02</small>Menu</a></li>
-      <li><a href="index.html#catering"><small>03</small>Catering</a></li>
-      <li><a href="company-coffee.html"><small>04</small>Company coffee</a></li>
-      <li><a href="training.html"><small>05</small>Coffee training</a></li>
-      <li><a href="#visit"><small>06</small>Visit</a></li>
+      <li><a href="company-coffee.html"><small>03</small>Company coffee</a></li>
+      <li><a href="training.html"><small>04</small>Coffee training</a></li>
     </ol>
     <div class="menu__foot">
       <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
       <p>Mon–Fri<br>08:00 – 16:00</p>
-      <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p>
+      <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p>
     </div>
   </nav>
 
@@ -44,17 +42,16 @@
       <a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">Menu</a>
       <a href="company-coffee.html">Company coffee</a>
       <a href="training.html">Training</a>
-      <a href="#visit">Visit</a>
     </nav>
     <button class="pill__lang">NL</button>
-    <a class="pill__cta" href="index.html#catering">Order catering</a>
+    <a class="pill__cta" href="company-coffee.html#order">Order beans</a>
   </header>
 
   <!-- Right sidebar (like the reference) -->
   <aside class="sidebar">
     <button class="sidebar__menu js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="sidebar__ticker" aria-hidden="true">
-      <span>Hustle, drip, sip &nbsp;|&nbsp; Mon–Fri 08:00–16:00 &nbsp;|&nbsp; Antonio Vivaldistraat 58 &nbsp;|&nbsp; Catering for offices</span>
+      <span>Hustle, drip, sip &nbsp;|&nbsp; Mon–Fri 08:00–16:00 &nbsp;|&nbsp; Antonio Vivaldistraat 58</span>
     </div>
     <button class="sidebar__lang">NL</button>
   </aside>
@@ -121,24 +118,12 @@
       </a>
     </section>
 
-    <!-- 5. CATERING -->
-    <section class="catering" id="catering" data-logo="dark">
-      <div class="catering__media media" data-speed="-0.2" data-label="catering.webp — lunch spread for a team"><img src="img/catering.webp" alt="" onerror="this.remove()"></div>
-      <div class="catering__text">
-        <p class="label">CATERING</p>
-        <h2>Fuel the<br>Daily Drip</h2>
-        <p>Fresh lunches and coffee for your team. Meetings, workshops, Friday drinks. We bring the energy, you keep the office grind moving.</p>
-        <a class="tag tag--lg" href="mailto:info@thedailydrip.nl?subject=Catering%20request">Request catering</a>
-        <a class="tag tag--lg tag--ghost" href="company-coffee.html">Coffee for your machine</a>
-      </div>
-    </section>
-
-    <!-- 6. FOOTER / VISIT -->
+    <!-- 5. FOOTER -->
     <footer class="footer" id="visit">
       <div class="footer__cols">
         <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
         <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
-        <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p></div>
+        <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p></div>
       </div>
       <img class="footer__logo" src="img/logo.svg" alt="The Daily Drip">
     </footer>
@@ -147,6 +132,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=8"></script>
+  <script src="main.js?v=9"></script>
 </body>
 </html>

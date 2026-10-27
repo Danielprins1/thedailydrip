@@ -262,14 +262,6 @@ body:not(.nav-pill) .logo { transition: opacity .6s .2s, visibility 0s; }
 .strip__img { aspect-ratio: 3/4; border-radius: var(--radius); box-shadow: 0 30px 70px rgba(0,0,0,.12); }
 .strip__img:nth-child(2) { margin-top: 16vh; }
 
-/* ============ Home 5. Catering ============ */
-.catering { background: var(--yellow); display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: center; padding: 20vh var(--gutter); overflow: hidden; }
-.catering__media { aspect-ratio: 4/5; border-radius: var(--radius); }
-.catering__text h2 { font-size: clamp(44px, 5.5vw, 96px); line-height: .98; margin: 18px 0 28px; }
-.catering__text p:not(.label) { font: 400 clamp(17px, 1.3vw, 21px)/1.5 var(--body); max-width: 34ch; margin-bottom: 32px; }
-.catering .tag:not(.tag--ghost) { background: var(--black); color: var(--white); }
-.catering .tag:not(.tag--ghost):hover { background: var(--white); color: var(--black); }
-
 /* ============ Footer ============ */
 .footer { background: var(--black); color: var(--white); padding: 14vh var(--gutter) 130px; overflow: hidden; }   /* bottom room for the pill */
 .footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; font: 400 17px/1.55 var(--body); }
@@ -280,7 +272,6 @@ body:not(.nav-pill) .logo { transition: opacity .6s .2s, visibility 0s; }
 /* ============ Responsive ============ */
 @media (max-width: 1100px) {
   .pill__lang { display: none; }
-  .pill__links a[href="#visit"] { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -301,7 +292,6 @@ body:not(.nav-pill) .logo { transition: opacity .6s .2s, visibility 0s; }
   .statement { padding: 14vh 20px; }
   .statement__title .line:nth-child(2) { padding-left: 0; }
   .statement__side { width: 100%; }
-  .catering { grid-template-columns: 1fr; padding: 14vh 20px; }
   .footer { padding: 10vh 20px 110px; }
   .footer__logo { width: 70vw; }
   .menu { inset: 0 0 60px 0; padding: 14vh 20px 30px; }

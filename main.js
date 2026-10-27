@@ -199,7 +199,7 @@ if (!reduceMotion && !lite) {
   });
 
   /* ---------- Text blocks + footer logo ---------- */
-  document.querySelectorAll('.catering__text, .order__intro').forEach((block) => {
+  document.querySelectorAll('.order__intro').forEach((block) => {
     gsap.from(block, { y: 100, ease: 'none',
       scrollTrigger: { trigger: block.closest('section'), start: 'top bottom', end: 'top 30%', scrub: true } });
   });
