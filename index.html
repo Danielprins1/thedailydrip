@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Daily Drip — Coffee & lunch in Amsterdam Zuidas</title>
+  <meta name="description" content="Specialty coffee and fresh lunch in Amsterdam Zuidas. Antonio Vivaldistraat 58. Monday to Friday, 08:00–16:00.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Fixed logo: fades in on load. Replace the <span> with <img src="img/logo.svg"> once the logo is in. -->
+  <a href="#top" class="logo" aria-label="The Daily Drip">
+    <span class="logo__placeholder">THE DAILY DRIP</span>
+  </a>
+
+  <!-- Right sidebar (like the reference) -->
+  <aside class="sidebar">
+    <button class="sidebar__menu" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="sidebar__ticker" aria-hidden="true">
+      <span>Mon–Fri 08:00–16:00 &nbsp;|&nbsp; Antonio Vivaldistraat 58 &nbsp;|&nbsp; Catering for offices</span>
+    </div>
+    <a class="sidebar__icon" href="#catering" aria-label="Catering">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </a>
+    <button class="sidebar__lang">NL</button>
+  </aside>
+
+  <main id="top">
+
+    <!-- 1. HERO — pinned, background slow, photo card rises through -->
+    <section class="hero">
+      <div class="hero__sticky">
+        <div class="hero__bg media" data-label="hero-bg.jpg — Zuidas architecture">
+          <img src="img/hero-bg.jpg" alt="" onerror="this.remove()">
+        </div>
+        <p class="corner corner--tl">THE DAILY DRIP<br>IS ALWAYS OPEN FOR A PAUSE.</p>
+        <p class="corner corner--tr">JUST GRAB A CUP<br>AND KEEP MOVING.</p>
+        <div class="hero__card media" data-label="hero-card.jpg — portrait, someone with a coffee">
+          <img src="img/hero-card.jpg" alt="Coffee to go at The Daily Drip" onerror="this.remove()">
+        </div>
+        <p class="hero__coords">52.3366° N — 4.8726° E</p>
+      </div>
+    </section>
+
+    <!-- 2. MISSION — big text, words light up while scrolling, stacked photos drift -->
+    <section class="mission">
+      <div class="mission__inner">
+        <p class="label">OUR<br>DRIP</p>
+        <p class="mission__text js-words">In the fast lane of the Zuidas, we're the pause button. One perfectly balanced cup between meetings, a fresh lunch before the next deadline. Every bean is ground, brewed and dialled in, so your day keeps its rhythm. <a href="#menu" class="tag">SEE MENU</a></p>
+      </div>
+      <div class="mission__photos">
+        <div class="media float float--a" data-speed="-0.25" data-label="mission-1.jpg"><img src="img/mission-1.jpg" alt="" onerror="this.remove()"></div>
+        <div class="media float float--b" data-speed="0.15" data-label="mission-2.jpg"><img src="img/mission-2.jpg" alt="" onerror="this.remove()"></div>
+        <div class="media float float--c" data-speed="-0.45" data-label="mission-3.jpg"><img src="img/mission-3.jpg" alt="" onerror="this.remove()"></div>
+      </div>
+    </section>
+
+    <!-- 3. BIG STATEMENT — huge type over full-bleed photo/video, menu cards -->
+    <section class="statement" id="menu">
+      <div class="statement__bg media" data-label="statement-bg.jpg / .mp4 — bar, espresso machine">
+        <img src="img/statement-bg.jpg" alt="" onerror="this.remove()">
+      </div>
+      <h2 class="statement__title">
+        <span class="line">KEEP</span>
+        <span class="line">THE</span>
+        <span class="line">GRIND</span>
+        <span class="line">GOING</span>
+      </h2>
+      <div class="statement__side">
+        <p>CAREFULLY GROUND, BREWED AND BALANCED. YOUR DAILY BOOST, FROM THE FIRST ESPRESSO TO THE LAST AFTERNOON FLAT WHITE.</p>
+        <a class="tag tag--lg" href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">SEE MENU</a>
+      </div>
+      <div class="cards">
+        <article class="card"><h3>FLAT WHITE</h3><span>€ –,–</span></article>
+        <article class="card"><h3>ICED LATTE</h3><span>€ –,–</span></article>
+        <article class="card"><h3>LUNCH BOWL</h3><span>€ –,–</span></article>
+        <article class="card"><h3>SANDWICH OF THE DAY</h3><span>€ –,–</span></article>
+      </div>
+    </section>
+
+    <!-- 4. STACK — pinned; photos slide up and land on top of each other -->
+    <section class="stack">
+      <div class="stack__sticky">
+        <p class="label stack__label">A DAY<br>AT THE DRIP</p>
+        <div class="stack__cards">
+          <figure class="stack__card media" data-label="day-1.jpg"><img src="img/day-1.jpg" alt="" onerror="this.remove()"><figcaption>08:00 — FIRST POUR</figcaption></figure>
+          <figure class="stack__card media" data-label="day-2.jpg"><img src="img/day-2.jpg" alt="" onerror="this.remove()"><figcaption>10:30 — BETWEEN MEETINGS</figcaption></figure>
+          <figure class="stack__card media" data-label="day-3.jpg"><img src="img/day-3.jpg" alt="" onerror="this.remove()"><figcaption>12:30 — LUNCH RUSH</figcaption></figure>
+          <figure class="stack__card media" data-label="day-4.jpg"><img src="img/day-4.jpg" alt="" onerror="this.remove()"><figcaption>15:30 — LAST CALL</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CATERING -->
+    <section class="catering" id="catering">
+      <div class="catering__media media" data-speed="-0.2" data-label="catering.jpg — lunch spread for a team"><img src="img/catering.jpg" alt="" onerror="this.remove()"></div>
+      <div class="catering__text">
+        <p class="label">CATERING</p>
+        <h2>FUEL THE<br>DAILY DRIP</h2>
+        <p>Fresh lunches and coffee for your team. Meetings, workshops, Friday drinks. We bring the energy, you keep the office grind moving.</p>
+        <a class="tag tag--lg" href="mailto:info@thedailydrip.nl?subject=Catering%20request">REQUEST CATERING</a>
+      </div>
+    </section>
+
+    <!-- 6. FOOTER / VISIT -->
+    <footer class="footer">
+      <div class="footer__cols">
+        <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
+        <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
+        <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="#" target="_blank" rel="noopener">Instagram</a></p></div>
+      </div>
+      <p class="footer__word">THE DAILY DRIP</p>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
