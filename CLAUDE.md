@@ -23,7 +23,7 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
 ## Stack
-Plain HTML/CSS/JS, no build step. CDN: Lenis 1.1.13, GSAP 3.12.5 + ScrollTrigger. Fonts: Coolvetica via `@font-face` (`local()` first, then `fonts/coolvetica-rg.woff2` / `.otf` — Daniël still needs to add these files), Inter Tight from Google Fonts.
+Plain HTML/CSS/JS, no build step. CDN: Lenis 1.1.13, GSAP 3.12.5 + ScrollTrigger. Fonts: Coolvetica self-hosted (`fonts/coolvetica-rg.woff2` + `-it.woff2`, converted from Daniël's .otf; he also has Cond, Cram and Heavy Comp if needed), Inter Tight from Google Fonts.
 Run locally: `npx serve .` or `python3 -m http.server`.
 
 ## Pages
@@ -36,7 +36,7 @@ Forms (`.js-mailform`) open a prefilled email to info@thedailydrip.nl — no bac
 ## Structure (index.html)
 1. **Hero** — 240vh, sticky; bg photo zooms slowly, portrait photo card rises through; corner texts.
 2. **Mission** — white; text lights up word by word on scroll; 3 floating photos with `data-speed` parallax.
-3. **Statement** — "Keep the grind going" over parallax bg; side text + See menu (PDF).
+3. **Statement** — "More espresso, less depresso" over parallax bg; side text + See menu (PDF).
 4. **Doors** — two big photo cards linking to Company coffee and Coffee training.
 5. **Catering** — yellow, "FUEL THE DAILY DRIP", mailto CTA.
 6. **Footer** — visit / hours / contact + logo.
@@ -53,9 +53,10 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 ## Open / to do
 - [x] Logo in + fade-in check
 - [x] Photos: every slot filled (22 TDD photos so far)
-- [ ] Real menu items + prices → ideally an HTML menu page instead of the PDF
+- [ ] Real menu items + prices → HTML menu page later (PDF for now, Daniël's call)
 - [x] Brand yellow from the brand file (`#ECB43F`)
-- [ ] Coolvetica font files in `fonts/` (coolvetica-rg.woff2 + .otf) so visitors without the font see it
+- [x] Coolvetica font files in `fonts/`
+- Copy uses TDD's real slogans where possible: "hustle, drip, sip" (cans/shirts) and "more espresso, less depresso" (mirror in the shop). Statement title is "More espresso, less depresso".
 - [x] Sidebar menu overlay + LAP-style pill nav
 - [ ] NL/EN toggle, Instagram link
 - [ ] Real bean names/prices (company coffee) and course prices/durations (training)
