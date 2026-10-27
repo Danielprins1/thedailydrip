@@ -14,12 +14,11 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Lots of parallax** — full-bleed background photos moving slower than content; photos stacked on top of each other at different speeds.
 - Font: **Coolvetica** (Typodermic) for headings/labels, Inter Tight for body. Headings in sentence case, weight 400 (no faux bold).
 - **Not brutalist**: Daniël found the first version too in-your-face. Keep type calm and orderly (`clamp()` max ~168px for the biggest titles), rounded corners (`--radius`), pill-shaped buttons, label column + content column grids. Small uppercase only for labels/corners.
-- Fixed white sidebar on the right: hamburger, vertical ticker text, language toggle (no bag/cart icon — Daniël asked to remove it everywhere) — shown only while the first section is on screen. On phones it is a bottom bar (hamburger + NL).
 - **Menu** links (pill + overlay) open the menu PDF in a new tab.
 - **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone.
 - White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
-- **Sidebar ↔ pill nav**: once the next section fills half the screen (`PILL_AT` in `main.js`) the sidebar slides out, the page widens and a LAP-style floating dark pill rises in, **fixed at the bottom of the screen** (logo, hamburger, Menu / Company coffee / Training, NL, yellow "Order beans" CTA → company-coffee.html#order). Scrolling back up reverses it. Current page link is yellow. On mobile the pill keeps logo, hamburger and CTA.
-- **Logo fades in** on load (fixed top-left) and simply **fades out** when the pill appears (fades back in when scrolling up). Don't animate it across the screen — Daniël found the flying logo ugly. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
+- **Pill nav** (LAP-style): a floating dark pill **fixed at the bottom of the screen on every page from the start** (rises in on load): logo, hamburger, Menu / Company coffee / Training, NL, yellow "Order beans" CTA. Current page link is yellow. On mobile: logo, hamburger, CTA. **No sidebar** — Daniël removed the escape-style white side bar.
+- **Logo fades in** on load (fixed top-left) and simply **fades out** once the next section fills half the screen (`PILL_AT` in `main.js`; `past-hero` class), fades back in when scrolling up. Don't animate it across the screen — Daniël found the flying logo ugly. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
 - Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
 ## Stack
@@ -27,7 +26,7 @@ Plain HTML/CSS/JS, no build step. CDN: Lenis 1.1.13, GSAP 3.12.5 + ScrollTrigger
 Run locally: `npx serve .` or `python3 -m http.server`.
 
 ## Pages
-All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the sidebar, the footer and `main.js` (each animation block only runs when its section exists).
+All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the footer and `main.js` (each animation block only runs when its section exists).
 - `index.html` — home (below)
 - `company-coffee.html` — "Company coffee / order for your machine": hero, intro, 3 steps, bean cards, order form
 - `training.html` — coffee training: hero, intro, course list (photo appears on hover), photo strip, booking form

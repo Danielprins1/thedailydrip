@@ -23,7 +23,7 @@ if (!reduceMotion && !lite) {
   gsap.ticker.lagSmoothing(0);
 }
 
-/* ---------- Menu overlay (opened from the sidebar or the pill) ---------- */
+/* ---------- Menu overlay (opened from the pill) ---------- */
 const menuBtns = document.querySelectorAll('.js-menu-btn');
 const menu = $('.menu');
 const setMenu = (open) => {
@@ -39,26 +39,21 @@ const setMenu = (open) => {
 menuBtns.forEach((b) => b.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open'))));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
-/* ---------- Sidebar ↔ pill nav ----------
-   While the first section (hero) is on screen you see the escape-style sidebar + big logo.
-   Once the next section fills PILL_AT of the screen, the sidebar slides out, the LAP-style
-   pill rises in at the bottom of the screen and the big logo fades out (the pill has its own).
-   Scrolling back up reverses it. */
+/* ---------- Pill nav + hero logo ----------
+   The LAP-style pill sits at the bottom of the screen from the start (it rises in on load).
+   The big logo top-left fades out once the next section fills PILL_AT of the screen
+   (the pill has its own logo) and fades back in when you scroll up. */
 const PILL_AT = 0.5;
 const firstSection = $('main > section');
-const logo = $('.logo');
-let pillOn = false;
+let pastHero = false;
+requestAnimationFrame(() => setTimeout(() => document.body.classList.add('pill-in'), reduceMotion ? 0 : 600));
 
 const setPill = (on) => {
-  if (on === pillOn) return;
-  pillOn = on;
-  // Big logo fades out, the pill (with its own logo) fades/rises in — and the reverse
-  document.body.classList.toggle('nav-pill', on);
-  // Only desktop has a sidebar that changes the page width; phones skip the costly refresh
-  if (window.innerWidth > 760) setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000);
+  if (on === pastHero) return;
+  pastHero = on;
+  document.body.classList.toggle('past-hero', on);
 };
 
-// Hero heights are vh-based, so this threshold doesn't move when the page widens
 const checkPill = () => {
   const vh = document.documentElement.clientHeight;
   const limit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight - vh * (1 - PILL_AT) : 0;

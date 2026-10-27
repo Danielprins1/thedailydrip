@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
     </div>
   </nav>
 
-  <!-- Floating pill nav (LAP-style). The sidebar morphs into this shortly after load. -->
+  <!-- Floating pill nav (LAP-style), fixed at the bottom of the screen -->
   <header class="pill" aria-label="Main">
     <a class="pill__logo" href="index.html"><img src="img/logo.svg" alt="The Daily Drip"></a>
     <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -44,14 +44,6 @@
     <button class="pill__lang">NL</button>
     <a class="pill__cta" href="company-coffee.html#order">Order beans</a>
   </header>
-
-  <aside class="sidebar">
-    <button class="sidebar__menu js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div class="sidebar__ticker" aria-hidden="true">
-      <span>Barista basics &nbsp;|&nbsp; Latte art &nbsp;|&nbsp; Brew at home &nbsp;|&nbsp; Team sessions at your office</span>
-    </div>
-    <button class="sidebar__lang">NL</button>
-  </aside>
 
   <main id="top">
 
@@ -145,6 +137,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=10"></script>
+  <script src="main.js?v=11"></script>
 </body>
 </html>
