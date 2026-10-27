@@ -20,19 +20,30 @@ if (!reduceMotion) {
   gsap.ticker.lagSmoothing(0);
 }
 
-/* ---------- Menu overlay ---------- */
-const menuBtn = $('.sidebar__menu');
+/* ---------- Menu overlay (opened from the sidebar or the pill) ---------- */
+const menuBtns = document.querySelectorAll('.js-menu-btn');
 const menu = $('.menu');
 const setMenu = (open) => {
   document.body.classList.toggle('menu-open', open);
-  menuBtn.setAttribute('aria-expanded', open);
-  menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  menuBtns.forEach((b) => {
+    b.setAttribute('aria-expanded', open);
+    b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
   menu.setAttribute('aria-hidden', !open);
   if (lenis) open ? lenis.stop() : lenis.start();
   if (open) gsap.fromTo('.menu__list li', { yPercent: 110 }, { yPercent: 0, duration: 0.9, stagger: 0.06, ease: 'power4.out', delay: 0.15 });
 };
-menuBtn.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+menuBtns.forEach((b) => b.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open'))));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+/* ---------- Sidebar → pill nav ----------
+   On load you see the escape-style sidebar + big logo; then the sidebar slides out,
+   the page widens and the LAP-style pill drops in. Tune the delay here. */
+const PILL_DELAY = reduceMotion ? 0 : 2200;
+setTimeout(() => {
+  document.body.classList.add('nav-pill');
+  setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000); // page got wider
+}, PILL_DELAY);
 
 /* Same-page anchors glide through Lenis (also from inside the menu) */
 document.querySelectorAll('a[href*="#"]').forEach((a) => {
@@ -53,6 +64,11 @@ document.querySelectorAll('.js-mailform').forEach((form) => {
     const body = [...new FormData(form)].filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
     location.href = `mailto:info@thedailydrip.nl?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
   });
+});
+
+/* ---------- Logo turns dark over light sections ---------- */
+document.querySelectorAll('[data-logo="dark"]').forEach((sec) => {
+  ScrollTrigger.create({ trigger: sec, start: 'top 70px', end: 'bottom 70px', toggleClass: { targets: '.logo', className: 'logo--dark' } });
 });
 
 /* ---------- Logo fade-in ---------- */

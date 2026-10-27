@@ -13,16 +13,17 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Heavy scroll** — Lenis with low `lerp` (0.055) + `wheelMultiplier` 0.8. Tune in `main.js`.
 - **Lots of parallax** — full-bleed background photos moving slower than content; photos stacked on top of each other at different speeds.
 - Huge condensed display type ("KEEP THE GRIND GOING"), small condensed caps in corners, light large body text for the mission.
-- Fixed white sidebar on the right: hamburger, vertical ticker text, catering icon, language toggle.
-- **Logo fades in** on load (fixed top-left). Uses `img/logo.svg`; the text wordmark only shows while that file is missing.
-- Second reference: **lap.coffee** — Daniël loves its navigation and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
+- Fixed white sidebar on the right: hamburger, vertical ticker text, catering icon, language toggle — shown only on load.
+- **Sidebar → pill nav**: ~2.2 s after load (`PILL_DELAY` in `main.js`) the sidebar slides out, the page widens and a LAP-style floating dark pill drops in at the top (logo, hamburger, Menu / Company coffee / Training / Visit, NL, yellow "Order catering" CTA). Current page link is yellow. On mobile the pill keeps logo, hamburger and CTA.
+- **Logo fades in** on load (fixed top-left), then hands over to the logo inside the pill. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
+- Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
 ## Stack
 Plain HTML/CSS/JS, no build step. CDN: Lenis 1.1.13, GSAP 3.12.5 + ScrollTrigger. Fonts: Big Shoulders Display (display), Inter Tight (body).
 Run locally: `npx serve .` or `python3 -m http.server`.
 
 ## Pages
-All pages share the logo, the menu overlay (hamburger in sidebar → full-screen dark list, numbered, big display type), the sidebar, the footer and `main.js` (each animation block only runs when its section exists).
+All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the sidebar, the footer and `main.js` (each animation block only runs when its section exists).
 - `index.html` — home (below)
 - `company-coffee.html` — "Company coffee / order for your machine": hero, intro, 3 steps, bean cards, order form
 - `training.html` — coffee training: hero, intro, course list (photo appears on hover), photo strip, booking form
@@ -44,12 +45,12 @@ Put photos in `img/` with these names (placeholders show the expected filename u
 - Training: training-bg.jpg, course-basics.jpg, course-latteart.jpg, course-brew.jpg, course-team.jpg, training-1..3.jpg
 
 ## Open / to do
-- [ ] Logo in + fade-in check
+- [x] Logo in + fade-in check
 - [ ] Real photos (Daniël has them) — compress to ~200–400 KB, webp
 - [ ] Verify the coordinates in the hero (`52.3366° N — 4.8726° E` is approximate)
 - [ ] Real menu items + prices → ideally an HTML menu page instead of the PDF
 - [ ] Brand yellow hex from the brand file (now `#F2B632` placeholder)
-- [x] Sidebar menu overlay (first version — refine after lap.coffee screenshots)
+- [x] Sidebar menu overlay + LAP-style pill nav
 - [ ] NL/EN toggle, Instagram link
 - [ ] Real bean names/prices (company coffee) and course prices/durations (training)
 - [ ] Forms → real form handling (Formspree / Netlify Forms) instead of mailto

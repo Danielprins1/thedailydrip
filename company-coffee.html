@@ -33,8 +33,22 @@
     </div>
   </nav>
 
+  <!-- Floating pill nav (LAP-style). The sidebar morphs into this shortly after load. -->
+  <header class="pill" aria-label="Main">
+    <a class="pill__logo" href="index.html"><img src="img/logo.svg" alt="The Daily Drip"></a>
+    <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="pill__links">
+      <a href="index.html#menu">Menu</a>
+      <a href="company-coffee.html" aria-current="page">Company coffee</a>
+      <a href="training.html">Training</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <button class="pill__lang">NL</button>
+    <a class="pill__cta" href="index.html#catering">Order catering</a>
+  </header>
+
   <aside class="sidebar">
-    <button class="sidebar__menu" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="sidebar__menu js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="sidebar__ticker" aria-hidden="true">
       <span>Our beans, your machine &nbsp;|&nbsp; Delivered in the Zuidas &nbsp;|&nbsp; Weekly or monthly</span>
     </div>
@@ -68,7 +82,7 @@
     </section>
 
     <!-- HOW IT WORKS -->
-    <section class="steps">
+    <section class="steps" data-logo="dark">
       <p class="label steps__label">HOW IT<br>WORKS</p>
       <ol class="steps__list">
         <li class="step"><span class="step__no">01</span><h3>PICK YOUR BEANS</h3><p>House espresso, a lighter filter roast or decaf. Not sure? We'll taste with you first.</p></li>
@@ -100,7 +114,7 @@
     </section>
 
     <!-- ORDER FORM -->
-    <section class="order" id="order">
+    <section class="order" id="order" data-logo="dark">
       <div class="order__intro">
         <p class="label">ORDER</p>
         <h2>FILL THE<br>MACHINE</h2>

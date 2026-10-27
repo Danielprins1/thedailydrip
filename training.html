@@ -33,8 +33,22 @@
     </div>
   </nav>
 
+  <!-- Floating pill nav (LAP-style). The sidebar morphs into this shortly after load. -->
+  <header class="pill" aria-label="Main">
+    <a class="pill__logo" href="index.html"><img src="img/logo.svg" alt="The Daily Drip"></a>
+    <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="pill__links">
+      <a href="index.html#menu">Menu</a>
+      <a href="company-coffee.html">Company coffee</a>
+      <a href="training.html" aria-current="page">Training</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <button class="pill__lang">NL</button>
+    <a class="pill__cta" href="index.html#catering">Order catering</a>
+  </header>
+
   <aside class="sidebar">
-    <button class="sidebar__menu" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="sidebar__menu js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="sidebar__ticker" aria-hidden="true">
       <span>Barista basics &nbsp;|&nbsp; Latte art &nbsp;|&nbsp; Brew at home &nbsp;|&nbsp; Team sessions at your office</span>
     </div>
@@ -59,13 +73,13 @@
       </h1>
     </section>
 
-    <section class="intro intro--yellow">
+    <section class="intro intro--yellow" data-logo="dark">
       <p class="label">THE<br>CLASS</p>
       <p class="intro__text js-words">Good coffee isn't magic, it's practice. Our baristas show you how to dial in a grinder, pull a balanced shot and pour milk that actually looks like something. Small groups, real machines, lots of tasting. <a href="#book" class="tag">BOOK A SPOT</a></p>
     </section>
 
     <!-- COURSES — rows that open on hover, like a menu list -->
-    <section class="courses">
+    <section class="courses" data-logo="dark">
       <p class="label courses__label">THE<br>COURSES</p>
       <ul class="courses__list">
         <li class="course">
@@ -96,13 +110,13 @@
     </section>
 
     <!-- PHOTO STRIP — parallax -->
-    <section class="strip">
+    <section class="strip" data-logo="dark">
       <div class="media strip__img" data-speed="-0.3" data-label="training-1.jpg"><img src="img/training-1.jpg" alt="" onerror="this.remove()"></div>
       <div class="media strip__img" data-speed="0.2" data-label="training-2.jpg"><img src="img/training-2.jpg" alt="" onerror="this.remove()"></div>
       <div class="media strip__img" data-speed="-0.5" data-label="training-3.jpg"><img src="img/training-3.jpg" alt="" onerror="this.remove()"></div>
     </section>
 
-    <section class="order" id="book">
+    <section class="order" id="book" data-logo="dark">
       <div class="order__intro">
         <p class="label">BOOK</p>
         <h2>SAVE<br>A SPOT</h2>

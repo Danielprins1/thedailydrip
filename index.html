@@ -35,9 +35,23 @@
     </div>
   </nav>
 
+  <!-- Floating pill nav (LAP-style). The sidebar morphs into this shortly after load. -->
+  <header class="pill" aria-label="Main">
+    <a class="pill__logo" href="index.html"><img src="img/logo.svg" alt="The Daily Drip"></a>
+    <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="pill__links">
+      <a href="index.html#menu">Menu</a>
+      <a href="company-coffee.html">Company coffee</a>
+      <a href="training.html">Training</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <button class="pill__lang">NL</button>
+    <a class="pill__cta" href="index.html#catering">Order catering</a>
+  </header>
+
   <!-- Right sidebar (like the reference) -->
   <aside class="sidebar">
-    <button class="sidebar__menu" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="sidebar__menu js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="sidebar__ticker" aria-hidden="true">
       <span>Mon–Fri 08:00–16:00 &nbsp;|&nbsp; Antonio Vivaldistraat 58 &nbsp;|&nbsp; Catering for offices</span>
     </div>
@@ -101,7 +115,7 @@
     </section>
 
     <!-- 4. STACK — pinned; photos slide up and land on top of each other -->
-    <section class="stack">
+    <section class="stack" data-logo="dark">
       <div class="stack__sticky">
         <p class="label stack__label">A DAY<br>AT THE DRIP</p>
         <div class="stack__cards">
@@ -114,7 +128,7 @@
     </section>
 
     <!-- 4b. BEYOND THE CUP — doorways to the sub pages -->
-    <section class="doors">
+    <section class="doors" data-logo="dark">
       <a class="door" href="company-coffee.html">
         <div class="door__media media" data-label="door-company.jpg — beans / office machine"><img src="img/door-company.jpg" alt="" onerror="this.remove()"></div>
         <p class="label">FOR OFFICES</p>
@@ -132,7 +146,7 @@
     </section>
 
     <!-- 5. CATERING -->
-    <section class="catering" id="catering">
+    <section class="catering" id="catering" data-logo="dark">
       <div class="catering__media media" data-speed="-0.2" data-label="catering.jpg — lunch spread for a team"><img src="img/catering.jpg" alt="" onerror="this.remove()"></div>
       <div class="catering__text">
         <p class="label">CATERING</p>
