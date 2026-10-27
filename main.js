@@ -42,41 +42,18 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(fa
 /* ---------- Sidebar ↔ pill nav ----------
    While the first section (hero) is on screen you see the escape-style sidebar + big logo.
    Once the next section fills PILL_AT of the screen, the sidebar slides out, the LAP-style
-   pill rises in at the bottom of the screen and the big logo flies into its slot in the pill.
+   pill rises in at the bottom of the screen and the big logo fades out (the pill has its own).
    Scrolling back up reverses it. */
 const PILL_AT = 0.5;
 const firstSection = $('main > section');
 const logo = $('.logo');
 let pillOn = false;
 
-const pillLogoTarget = () => {
-  // Where the pill logo sits once the pill is in place (measured without transitions)
-  const pill = $('.pill'), wasOn = document.body.classList.contains('nav-pill');
-  pill.style.transition = 'none';
-  document.body.classList.add('nav-pill');
-  const r = $('.pill__logo img').getBoundingClientRect();
-  if (!wasOn) document.body.classList.remove('nav-pill');
-  void pill.offsetWidth;
-  pill.style.transition = '';
-  return r;
-};
-
 const setPill = (on) => {
   if (on === pillOn) return;
   pillOn = on;
-  const body = document.body;
-  if (on) {
-    const to = pillLogoTarget();
-    body.classList.add('nav-pill');
-    // offsetLeft/Top/Height ignore transforms, so this is the logo's resting spot
-    const dx = to.left - logo.offsetLeft, dy = to.top - logo.offsetTop, sc = to.height / logo.offsetHeight;
-    if (reduceMotion) { gsap.set(logo, { x: dx, y: dy, scale: sc, transformOrigin: '0 0' }); body.classList.add('logo-docked'); }
-    else gsap.to(logo, { x: dx, y: dy, scale: sc, transformOrigin: '0 0', duration: 1.1, ease: 'power3.inOut', overwrite: true,
-      onComplete: () => pillOn && body.classList.add('logo-docked') });
-  } else {
-    body.classList.remove('logo-docked', 'nav-pill');
-    gsap.to(logo, { x: 0, y: 0, scale: 1, duration: reduceMotion ? 0 : 1.1, ease: 'power3.inOut', overwrite: true });
-  }
+  // Big logo fades out, the pill (with its own logo) fades/rises in — and the reverse
+  document.body.classList.toggle('nav-pill', on);
   // Only desktop has a sidebar that changes the page width; phones skip the costly refresh
   if (window.innerWidth > 760) setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000);
 };

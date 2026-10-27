@@ -103,11 +103,9 @@ button.tag { border: 0; cursor: pointer; }
 .nav-pill { --sidebar: 0px; }
 .nav-pill .sidebar { transform: translateX(100%); }
 .nav-pill .menu { padding-bottom: 130px; }               /* keep the menu footer clear of the bottom pill */
-.nav-pill .logo { color: var(--white); z-index: 61; }      /* flying into the black pill → white, above it */
-.nav-pill .logo img { filter: invert(1); }
-.logo-docked .logo { visibility: hidden; }                  /* landed: the pill's own logo takes over */
-.pill__logo img { opacity: 0; }
-.logo-docked .pill__logo img { opacity: 1; }
+.logo img { transition: filter .4s; }
+.nav-pill .logo { opacity: 0 !important; visibility: hidden; transition: opacity .5s, visibility 0s .5s; }  /* fades out; the pill has its own logo */
+body:not(.nav-pill) .logo { transition: opacity .6s .2s, visibility 0s; }
 
 .pill {
   position: fixed; z-index: 60; bottom: 24px; left: 50%; max-width: calc(100% - 48px);

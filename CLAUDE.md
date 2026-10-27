@@ -19,7 +19,7 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone.
 - White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
 - **Sidebar ↔ pill nav**: once the next section fills half the screen (`PILL_AT` in `main.js`) the sidebar slides out, the page widens and a LAP-style floating dark pill rises in, **fixed at the bottom of the screen** (logo, hamburger, Menu / Company coffee / Training / Visit, NL, yellow "Order catering" CTA). Scrolling back up reverses it. Current page link is yellow. On mobile the pill keeps logo, hamburger and CTA.
-- **Logo fades in** on load (fixed top-left), then flies (moves + shrinks) into its slot in the pill and hands over to the pill's own logo. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
+- **Logo fades in** on load (fixed top-left) and simply **fades out** when the pill appears (fades back in when scrolling up). Don't animate it across the screen — Daniël found the flying logo ugly. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
 - Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
 ## Stack
