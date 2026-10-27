@@ -46,13 +46,13 @@ Removed on Daniël's request — don't bring back: the "A day at the Drip" stack
 ## Images
 Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed backgrounds also have a 1000px `-sm.webp` used via `srcset`). CSS/JS links carry `?v=N` — bump it when you change them so browsers/GitHub Pages don't serve a stale copy. Placeholders show the expected filename until the file exists. Filled so far from Daniël's first 5 photos (latte art top-down, storefront, interior seating, baguettes, bar counter) — mission-2/3 and the door images are crops of those and should be replaced by real photos:
 - Home: all filled (hero-bg, hero-card, mission-1..3, statement-bg, door-company, door-training, catering, logo.svg)
-- Company coffee: company-bg ✓, beans-bg — missing (Daniël has a beans close-up)
+- Company coffee: all filled (company-bg, beans-bg = beans close-up)
 - Training: all filled (training-bg, course-*, training-1..3 = iced latte pour, latte + yellow lamp, can sealer)
-- Spare: `drinks.webp` (TDD juice cans) — for a future menu page. Still to receive from Daniël: counter with customers, busy bar, beans close-up (→ beans-bg), grinder.
+- Spare: `drinks.webp` (TDD juice cans) — for a future menu page.
 
 ## Open / to do
 - [x] Logo in + fade-in check
-- [ ] Remaining photos (see Images) — Daniël has many more
+- [x] Photos: every slot filled (22 TDD photos so far)
 - [ ] Real menu items + prices → ideally an HTML menu page instead of the PDF
 - [x] Brand yellow from the brand file (`#ECB43F`)
 - [ ] Coolvetica font files in `fonts/` (coolvetica-rg.woff2 + .otf) so visitors without the font see it
