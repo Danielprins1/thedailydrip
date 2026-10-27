@@ -141,7 +141,7 @@ body:not(.nav-pill) .logo { transition: opacity .6s .2s, visibility 0s; }
   background: linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.18) 34%, rgba(0,0,0,.22) 60%, rgba(0,0,0,.5));
 }
 /* White text on photos gets a soft shadow so it holds up on bright spots */
-.corner, .page-hero__title, .statement__title, .statement__side p, .beans__title, .door h2, .door .label, .door__sub {
+.corner, .page-hero__title, .statement__title, .statement__side p, .beans__title, .door h2, .door__sub {
   text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 24px rgba(0,0,0,.35);
 }
 
@@ -189,7 +189,7 @@ body:not(.nav-pill) .logo { transition: opacity .6s .2s, visibility 0s; }
 .door__media::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.1) 45%, rgba(0,0,0,.35)); }
 .door:hover .door__media { transform: scale(1.04); }
 .door > :not(.door__media) { position: relative; z-index: 3; }
-.door h2 { font-size: clamp(36px, 4vw, 68px); line-height: 1; margin: 12px 0 14px; }
+.door h2 { font-size: clamp(36px, 4vw, 68px); line-height: 1; margin: 0 0 14px; }
 .door__sub { font: 400 clamp(16px, 1.2vw, 19px)/1.45 var(--body); max-width: 30ch; }
 .door .tag { position: absolute; left: 32px; bottom: 32px; }
 .door:hover .tag { background: var(--yellow); }
