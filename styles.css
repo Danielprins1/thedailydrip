@@ -59,9 +59,9 @@ button.tag { border: 0; cursor: pointer; }
 .tag--ghost:hover { background: var(--black) !important; color: var(--white) !important; }
 
 /* ============ Logo ============ */
-.logo { position: fixed; top: 40px; left: 40px; z-index: 58; text-decoration: none; color: var(--white); opacity: 0; transition: color .4s; }
+.logo { position: fixed; top: 48px; left: 50%; translate: -50% 0; z-index: 58; text-decoration: none; color: var(--white); opacity: 0; transition: color .4s; }
 .logo__placeholder { font: 400 30px/1 var(--display); }
-.logo img { height: 52px; width: auto; filter: invert(1); transition: filter .4s; }   /* logo.svg is black → white by default */
+.logo img { height: clamp(72px, 8vw, 120px); width: auto; filter: invert(1); transition: filter .4s; }   /* logo.svg is black → white by default */
 .logo--dark { color: var(--black); }                   /* over white / yellow sections (data-logo="dark") */
 .logo--dark img { filter: none; }
 .menu-open .logo { color: var(--white); }
@@ -182,7 +182,7 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
 /* ============ Sub pages ============ */
 .page-hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; color: var(--white); display: flex; align-items: flex-end; padding: 0 var(--gutter) 10vh; }
 .page-hero__bg { position: absolute; inset: -10% 0; }
-.page-hero .corner--tl, .page-hero .corner--tr { top: 120px; bottom: auto; }
+.page-hero .corner--tl, .page-hero .corner--tr { top: 48px; bottom: auto; }
 .page-hero__title { position: relative; z-index: 5; font-size: clamp(56px, 9vw, 168px); line-height: .95; }
 .page-hero__title .line { display: block; }
 
@@ -261,9 +261,9 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
 
 @media (max-width: 760px) {
   :root { --gutter: 20px; }
-  .logo { top: 20px; left: 20px; }
-  .logo img { height: 38px; }
-  .corner--tl { top: 90px; bottom: auto; }
+  .logo { top: 32px; }
+  .logo img { height: 64px; }
+  .corner--tl { top: 130px; bottom: auto; }
   .corner--tr { bottom: 90px; }
   .hero__card { width: 72vw; }
   .mission, .intro, .steps, .courses { padding-top: 12vh; padding-bottom: 12vh; grid-template-columns: 1fr; }
@@ -289,7 +289,7 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
   .doors { grid-template-columns: 1fr; padding: 10vh 20px; gap: 16px; }
   .tag--ghost { margin: 12px 0 0; }
   .page-hero { padding: 0 20px 14vh; }
-  .page-hero .corner--tl { top: 90px; }
+  .page-hero .corner--tl { top: 130px; }
   .page-hero .corner--tr { display: none; }
   .steps__list { grid-template-columns: 1fr; }
   .beans { padding: 14vh 20px 60px; }
