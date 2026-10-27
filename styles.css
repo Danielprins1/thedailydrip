@@ -103,6 +103,7 @@ button.tag { border: 0; cursor: pointer; }
 /* ============ Sidebar → pill nav (LAP-style) ============ */
 .nav-pill { --sidebar: 0px; }
 .nav-pill .sidebar { transform: translateX(100%); }
+.nav-pill .menu { padding-bottom: 130px; }               /* keep the menu footer clear of the bottom pill */
 .nav-pill .logo { color: var(--white); z-index: 61; }      /* flying into the black pill → white, above it */
 .nav-pill .logo img { filter: invert(1); }
 .logo-docked .logo { visibility: hidden; }                  /* landed: the pill's own logo takes over */
@@ -110,12 +111,12 @@ button.tag { border: 0; cursor: pointer; }
 .logo-docked .pill__logo img { opacity: 1; }
 
 .pill {
-  position: fixed; z-index: 60; top: 24px; left: 50%; max-width: calc(100% - 48px);
+  position: fixed; z-index: 60; bottom: 24px; left: 50%; max-width: calc(100% - 48px);
   display: flex; align-items: center; gap: clamp(20px, 3vw, 44px);
   padding: 12px 12px 12px 30px; border-radius: 999px; background: var(--black); color: var(--white);
   box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 20px 50px rgba(0,0,0,.18);
-  transform: translate(-50%, calc(-100% - 40px)); opacity: 0;
-  transition: transform 1s cubic-bezier(.2,.9,.25,1) .35s, opacity .6s .35s;
+  transform: translate(-50%, calc(100% + 40px)); opacity: 0;
+  transition: transform .9s cubic-bezier(.2,.9,.25,1) .2s, opacity .5s .2s;
 }
 .nav-pill .pill { transform: translate(-50%, 0); opacity: 1; }
 .pill__logo img { height: 30px; width: auto; filter: invert(1); }
@@ -132,6 +133,12 @@ button.tag { border: 0; cursor: pointer; }
   font: 500 17px/1 var(--body); padding: 16px 26px; border-radius: 999px; transition: background .3s, transform .3s;
 }
 .pill__cta:hover { background: var(--white); transform: scale(1.03); }
+
+/* Shade over full-bleed photos that carry white text */
+.hero__bg::after, .page-hero__bg::after, .statement__bg::after, .beans__bg::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.12) 40%, rgba(0,0,0,.38));
+}
 
 /* ============ Home 1. Hero ============ */
 .hero { height: 240vh; position: relative; }
@@ -259,7 +266,7 @@ button.tag { border: 0; cursor: pointer; }
 .catering .tag:not(.tag--ghost):hover { background: var(--white); color: var(--black); }
 
 /* ============ Footer ============ */
-.footer { background: var(--black); color: var(--white); padding: 14vh var(--gutter) 48px; overflow: hidden; }
+.footer { background: var(--black); color: var(--white); padding: 14vh var(--gutter) 130px; overflow: hidden; }   /* bottom room for the pill */
 .footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; font: 400 17px/1.55 var(--body); }
 .footer__cols .label { color: var(--yellow); margin-bottom: 12px; }
 .footer__cols a { text-decoration: none; }
@@ -290,12 +297,12 @@ button.tag { border: 0; cursor: pointer; }
   .statement__title .line:nth-child(2) { padding-left: 0; }
   .statement__side { width: 100%; }
   .catering { grid-template-columns: 1fr; padding: 14vh 20px; }
-  .footer { padding: 10vh 20px 90px; }
+  .footer { padding: 10vh 20px 110px; }
   .footer__logo { width: 70vw; }
   .menu { inset: 0 0 60px 0; padding: 14vh 20px 30px; }
-  .nav-pill .menu { inset: 0; padding-top: 120px; }
+  .nav-pill .menu { inset: 0; padding-bottom: 100px; }
   .nav-pill .sidebar { transform: translateY(100%); }
-  .pill { top: 12px; max-width: none; width: calc(100% - 24px); justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; }
+  .pill { bottom: 12px; max-width: none; width: calc(100% - 24px); justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; }
   .pill__links, .pill__lang { display: none; }
   .pill__logo { margin-right: auto; }
   .pill__logo img { height: 24px; }

@@ -36,33 +36,59 @@ const setMenu = (open) => {
 menuBtns.forEach((b) => b.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open'))));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
-/* ---------- Sidebar → pill nav ----------
-   On load you see the escape-style sidebar + big logo; then the sidebar slides out,
-   the LAP-style pill drops in and the big logo flies into its slot in the pill.
-   Tune the delay here. */
-const PILL_DELAY = reduceMotion ? 0 : 2200;
-const dockLogo = () => document.body.classList.add('logo-docked');
-setTimeout(() => {
-  const body = document.body, pill = $('.pill'), logo = $('.logo');
-  // Measure where the pill logo will end up (pill in its final state, no transition)
+/* ---------- Sidebar ↔ pill nav ----------
+   While the first section (hero) is on screen you see the escape-style sidebar + big logo.
+   Once ~70% of it has scrolled away, the sidebar slides out, the LAP-style pill rises in
+   at the bottom of the screen and the big logo flies into its slot in the pill.
+   Scrolling back up reverses it. PILL_AT = how much of the first section must be gone. */
+const PILL_AT = 0.7;
+const firstSection = $('main > section');
+const logo = $('.logo');
+let pillOn = false;
+
+const pillLogoTarget = () => {
+  // Where the pill logo sits once the pill is in place (measured without transitions)
+  const pill = $('.pill'), wasOn = document.body.classList.contains('nav-pill');
   pill.style.transition = 'none';
-  body.classList.add('nav-pill');
-  const to = $('.pill__logo img').getBoundingClientRect();
-  body.classList.remove('nav-pill');
+  document.body.classList.add('nav-pill');
+  const r = $('.pill__logo img').getBoundingClientRect();
+  if (!wasOn) document.body.classList.remove('nav-pill');
   void pill.offsetWidth;
   pill.style.transition = '';
-  body.classList.add('nav-pill');
+  return r;
+};
 
-  const from = logo.getBoundingClientRect();
-  if (reduceMotion || !from.height) { dockLogo(); }
-  else {
-    gsap.to(logo, {
-      x: to.left - from.left, y: to.top - from.top, scale: to.height / from.height, transformOrigin: '0 0',
-      duration: 1.2, delay: 0.25, ease: 'power3.inOut', onComplete: dockLogo,
-    });
+const setPill = (on) => {
+  if (on === pillOn) return;
+  pillOn = on;
+  const body = document.body;
+  if (on) {
+    const to = pillLogoTarget();
+    body.classList.add('nav-pill');
+    // offsetLeft/Top/Height ignore transforms, so this is the logo's resting spot
+    const dx = to.left - logo.offsetLeft, dy = to.top - logo.offsetTop, sc = to.height / logo.offsetHeight;
+    if (reduceMotion) { gsap.set(logo, { x: dx, y: dy, scale: sc, transformOrigin: '0 0' }); body.classList.add('logo-docked'); }
+    else gsap.to(logo, { x: dx, y: dy, scale: sc, transformOrigin: '0 0', duration: 1.1, ease: 'power3.inOut', overwrite: true,
+      onComplete: () => pillOn && body.classList.add('logo-docked') });
+  } else {
+    body.classList.remove('logo-docked', 'nav-pill');
+    gsap.to(logo, { x: 0, y: 0, scale: 1, duration: reduceMotion ? 0 : 1.1, ease: 'power3.inOut', overwrite: true });
   }
-  setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000); // page got wider
-}, PILL_DELAY);
+  setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000); // page width changed
+};
+
+// Hero heights are vh-based, so this threshold doesn't move when the page widens
+const checkPill = () => {
+  const limit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight * PILL_AT : 0;
+  setPill(window.scrollY > limit);
+};
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { ticking = false; checkPill(); });
+}, { passive: true });
+checkPill();
 
 /* Same-page anchors glide through Lenis (also from inside the menu) */
 document.querySelectorAll('a[href*="#"]').forEach((a) => {
