@@ -14,8 +14,11 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Lots of parallax** — full-bleed background photos moving slower than content; photos stacked on top of each other at different speeds.
 - Font: **Coolvetica** (Typodermic) for headings/labels, Inter Tight for body. Headings in sentence case, weight 400 (no faux bold).
 - **Not brutalist**: Daniël found the first version too in-your-face. Keep type calm and orderly (`clamp()` max ~168px for the biggest titles), rounded corners (`--radius`), pill-shaped buttons, label column + content column grids. Small uppercase only for labels/corners.
-- Fixed white sidebar on the right: hamburger, vertical ticker text, catering icon, language toggle — shown only while the first section is on screen.
-- **Sidebar ↔ pill nav**: once ~70% of the first section has scrolled away (`PILL_AT` in `main.js`) the sidebar slides out, the page widens and a LAP-style floating dark pill rises in, **fixed at the bottom of the screen** (logo, hamburger, Menu / Company coffee / Training / Visit, NL, yellow "Order catering" CTA). Scrolling back up reverses it. Current page link is yellow. On mobile the pill keeps logo, hamburger and CTA.
+- Fixed white sidebar on the right: hamburger, vertical ticker text, catering icon, language toggle — shown only while the first section is on screen. On phones it is a bottom bar (hamburger + NL, no bag icon).
+- **Menu** links (pill + overlay) open the menu PDF in a new tab.
+- **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone.
+- White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
+- **Sidebar ↔ pill nav**: once the next section fills half the screen (`PILL_AT` in `main.js`) the sidebar slides out, the page widens and a LAP-style floating dark pill rises in, **fixed at the bottom of the screen** (logo, hamburger, Menu / Company coffee / Training / Visit, NL, yellow "Order catering" CTA). Scrolling back up reverses it. Current page link is yellow. On mobile the pill keeps logo, hamburger and CTA.
 - **Logo fades in** on load (fixed top-left), then flies (moves + shrinks) into its slot in the pill and hands over to the pill's own logo. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
 - Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
@@ -41,10 +44,10 @@ Forms (`.js-mailform`) open a prefilled email to info@thedailydrip.nl — no bac
 Removed on Daniël's request — don't bring back: the "A day at the Drip" stacked-photo section (felt like Tinder cards), the 4 menu cards on home (Flat white, Sandwich of the day…) and the hero coordinates. He does like the card styling (`.cards` / `.card`) — reuse it on a future menu page.
 
 ## Images
-Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide). Placeholders show the expected filename until the file exists. Filled so far from Daniël's first 5 photos (latte art top-down, storefront, interior seating, baguettes, bar counter) — mission-2/3 and the door images are crops of those and should be replaced by real photos:
-- Home: hero-bg ✓, hero-card ✓, mission-1 ✓, mission-2 (crop), mission-3 (crop), statement-bg ✓ (could become a video), door-company (crop), door-training (crop), catering ✓, logo.svg ✓
-- Company coffee: company-bg ✓, beans-bg — missing
-- Training: training-bg ✓, course-basics, course-latteart, course-brew, course-team, training-1..3 — missing
+Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed backgrounds also have a 1000px `-sm.webp` used via `srcset`). CSS/JS links carry `?v=N` — bump it when you change them so browsers/GitHub Pages don't serve a stale copy. Placeholders show the expected filename until the file exists. Filled so far from Daniël's first 5 photos (latte art top-down, storefront, interior seating, baguettes, bar counter) — mission-2/3 and the door images are crops of those and should be replaced by real photos:
+- Home: all filled (hero-bg, hero-card, mission-1..3, statement-bg, door-company, door-training, catering, logo.svg)
+- Company coffee: company-bg ✓, beans-bg — missing (Daniël has a beans close-up)
+- Training: training-bg ✓, course-basics/latteart/brew/team ✓ (reused shots), training-1..3 — missing (Daniël has grinder / iced latte / counter photos)
 
 ## Open / to do
 - [x] Logo in + fade-in check

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Company coffee — The Daily Drip</title>
   <meta name="description" content="The Daily Drip beans for your office coffee machine. Order online, delivered in Amsterdam Zuidas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
   <nav class="menu" id="menu-overlay" aria-hidden="true">
     <ol class="menu__list">
       <li><a href="index.html"><small>01</small>Home</a></li>
-      <li><a href="index.html#menu"><small>02</small>Menu</a></li>
+      <li><a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener"><small>02</small>Menu</a></li>
       <li><a href="index.html#catering"><small>03</small>Catering</a></li>
       <li><a href="company-coffee.html" aria-current="page"><small>04</small>Company coffee</a></li>
       <li><a href="training.html"><small>05</small>Coffee training</a></li>
@@ -38,7 +38,7 @@
     <a class="pill__logo" href="index.html"><img src="img/logo.svg" alt="The Daily Drip"></a>
     <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="pill__links">
-      <a href="index.html#menu">Menu</a>
+      <a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">Menu</a>
       <a href="company-coffee.html" aria-current="page">Company coffee</a>
       <a href="training.html">Training</a>
       <a href="#visit">Visit</a>
@@ -63,7 +63,7 @@
     <!-- HERO — huge title over slow background -->
     <section class="page-hero">
       <div class="page-hero__bg media" data-label="company-bg.webp — bags of beans / office machine">
-        <img src="img/company-bg.webp" alt="" onerror="this.remove()">
+        <img src="img/company-bg.webp" srcset="img/company-bg-sm.webp 1000w, img/company-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
       </div>
       <p class="corner corner--tl">COMPANY COFFEE.<br>THE DRIP AT YOUR DESK.</p>
       <p class="corner corner--tr">ORDER FOR<br>YOUR MACHINE.</p>
@@ -158,6 +158,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js?v=5"></script>
 </body>
 </html>

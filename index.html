@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Daily Drip — Coffee & lunch in Amsterdam Zuidas</title>
   <meta name="description" content="Specialty coffee and fresh lunch in Amsterdam Zuidas. Antonio Vivaldistraat 58. Monday to Friday, 08:00–16:00.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
   <nav class="menu" id="menu-overlay" aria-hidden="true">
     <ol class="menu__list">
       <li><a href="index.html"><small>01</small>Home</a></li>
-      <li><a href="index.html#menu"><small>02</small>Menu</a></li>
+      <li><a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener"><small>02</small>Menu</a></li>
       <li><a href="index.html#catering"><small>03</small>Catering</a></li>
       <li><a href="company-coffee.html"><small>04</small>Company coffee</a></li>
       <li><a href="training.html"><small>05</small>Coffee training</a></li>
@@ -40,7 +40,7 @@
     <a class="pill__logo" href="index.html"><img src="img/logo.svg" alt="The Daily Drip"></a>
     <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="pill__links">
-      <a href="index.html#menu">Menu</a>
+      <a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">Menu</a>
       <a href="company-coffee.html">Company coffee</a>
       <a href="training.html">Training</a>
       <a href="#visit">Visit</a>
@@ -67,7 +67,7 @@
     <section class="hero">
       <div class="hero__sticky">
         <div class="hero__bg media" data-label="hero-bg.webp — Zuidas architecture">
-          <img src="img/hero-bg.webp" alt="" onerror="this.remove()">
+          <img src="img/hero-bg.webp" srcset="img/hero-bg-sm.webp 1000w, img/hero-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
         </div>
         <p class="corner corner--tl">THE DAILY DRIP<br>IS ALWAYS OPEN FOR A PAUSE.</p>
         <p class="corner corner--tr">JUST GRAB A CUP<br>AND KEEP MOVING.</p>
@@ -93,7 +93,7 @@
     <!-- 3. STATEMENT — title over full-bleed photo/video -->
     <section class="statement" id="menu">
       <div class="statement__bg media" data-label="statement-bg.webp / .mp4 — bar, espresso machine">
-        <img src="img/statement-bg.webp" alt="" onerror="this.remove()">
+        <img src="img/statement-bg.webp" srcset="img/statement-bg-sm.webp 1000w, img/statement-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
       </div>
       <h2 class="statement__title">
         <span class="line">Keep the</span>
@@ -149,6 +149,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js"></script>
+  <script src="main.js?v=5"></script>
 </body>
 </html>

@@ -137,7 +137,11 @@ button.tag { border: 0; cursor: pointer; }
 /* Shade over full-bleed photos that carry white text */
 .hero__bg::after, .page-hero__bg::after, .statement__bg::after, .beans__bg::after {
   content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.12) 40%, rgba(0,0,0,.38));
+  background: linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,.18) 34%, rgba(0,0,0,.22) 60%, rgba(0,0,0,.5));
+}
+/* White text on photos gets a soft shadow so it holds up on bright spots */
+.corner, .page-hero__title, .statement__title, .statement__side p, .beans__title, .door h2, .door .label, .door__sub {
+  text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 24px rgba(0,0,0,.35);
 }
 
 /* ============ Home 1. Hero ============ */
@@ -181,7 +185,7 @@ button.tag { border: 0; cursor: pointer; }
 .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 16vh var(--gutter); background: var(--white); }
 .door { position: relative; display: block; text-decoration: none; color: var(--white); overflow: hidden; border-radius: var(--radius); aspect-ratio: 4/5; padding: 32px; }
 .door__media { position: absolute; inset: 0; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
-.door__media::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(0,0,0,.3), rgba(0,0,0,0) 40%, rgba(0,0,0,.4)); }
+.door__media::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.1) 45%, rgba(0,0,0,.35)); }
 .door:hover .door__media { transform: scale(1.04); }
 .door > :not(.door__media) { position: relative; z-index: 3; }
 .door h2 { font-size: clamp(36px, 4vw, 68px); line-height: 1; margin: 12px 0 14px; }
@@ -281,7 +285,7 @@ button.tag { border: 0; cursor: pointer; }
 @media (max-width: 760px) {
   :root { --sidebar: 0px; --gutter: 20px; }
   .sidebar { top: auto; left: 0; width: auto; height: 60px; flex-direction: row; padding: 0 20px; justify-content: space-between; }
-  .sidebar__ticker { display: none; }
+  .sidebar__ticker, .sidebar__icon { display: none; }
   .logo { top: 20px; left: 20px; }
   .logo img { height: 38px; }
   .corner--tl { top: 90px; bottom: auto; }
@@ -302,7 +306,7 @@ button.tag { border: 0; cursor: pointer; }
   .menu { inset: 0 0 60px 0; padding: 14vh 20px 30px; }
   .nav-pill .menu { inset: 0; padding-bottom: 100px; }
   .nav-pill .sidebar { transform: translateY(100%); }
-  .pill { bottom: 12px; max-width: none; width: calc(100% - 24px); justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; }
+  .pill { bottom: calc(12px + env(safe-area-inset-bottom)); max-width: none; width: calc(100% - 24px); justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; }
   .pill__links, .pill__lang { display: none; }
   .pill__logo { margin-right: auto; }
   .pill__logo img { height: 24px; }

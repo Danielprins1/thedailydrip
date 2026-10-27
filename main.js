@@ -4,12 +4,15 @@
    Shared by every page: each block only runs when its section exists. */
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Phones / tablets: native scroll + only the key animations, so scrolling stays smooth
+const lite = window.matchMedia('(hover: none) and (pointer: coarse), (max-width: 760px)').matches;
 const $ = (s) => document.querySelector(s);
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });   // no re-layout when the address bar shows/hides
 
-/* ---------- Heavy smooth scroll ---------- */
+/* ---------- Heavy smooth scroll (desktop only) ---------- */
 let lenis = null;
-if (!reduceMotion) {
+if (!reduceMotion && !lite) {
   lenis = new Lenis({
     lerp: 0.055,          // 0.1 = default; 0.04–0.06 feels heavy. Tune here.
     wheelMultiplier: 0.8, // less distance per wheel tick = more weight
@@ -38,10 +41,10 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(fa
 
 /* ---------- Sidebar ↔ pill nav ----------
    While the first section (hero) is on screen you see the escape-style sidebar + big logo.
-   Once ~70% of it has scrolled away, the sidebar slides out, the LAP-style pill rises in
-   at the bottom of the screen and the big logo flies into its slot in the pill.
-   Scrolling back up reverses it. PILL_AT = how much of the first section must be gone. */
-const PILL_AT = 0.7;
+   Once the next section fills PILL_AT of the screen, the sidebar slides out, the LAP-style
+   pill rises in at the bottom of the screen and the big logo flies into its slot in the pill.
+   Scrolling back up reverses it. */
+const PILL_AT = 0.5;
 const firstSection = $('main > section');
 const logo = $('.logo');
 let pillOn = false;
@@ -74,12 +77,14 @@ const setPill = (on) => {
     body.classList.remove('logo-docked', 'nav-pill');
     gsap.to(logo, { x: 0, y: 0, scale: 1, duration: reduceMotion ? 0 : 1.1, ease: 'power3.inOut', overwrite: true });
   }
-  setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000); // page width changed
+  // Only desktop has a sidebar that changes the page width; phones skip the costly refresh
+  if (window.innerWidth > 760) setTimeout(() => ScrollTrigger.refresh(), reduceMotion ? 0 : 1000);
 };
 
 // Hero heights are vh-based, so this threshold doesn't move when the page widens
 const checkPill = () => {
-  const limit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight * PILL_AT : 0;
+  const vh = document.documentElement.clientHeight;
+  const limit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight - vh * (1 - PILL_AT) : 0;
   setPill(window.scrollY > limit);
 };
 let ticking = false;
@@ -131,7 +136,7 @@ if (!reduceMotion) {
       y: () => -(window.innerHeight + $('.hero__card').offsetHeight + 60),
       ease: 'none', scrollTrigger: { ...hero, invalidateOnRefresh: true },
     });
-    gsap.to('.hero__bg', { yPercent: 8, scale: 1.08, ease: 'none', scrollTrigger: hero });
+    if (!lite) gsap.to('.hero__bg', { yPercent: 8, scale: 1.08, ease: 'none', scrollTrigger: hero });
     gsap.to('.hero .corner', { y: -60, opacity: 0, ease: 'none',
       scrollTrigger: { trigger: '.hero', start: '60% bottom', end: 'bottom bottom', scrub: true } });
   }
@@ -139,9 +144,9 @@ if (!reduceMotion) {
   /* ---------- Sub page hero: title lines rise in, bg drifts ---------- */
   if ($('.page-hero')) {
     gsap.from('.page-hero__title .line', { yPercent: 100, opacity: 0, duration: 1.4, stagger: 0.1, delay: 0.4, ease: 'power4.out' });
-    gsap.to('.page-hero__bg', { yPercent: 15, scale: 1.06, ease: 'none',
+    if (!lite) gsap.to('.page-hero__bg', { yPercent: 15, scale: 1.06, ease: 'none',
       scrollTrigger: { trigger: '.page-hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.utils.toArray('.page-hero__title .line').forEach((line, i) => {
+    if (!lite) gsap.utils.toArray('.page-hero__title .line').forEach((line, i) => {
       gsap.to(line, { y: -(80 + i * 60), ease: 'none',
         scrollTrigger: { trigger: '.page-hero', start: 'top top', end: 'bottom top', scrub: true } });
     });
@@ -165,6 +170,10 @@ if (!reduceMotion) {
     });
   });
 
+}
+
+/* ---------- Desktop-only extras: parallax layers and slide-ins ---------- */
+if (!reduceMotion && !lite) {
   /* ---------- Generic parallax: any element with data-speed ---------- */
   document.querySelectorAll('[data-speed]').forEach((el) => {
     const speed = parseFloat(el.dataset.speed);
