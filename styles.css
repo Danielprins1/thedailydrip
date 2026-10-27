@@ -84,6 +84,8 @@ button.tag { border: 0; cursor: pointer; }
 .menu__list small { font: 500 13px/1 var(--body); padding-top: .8em; opacity: .45; }
 .menu__list a:hover, .menu__list a[aria-current="page"] { color: var(--yellow); }
 .menu__list a:hover { transform: translateX(12px); }
+.menu__lang { align-self: flex-start; margin-top: auto; margin-bottom: 28px; background: none; border: 1.5px solid rgba(255,255,255,.5); color: var(--white); border-radius: 999px; padding: 10px 20px; font: 500 15px/1 var(--body); cursor: pointer; transition: background .3s, color .3s; }
+.menu__lang:hover { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
 .menu__foot { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 6vw; font: 400 15px/1.5 var(--body); opacity: .7; }
 .menu__foot a { text-decoration: none; }
 .menu-open .js-menu-btn span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }

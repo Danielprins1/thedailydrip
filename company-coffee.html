@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Company coffee — The Daily Drip</title>
+  <title data-nl="Kantoorkoffie — The Daily Drip">Company coffee — The Daily Drip</title>
   <meta name="description" content="The Daily Drip beans for your office coffee machine. Order online, delivered in Amsterdam Zuidas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -22,12 +22,13 @@
     <ol class="menu__list">
       <li><a href="index.html"><small>01</small>Home</a></li>
       <li><a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener"><small>02</small>Menu</a></li>
-      <li><a href="company-coffee.html" aria-current="page"><small>03</small>Company coffee</a></li>
-      <li><a href="training.html"><small>04</small>Coffee training</a></li>
+      <li><a href="company-coffee.html" aria-current="page" data-nl="&lt;small&gt;03&lt;/small&gt;Kantoorkoffie"><small>03</small>Company coffee</a></li>
+      <li><a href="training.html" data-nl="&lt;small&gt;04&lt;/small&gt;Koffietraining"><small>04</small>Coffee training</a></li>
     </ol>
+    <button class="menu__lang js-lang" lang="nl" aria-label="Nederlands">Nederlands</button>
     <div class="menu__foot">
       <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
-      <p>Mon–Fri<br>08:00 – 16:00</p>
+      <p data-nl="ma–vr&lt;br&gt;08:00 – 16:00">Mon–Fri<br>08:00 – 16:00</p>
       <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p>
     </div>
   </nav>
@@ -38,11 +39,11 @@
     <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="pill__links">
       <a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">Menu</a>
-      <a href="company-coffee.html" aria-current="page">Company coffee</a>
+      <a href="company-coffee.html" aria-current="page" data-nl="Kantoorkoffie">Company coffee</a>
       <a href="training.html">Training</a>
     </nav>
-    <button class="pill__lang">NL</button>
-    <a class="pill__cta" href="company-coffee.html#order">Order beans</a>
+    <button class="pill__lang js-lang" lang="nl" aria-label="Nederlands">NL</button>
+    <a class="pill__cta" href="company-coffee.html#order" data-nl="Bestel bonen">Order beans</a>
   </header>
 
   <main id="top">
@@ -52,27 +53,27 @@
       <div class="page-hero__bg media" data-label="company-bg.webp — bags of beans / office machine">
         <img src="img/company-bg.webp" srcset="img/company-bg-sm.webp 1000w, img/company-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
       </div>
-      <p class="corner corner--tl">COMPANY<br>COFFEE</p>
+      <p class="corner corner--tl" data-nl="KANTOOR&lt;br&gt;KOFFIE">COMPANY<br>COFFEE</p>
       <p class="corner corner--tr">HUSTLE,<br>DRIP, SIP.</p>
       <h1 class="page-hero__title">
-        <span class="line">Our beans,</span>
-        <span class="line">your machine</span>
+        <span class="line" data-nl="Onze bonen,">Our beans,</span>
+        <span class="line" data-nl="jouw machine">your machine</span>
       </h1>
     </section>
 
     <!-- INTRO — words light up -->
     <section class="intro intro--dark">
-      <p class="label">THE<br>IDEA</p>
-      <p class="intro__text js-words">Bad office coffee is a choice. Fill your bean-to-cup or espresso machine with the same beans we pour at the bar, roasted fresh and delivered to your door in the Zuidas. No contracts, just good coffee on repeat. <a href="#order" class="tag">Order now</a></p>
+      <p class="label" data-nl="HET&lt;br&gt;IDEE">THE<br>IDEA</p>
+      <p class="intro__text js-words" data-nl="Slechte kantoorkoffie is een keuze. Vul je volautomaat of espressomachine met dezelfde bonen die wij aan de bar gebruiken, vers gebrand en bezorgd tot aan je deur op de Zuidas. Geen contracten, gewoon goede koffie, keer op keer. &lt;a href=&quot;#order&quot; class=&quot;tag&quot;&gt;Bestel nu&lt;/a&gt;">Bad office coffee is a choice. Fill your bean-to-cup or espresso machine with the same beans we pour at the bar, roasted fresh and delivered to your door in the Zuidas. No contracts, just good coffee on repeat. <a href="#order" class="tag">Order now</a></p>
     </section>
 
     <!-- HOW IT WORKS -->
     <section class="steps" data-logo="dark">
-      <p class="label steps__label">HOW IT<br>WORKS</p>
+      <p class="label steps__label" data-nl="ZO&lt;br&gt;WERKT HET">HOW IT<br>WORKS</p>
       <ol class="steps__list">
-        <li class="step"><span class="step__no">01</span><h3>Pick your beans</h3><p>House espresso, a lighter filter roast or decaf. Not sure? We'll taste with you first.</p></li>
-        <li class="step"><span class="step__no">02</span><h3>Set your rhythm</h3><p>Choose how much and how often. Weekly, every two weeks or monthly. Change it anytime.</p></li>
-        <li class="step"><span class="step__no">03</span><h3>We drop it off</h3><p>Delivered to your office in the Zuidas. Out of beans early? One email and we're there.</p></li>
+        <li class="step"><span class="step__no">01</span><h3 data-nl="Kies je bonen">Pick your beans</h3><p data-nl="House espresso, een lichtere filterbranding of decaf. Twijfel je? Dan proeven we eerst samen.">House espresso, a lighter filter roast or decaf. Not sure? We'll taste with you first.</p></li>
+        <li class="step"><span class="step__no">02</span><h3 data-nl="Kies je ritme">Set your rhythm</h3><p data-nl="Kies hoeveel en hoe vaak. Wekelijks, om de week of maandelijks. Altijd aan te passen.">Choose how much and how often. Weekly, every two weeks or monthly. Change it anytime.</p></li>
+        <li class="step"><span class="step__no">03</span><h3 data-nl="Wij bezorgen">We drop it off</h3><p data-nl="Bezorgd op je kantoor op de Zuidas. Eerder door je bonen heen? Eén mailtje en we komen eraan.">Delivered to your office in the Zuidas. Out of beans early? One email and we're there.</p></li>
       </ol>
     </section>
 
@@ -81,18 +82,18 @@
       <div class="beans__bg media" data-label="beans-bg.webp — close-up of beans / grinder">
         <img src="img/beans-bg.webp" srcset="img/beans-bg-sm.webp 1000w, img/beans-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
       </div>
-      <h2 class="beans__title"><span class="line">The beans</span></h2>
+      <h2 class="beans__title"><span class="line" data-nl="De bonen">The beans</span></h2>
       <div class="cards cards--3">
         <article class="card card--tall">
-          <div><h3>House espresso</h3><p>Chocolate, hazelnut, a hint of red fruit. Built for milk.</p></div>
+          <div><h3>House espresso</h3><p data-nl="Chocolade, hazelnoot, een vleugje rood fruit. Gemaakt voor melk.">Chocolate, hazelnut, a hint of red fruit. Built for milk.</p></div>
           <span>1 kg · € –,–</span>
         </article>
         <article class="card card--tall">
-          <div><h3>Bright filter</h3><p>Light roast for batch brew and filter machines.</p></div>
+          <div><h3>Bright filter</h3><p data-nl="Lichte branding voor batch brew en filtermachines.">Light roast for batch brew and filter machines.</p></div>
           <span>1 kg · € –,–</span>
         </article>
         <article class="card card--tall">
-          <div><h3>Swiss water decaf</h3><p>All the taste, none of the 3 PM jitters.</p></div>
+          <div><h3>Swiss water decaf</h3><p data-nl="Alle smaak, zonder de bibbers van drie uur &#x27;s middags.">All the taste, none of the 3 PM jitters.</p></div>
           <span>1 kg · € –,–</span>
         </article>
       </div>
@@ -101,41 +102,41 @@
     <!-- ORDER FORM -->
     <section class="order" id="order" data-logo="dark">
       <div class="order__intro">
-        <p class="label">ORDER</p>
-        <h2>Fill the machine</h2>
-        <p>Tell us what you need and we'll confirm price and first delivery within one working day.</p>
+        <p class="label" data-nl="BESTELLEN">ORDER</p>
+        <h2 data-nl="Vul de machine">Fill the machine</h2>
+        <p data-nl="Vertel ons wat je nodig hebt, dan bevestigen we prijs en eerste levering binnen één werkdag.">Tell us what you need and we'll confirm price and first delivery within one working day.</p>
       </div>
       <form class="form js-mailform" data-subject="Company coffee order">
-        <label>Company<input name="Company" required autocomplete="organization"></label>
-        <label>Contact person<input name="Contact person" required autocomplete="name"></label>
-        <label>Email<input type="email" name="Email" required autocomplete="email"></label>
-        <label>Phone<input type="tel" name="Phone" autocomplete="tel"></label>
-        <label>Machine type
+        <label><span data-nl="Bedrijf">Company</span><input name="Company" required autocomplete="organization"></label>
+        <label><span data-nl="Contactpersoon">Contact person</span><input name="Contact person" required autocomplete="name"></label>
+        <label><span data-nl="E-mail">Email</span><input type="email" name="Email" required autocomplete="email"></label>
+        <label><span data-nl="Telefoon">Phone</span><input type="tel" name="Phone" autocomplete="tel"></label>
+        <label><span data-nl="Type machine">Machine type</span>
           <select name="Machine type">
-            <option>Bean-to-cup</option><option>Espresso machine</option><option>Filter / batch brew</option><option>Not sure</option>
+            <option data-nl="Volautomaat">Bean-to-cup</option><option data-nl="Espressomachine">Espresso machine</option><option>Filter / batch brew</option><option data-nl="Weet ik niet">Not sure</option>
           </select>
         </label>
-        <label>Beans
+        <label><span data-nl="Bonen">Beans</span>
           <select name="Beans">
-            <option>House espresso</option><option>Bright filter</option><option>Swiss water decaf</option><option>Mix / advise me</option>
+            <option>House espresso</option><option>Bright filter</option><option>Swiss water decaf</option><option data-nl="Mix / adviseer mij">Mix / advise me</option>
           </select>
         </label>
-        <label>Kg per delivery<input type="number" name="Kg per delivery" min="1" value="2"></label>
-        <label>How often
+        <label><span data-nl="Kg per levering">Kg per delivery</span><input type="number" name="Kg per delivery" min="1" value="2"></label>
+        <label><span data-nl="Hoe vaak">How often</span>
           <select name="Frequency">
-            <option>Weekly</option><option>Every two weeks</option><option>Monthly</option><option>One-off</option>
+            <option data-nl="Wekelijks">Weekly</option><option data-nl="Om de week">Every two weeks</option><option data-nl="Maandelijks">Monthly</option><option data-nl="Eenmalig">One-off</option>
           </select>
         </label>
-        <label class="form__wide">Delivery address<input name="Delivery address" autocomplete="street-address"></label>
-        <label class="form__wide">Anything else?<textarea name="Notes" rows="3"></textarea></label>
-        <button class="tag tag--lg" type="submit">Send order</button>
+        <label class="form__wide"><span data-nl="Bezorgadres">Delivery address</span><input name="Delivery address" autocomplete="street-address"></label>
+        <label class="form__wide"><span data-nl="Nog iets?">Anything else?</span><textarea name="Notes" rows="3"></textarea></label>
+        <button class="tag tag--lg" type="submit" data-nl="Verstuur bestelling">Send order</button>
       </form>
     </section>
 
     <footer class="footer" id="visit">
       <div class="footer__cols">
-        <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
-        <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
+        <div><p class="label" data-nl="BEZOEK">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
+        <div><p class="label" data-nl="OPENINGSTIJDEN">HOURS</p><p data-nl="Maandag t/m vrijdag&lt;br&gt;08:00 – 16:00">Monday to Friday<br>08:00 – 16:00</p></div>
         <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p></div>
       </div>
       <img class="footer__logo" src="img/logo.svg" alt="The Daily Drip">
@@ -145,6 +146,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=12"></script>
+  <script src="main.js?v=13"></script>
 </body>
 </html>

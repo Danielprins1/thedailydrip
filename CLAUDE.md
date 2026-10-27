@@ -1,6 +1,6 @@
 # The Daily Drip — new website
 
-Daniël (CMD student, freelance designer, DJP Design) is building a new website for client **The Daily Drip (TDD)**, a coffee & lunch spot in Amsterdam Zuidas. Communicate with Daniël in **Dutch**. Site copy is in **English** for now (NL toggle planned).
+Daniël (CMD student, freelance designer, DJP Design) is building a new website for client **The Daily Drip (TDD)**, a coffee & lunch spot in Amsterdam Zuidas. Communicate with Daniël in **Dutch**. Site copy is **English by default with a working NL toggle**.
 
 ## Client facts
 - Antonio Vivaldistraat 58, 1083 HP Amsterdam — Mon–Fri 08:00–16:00 — info@thedailydrip.nl
@@ -24,6 +24,12 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 ## Stack
 Plain HTML/CSS/JS, no build step. CDN: Lenis 1.1.13, GSAP 3.12.5 + ScrollTrigger. Fonts: Coolvetica self-hosted (`fonts/coolvetica-rg.woff2` + `-it.woff2`, converted from Daniël's .otf; he also has Cond, Cram and Heavy Comp if needed), Inter Tight from Google Fonts.
 Run locally: `npx serve .` or `python3 -m http.server`.
+
+## Language (NL/EN)
+- English is the element's content; Dutch sits next to it in a `data-nl="…"` attribute (HTML-escaped; may contain markup such as `<br>` or the `.tag` link). **Every new piece of copy needs a `data-nl` too.**
+- Form label text is wrapped in `<span data-nl>`; `<option>`s and `<title>` have `data-nl`. Brand slogans ("hustle, drip, sip", "more espresso, less depresso") stay English.
+- `.js-lang` buttons toggle: `pill__lang` (pill, hidden below 1100px) and `menu__lang` (in the menu overlay, all sizes). Choice is saved in localStorage (`tdd-lang`) and applied on every page before the word light-up splits text.
+- Form field `name`s and email subjects stay English so TDD gets consistent emails.
 
 ## Pages
 All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the footer and `main.js` (each animation block only runs when its section exists).
@@ -56,7 +62,7 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 - [x] Coolvetica font files in `fonts/`
 - Copy uses TDD's real slogans where possible: "hustle, drip, sip" (cans/shirts) and "more espresso, less depresso" (mirror in the shop). Statement title is "More espresso, less depresso".
 - [x] Sidebar menu overlay + LAP-style pill nav
-- [ ] NL/EN toggle
+- [x] NL/EN toggle
 - Instagram: https://www.instagram.com/thedailydrip_zuidas/ (footer + menu overlay)
 - All emails/forms go to info@thedailydrip.nl (confirmed by Daniël)
 - [ ] Real bean names/prices (company coffee) and course prices/durations (training)

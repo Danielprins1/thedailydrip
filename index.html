@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>The Daily Drip — Coffee & lunch in Amsterdam Zuidas</title>
+  <title data-nl="The Daily Drip — Koffie &amp; lunch op de Amsterdamse Zuidas">The Daily Drip — Coffee & lunch in Amsterdam Zuidas</title>
   <meta name="description" content="Specialty coffee and fresh lunch in Amsterdam Zuidas. Antonio Vivaldistraat 58. Monday to Friday, 08:00–16:00.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -24,12 +24,13 @@
     <ol class="menu__list">
       <li><a href="index.html"><small>01</small>Home</a></li>
       <li><a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener"><small>02</small>Menu</a></li>
-      <li><a href="company-coffee.html"><small>03</small>Company coffee</a></li>
-      <li><a href="training.html"><small>04</small>Coffee training</a></li>
+      <li><a href="company-coffee.html" data-nl="&lt;small&gt;03&lt;/small&gt;Kantoorkoffie"><small>03</small>Company coffee</a></li>
+      <li><a href="training.html" data-nl="&lt;small&gt;04&lt;/small&gt;Koffietraining"><small>04</small>Coffee training</a></li>
     </ol>
+    <button class="menu__lang js-lang" lang="nl" aria-label="Nederlands">Nederlands</button>
     <div class="menu__foot">
       <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
-      <p>Mon–Fri<br>08:00 – 16:00</p>
+      <p data-nl="ma–vr&lt;br&gt;08:00 – 16:00">Mon–Fri<br>08:00 – 16:00</p>
       <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p>
     </div>
   </nav>
@@ -40,11 +41,11 @@
     <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="pill__links">
       <a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">Menu</a>
-      <a href="company-coffee.html">Company coffee</a>
+      <a href="company-coffee.html" data-nl="Kantoorkoffie">Company coffee</a>
       <a href="training.html">Training</a>
     </nav>
-    <button class="pill__lang">NL</button>
-    <a class="pill__cta" href="company-coffee.html#order">Order beans</a>
+    <button class="pill__lang js-lang" lang="nl" aria-label="Nederlands">NL</button>
+    <a class="pill__cta" href="company-coffee.html#order" data-nl="Bestel bonen">Order beans</a>
   </header>
 
   <main id="top">
@@ -56,7 +57,7 @@
           <img src="img/hero-bg.webp" srcset="img/hero-bg-sm.webp 1000w, img/hero-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
         </div>
         <p class="corner corner--tl">HUSTLE,<br>DRIP, SIP.</p>
-        <p class="corner corner--tr">MON–FRI<br>08:00 – 16:00</p>
+        <p class="corner corner--tr" data-nl="MA–VR&lt;br&gt;08:00 – 16:00">MON–FRI<br>08:00 – 16:00</p>
         <div class="hero__card media" data-label="hero-card.webp — portrait, someone with a coffee">
           <img src="img/hero-card.webp" alt="Coffee to go at The Daily Drip" onerror="this.remove()">
         </div>
@@ -66,8 +67,8 @@
     <!-- 2. MISSION — words light up while scrolling, photos drift -->
     <section class="mission" data-logo="dark">
       <div class="mission__inner">
-        <p class="label">OUR<br>DRIP</p>
-        <p class="mission__text js-words">In the fast lane of the Zuidas, we're the pause button. One perfectly balanced cup between meetings, a fresh lunch before the next deadline. Every bean is ground, brewed and dialled in, so your day keeps its rhythm. <a href="#menu" class="tag">See menu</a></p>
+        <p class="label" data-nl="ONZE&lt;br&gt;DRIP">OUR<br>DRIP</p>
+        <p class="mission__text js-words" data-nl="Op de snelweg van de Zuidas zijn wij de pauzeknop. Eén perfect gebalanceerde kop tussen meetings door, een verse lunch voor de volgende deadline. Elke boon wordt gemalen, gezet en precies afgesteld, zodat jouw dag in het ritme blijft. &lt;a href=&quot;#menu&quot; class=&quot;tag&quot;&gt;Bekijk menu&lt;/a&gt;">In the fast lane of the Zuidas, we're the pause button. One perfectly balanced cup between meetings, a fresh lunch before the next deadline. Every bean is ground, brewed and dialled in, so your day keeps its rhythm. <a href="#menu" class="tag">See menu</a></p>
       </div>
       <div class="mission__photos">
         <div class="media float float--a" data-speed="-0.25" data-label="mission-1.webp"><img src="img/mission-1.webp" alt="" onerror="this.remove()"></div>
@@ -86,8 +87,8 @@
         <span class="line">less depresso</span>
       </h2>
       <div class="statement__side">
-        <p>Carefully ground, brewed and balanced. Your daily boost, from the first espresso to the last afternoon flat white.</p>
-        <a class="tag tag--lg" href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">See menu</a>
+        <p data-nl="Zorgvuldig gemalen, gezet en in balans. Je dagelijkse boost, van de eerste espresso tot de laatste flat white van de middag.">Carefully ground, brewed and balanced. Your daily boost, from the first espresso to the last afternoon flat white.</p>
+        <a class="tag tag--lg" href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener" data-nl="Bekijk menu">See menu</a>
       </div>
     </section>
 
@@ -95,23 +96,23 @@
     <section class="doors" data-logo="dark">
       <a class="door" href="company-coffee.html">
         <div class="door__media media" data-label="door-company.webp — beans / office machine"><img src="img/door-company.webp" alt="" onerror="this.remove()"></div>
-        <h2>Company coffee</h2>
-        <p class="door__sub">Our beans for your machine. Delivered in the Zuidas.</p>
-        <span class="tag tag--lg">Order beans</span>
+        <h2 data-nl="Kantoorkoffie">Company coffee</h2>
+        <p class="door__sub" data-nl="Onze bonen voor jouw machine. Bezorgd op de Zuidas.">Our beans for your machine. Delivered in the Zuidas.</p>
+        <span class="tag tag--lg" data-nl="Bestel bonen">Order beans</span>
       </a>
       <a class="door" href="training.html">
         <div class="door__media media" data-label="door-training.webp — barista teaching"><img src="img/door-training.webp" alt="" onerror="this.remove()"></div>
-        <h2>Coffee training</h2>
-        <p class="door__sub">From first shot to latte art. At the bar or at your office.</p>
-        <span class="tag tag--lg">Book a training</span>
+        <h2 data-nl="Koffietraining">Coffee training</h2>
+        <p class="door__sub" data-nl="Van eerste shot tot latte art. Aan de bar of op kantoor.">From first shot to latte art. At the bar or at your office.</p>
+        <span class="tag tag--lg" data-nl="Boek een training">Book a training</span>
       </a>
     </section>
 
     <!-- 5. FOOTER -->
     <footer class="footer" id="visit">
       <div class="footer__cols">
-        <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
-        <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
+        <div><p class="label" data-nl="BEZOEK">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
+        <div><p class="label" data-nl="OPENINGSTIJDEN">HOURS</p><p data-nl="Maandag t/m vrijdag&lt;br&gt;08:00 – 16:00">Monday to Friday<br>08:00 – 16:00</p></div>
         <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p></div>
       </div>
       <img class="footer__logo" src="img/logo.svg" alt="The Daily Drip">
@@ -121,6 +122,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=12"></script>
+  <script src="main.js?v=13"></script>
 </body>
 </html>

@@ -10,6 +10,47 @@ const $ = (s) => document.querySelector(s);
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });   // no re-layout when the address bar shows/hides
 
+/* ---------- Language: EN (default) / NL ----------
+   Dutch copy lives in the HTML as data-nl="…" on each element; the English is whatever
+   the element contains. The choice is remembered per visitor. */
+const i18n = [...document.querySelectorAll('[data-nl]')];
+i18n.forEach((el) => { el.dataset.en = el.tagName === 'TITLE' ? el.textContent : el.innerHTML; });
+const splitWords = (el) => {
+  [...el.childNodes].forEach((node) => {
+    if (node.nodeType !== Node.TEXT_NODE) return;
+    const frag = document.createDocumentFragment();
+    node.textContent.split(/(\s+)/).forEach((part) => {
+      if (!part.trim()) { frag.append(part); return; }
+      const s = document.createElement('span');
+      s.className = 'w'; s.textContent = part; frag.append(s);
+    });
+    node.replaceWith(frag);
+  });
+  return el.querySelectorAll('.w');
+};
+let lang = 'en';
+const setLang = (next, live) => {
+  lang = next;
+  i18n.forEach((el) => {
+    const txt = el.dataset[next];
+    if (el.tagName === 'TITLE') el.textContent = txt; else el.innerHTML = txt;
+    // Already-animated paragraphs: re-split and show fully lit
+    if (live && el.matches('.js-words') && !reduceMotion) gsap.set(splitWords(el), { opacity: 1 });
+  });
+  document.documentElement.lang = next;
+  document.querySelectorAll('.js-lang').forEach((b) => {
+    const other = next === 'nl' ? 'en' : 'nl';
+    b.lang = other;
+    b.setAttribute('aria-label', other === 'nl' ? 'Nederlands' : 'English');
+    b.textContent = b.classList.contains('menu__lang') ? (other === 'nl' ? 'Nederlands' : 'English') : other.toUpperCase();
+  });
+  try { localStorage.setItem('tdd-lang', next); } catch (e) {}
+};
+let savedLang = null;
+try { savedLang = localStorage.getItem('tdd-lang'); } catch (e) {}
+if (savedLang === 'nl') setLang('nl', false);
+document.querySelectorAll('.js-lang').forEach((b) => b.addEventListener('click', () => setLang(lang === 'nl' ? 'en' : 'nl', true)));
+
 /* ---------- Heavy smooth scroll (desktop only) ---------- */
 let lenis = null;
 if (!reduceMotion && !lite) {
@@ -126,17 +167,7 @@ if (!reduceMotion) {
 
   /* ---------- Words light up one by one ---------- */
   document.querySelectorAll('.js-words').forEach((el) => {
-    [...el.childNodes].forEach((node) => {
-      if (node.nodeType !== Node.TEXT_NODE) return;
-      const frag = document.createDocumentFragment();
-      node.textContent.split(/(\s+)/).forEach((part) => {
-        if (!part.trim()) { frag.append(part); return; }
-        const s = document.createElement('span');
-        s.className = 'w'; s.textContent = part; frag.append(s);
-      });
-      node.replaceWith(frag);
-    });
-    gsap.to(el.querySelectorAll('.w'), {
+    gsap.to(splitWords(el), {
       opacity: 1, stagger: 0.05, ease: 'none',
       scrollTrigger: { trigger: el, start: 'top 75%', end: 'bottom 40%', scrub: true },
     });

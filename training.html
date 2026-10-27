@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Coffee training — The Daily Drip</title>
+  <title data-nl="Koffietraining — The Daily Drip">Coffee training — The Daily Drip</title>
   <meta name="description" content="Barista and coffee training by The Daily Drip in Amsterdam Zuidas. At our bar or at your office.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -22,12 +22,13 @@
     <ol class="menu__list">
       <li><a href="index.html"><small>01</small>Home</a></li>
       <li><a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener"><small>02</small>Menu</a></li>
-      <li><a href="company-coffee.html"><small>03</small>Company coffee</a></li>
-      <li><a href="training.html" aria-current="page"><small>04</small>Coffee training</a></li>
+      <li><a href="company-coffee.html" data-nl="&lt;small&gt;03&lt;/small&gt;Kantoorkoffie"><small>03</small>Company coffee</a></li>
+      <li><a href="training.html" aria-current="page" data-nl="&lt;small&gt;04&lt;/small&gt;Koffietraining"><small>04</small>Coffee training</a></li>
     </ol>
+    <button class="menu__lang js-lang" lang="nl" aria-label="Nederlands">Nederlands</button>
     <div class="menu__foot">
       <p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p>
-      <p>Mon–Fri<br>08:00 – 16:00</p>
+      <p data-nl="ma–vr&lt;br&gt;08:00 – 16:00">Mon–Fri<br>08:00 – 16:00</p>
       <p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p>
     </div>
   </nav>
@@ -38,11 +39,11 @@
     <button class="pill__burger js-menu-btn" aria-label="Open menu" aria-controls="menu-overlay" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="pill__links">
       <a href="https://thedailydrip.nl/wp-content/uploads/2026/09/MenuTDD.pdf" target="_blank" rel="noopener">Menu</a>
-      <a href="company-coffee.html">Company coffee</a>
+      <a href="company-coffee.html" data-nl="Kantoorkoffie">Company coffee</a>
       <a href="training.html" aria-current="page">Training</a>
     </nav>
-    <button class="pill__lang">NL</button>
-    <a class="pill__cta" href="company-coffee.html#order">Order beans</a>
+    <button class="pill__lang js-lang" lang="nl" aria-label="Nederlands">NL</button>
+    <a class="pill__cta" href="company-coffee.html#order" data-nl="Bestel bonen">Order beans</a>
   </header>
 
   <main id="top">
@@ -51,46 +52,46 @@
       <div class="page-hero__bg media" data-label="training-bg.webp — barista at the machine">
         <img src="img/training-bg.webp" srcset="img/training-bg-sm.webp 1000w, img/training-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
       </div>
-      <p class="corner corner--tl">COFFEE<br>TRAINING</p>
+      <p class="corner corner--tl" data-nl="KOFFIE&lt;br&gt;TRAINING">COFFEE<br>TRAINING</p>
       <p class="corner corner--tr">MORE ESPRESSO,<br>LESS DEPRESSO.</p>
       <h1 class="page-hero__title">
-        <span class="line">Learn</span>
-        <span class="line">the grind</span>
+        <span class="line" data-nl="Leer">Learn</span>
+        <span class="line" data-nl="het vak">the grind</span>
       </h1>
     </section>
 
     <section class="intro intro--dark">
-      <p class="label">THE<br>CLASS</p>
-      <p class="intro__text js-words">Good coffee isn't magic, it's practice. Our baristas show you how to dial in a grinder, pull a balanced shot and pour milk that actually looks like something. Small groups, real machines, lots of tasting. <a href="#book" class="tag">Book a spot</a></p>
+      <p class="label" data-nl="DE&lt;br&gt;LES">THE<br>CLASS</p>
+      <p class="intro__text js-words" data-nl="Goede koffie is geen magie, het is oefenen. Onze barista&#x27;s laten zien hoe je een grinder afstelt, een gebalanceerde shot zet en melk schenkt die ergens op lijkt. Kleine groepen, echte machines, veel proeven. &lt;a href=&quot;#book&quot; class=&quot;tag&quot;&gt;Reserveer een plek&lt;/a&gt;">Good coffee isn't magic, it's practice. Our baristas show you how to dial in a grinder, pull a balanced shot and pour milk that actually looks like something. Small groups, real machines, lots of tasting. <a href="#book" class="tag">Book a spot</a></p>
     </section>
 
     <!-- COURSES — rows that open on hover, like a menu list -->
     <section class="courses" data-logo="dark">
-      <p class="label courses__label">THE<br>COURSES</p>
+      <p class="label courses__label" data-nl="DE&lt;br&gt;CURSUSSEN">THE<br>COURSES</p>
       <ul class="courses__list">
         <li class="course">
           <div class="course__media media" data-label="course-basics.webp"><img src="img/course-basics.webp" alt="" onerror="this.remove()"></div>
           <h3>Barista basics</h3>
-          <p>Grind, dose, tamp, extract. The foundation of every good cup.</p>
-          <ul class="course__meta"><li>2.5 HRS</li><li>MAX 6</li><li>€ –,–</li></ul>
+          <p data-nl="Malen, doseren, tampen, extraheren. De basis van elke goede kop.">Grind, dose, tamp, extract. The foundation of every good cup.</p>
+          <ul class="course__meta"><li data-nl="2,5 UUR">2.5 HRS</li><li>MAX 6</li><li>€ –,–</li></ul>
         </li>
         <li class="course">
           <div class="course__media media" data-label="course-latteart.webp"><img src="img/course-latteart.webp" alt="" onerror="this.remove()"></div>
-          <h3>Milk &amp; latte art</h3>
-          <p>Silky microfoam, then hearts, tulips and rosettas.</p>
-          <ul class="course__meta"><li>2 HRS</li><li>MAX 4</li><li>€ –,–</li></ul>
+          <h3 data-nl="Melk &amp;amp; latte art">Milk &amp; latte art</h3>
+          <p data-nl="Zijdezacht microschuim, daarna hartjes, tulpen en rosetta&#x27;s.">Silky microfoam, then hearts, tulips and rosettas.</p>
+          <ul class="course__meta"><li data-nl="2 UUR">2 HRS</li><li>MAX 4</li><li>€ –,–</li></ul>
         </li>
         <li class="course">
           <div class="course__media media" data-label="course-brew.webp"><img src="img/course-brew.webp" alt="" onerror="this.remove()"></div>
-          <h3>Brew at home</h3>
-          <p>V60, AeroPress, French press. Café coffee with the gear you own.</p>
-          <ul class="course__meta"><li>1.5 HRS</li><li>MAX 8</li><li>€ –,–</li></ul>
+          <h3 data-nl="Koffie zetten thuis">Brew at home</h3>
+          <p data-nl="V60, AeroPress, French press. Koffie als in het café, met de spullen die je al hebt.">V60, AeroPress, French press. Café coffee with the gear you own.</p>
+          <ul class="course__meta"><li data-nl="1,5 UUR">1.5 HRS</li><li>MAX 8</li><li>€ –,–</li></ul>
         </li>
         <li class="course">
           <div class="course__media media" data-label="course-team.webp"><img src="img/course-team.webp" alt="" onerror="this.remove()"></div>
-          <h3>Team session</h3>
-          <p>We come to your office. Get the most out of your machine, or make it a team outing.</p>
-          <ul class="course__meta"><li>ON REQUEST</li><li>UP TO 20</li><li>QUOTE</li></ul>
+          <h3 data-nl="Teamsessie">Team session</h3>
+          <p data-nl="Wij komen naar je kantoor. Haal alles uit je machine, of maak er een teamuitje van.">We come to your office. Get the most out of your machine, or make it a team outing.</p>
+          <ul class="course__meta"><li data-nl="OP AANVRAAG">ON REQUEST</li><li data-nl="TOT 20">UP TO 20</li><li data-nl="OFFERTE">QUOTE</li></ul>
         </li>
       </ul>
     </section>
@@ -104,30 +105,30 @@
 
     <section class="order" id="book" data-logo="dark">
       <div class="order__intro">
-        <p class="label">BOOK</p>
-        <h2>Save a spot</h2>
-        <p>Pick a course and a few dates that work. We'll confirm within one working day.</p>
+        <p class="label" data-nl="BOEKEN">BOOK</p>
+        <h2 data-nl="Reserveer een plek">Save a spot</h2>
+        <p data-nl="Kies een cursus en een paar data die je uitkomen. We bevestigen binnen één werkdag.">Pick a course and a few dates that work. We'll confirm within one working day.</p>
       </div>
       <form class="form js-mailform" data-subject="Coffee training request">
-        <label>Name<input name="Name" required autocomplete="name"></label>
-        <label>Email<input type="email" name="Email" required autocomplete="email"></label>
-        <label>Course
+        <label><span data-nl="Naam">Name</span><input name="Name" required autocomplete="name"></label>
+        <label><span data-nl="E-mail">Email</span><input type="email" name="Email" required autocomplete="email"></label>
+        <label><span data-nl="Cursus">Course</span>
           <select name="Course">
-            <option>Barista basics</option><option>Milk &amp; latte art</option><option>Brew at home</option><option>Team session (at your office)</option>
+            <option>Barista basics</option><option data-nl="Melk &amp;amp; latte art">Milk &amp; latte art</option><option data-nl="Koffie zetten thuis">Brew at home</option><option data-nl="Teamsessie (op je kantoor)">Team session (at your office)</option>
           </select>
         </label>
-        <label>Number of people<input type="number" name="People" min="1" value="1"></label>
-        <label>Preferred date<input type="date" name="Preferred date"></label>
-        <label>Company (optional)<input name="Company" autocomplete="organization"></label>
-        <label class="form__wide">Anything else?<textarea name="Notes" rows="3"></textarea></label>
-        <button class="tag tag--lg" type="submit">Send request</button>
+        <label><span data-nl="Aantal personen">Number of people</span><input type="number" name="People" min="1" value="1"></label>
+        <label><span data-nl="Voorkeursdatum">Preferred date</span><input type="date" name="Preferred date"></label>
+        <label><span data-nl="Bedrijf (optioneel)">Company (optional)</span><input name="Company" autocomplete="organization"></label>
+        <label class="form__wide"><span data-nl="Nog iets?">Anything else?</span><textarea name="Notes" rows="3"></textarea></label>
+        <button class="tag tag--lg" type="submit" data-nl="Verstuur aanvraag">Send request</button>
       </form>
     </section>
 
     <footer class="footer" id="visit">
       <div class="footer__cols">
-        <div><p class="label">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
-        <div><p class="label">HOURS</p><p>Monday to Friday<br>08:00 – 16:00</p></div>
+        <div><p class="label" data-nl="BEZOEK">VISIT</p><p>Antonio Vivaldistraat 58<br>1083 HP Amsterdam</p></div>
+        <div><p class="label" data-nl="OPENINGSTIJDEN">HOURS</p><p data-nl="Maandag t/m vrijdag&lt;br&gt;08:00 – 16:00">Monday to Friday<br>08:00 – 16:00</p></div>
         <div><p class="label">CONTACT</p><p><a href="mailto:info@thedailydrip.nl">info@thedailydrip.nl</a><br><a href="https://www.instagram.com/thedailydrip_zuidas/" target="_blank" rel="noopener">Instagram</a></p></div>
       </div>
       <img class="footer__logo" src="img/logo.svg" alt="The Daily Drip">
@@ -137,6 +138,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=12"></script>
+  <script src="main.js?v=13"></script>
 </body>
 </html>
