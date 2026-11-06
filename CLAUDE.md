@@ -14,10 +14,10 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Lots of parallax** — full-bleed background photos moving slower than content; photos stacked on top of each other at different speeds.
 - Font: **Coolvetica** (Typodermic) for headings/labels, Inter Tight for body. Headings in sentence case, weight 400 (no faux bold).
 - **Not brutalist**: Daniël found the first version too in-your-face. Keep type calm and orderly (`clamp()` max ~168px for the biggest titles), rounded corners (`--radius`), pill-shaped buttons, label column + content column grids. Small uppercase only for labels/corners.
-- **Menu** links (pill + overlay) open the menu PDF in a new tab.
-- **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone.
+- **Menu** is an HTML page (`menu.html`), no PDF anymore. Menu copy is exactly as Daniël supplied it (casing, spelling, prices without €) — don't rewrite or translate it.
+- **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone. Because nothing moves there, layouts must work static: the mission photos sit in a grid on phones (not on top of each other), and every `.media` has `isolation: isolate` so its image never covers the text (without GSAP transforms the statement photo used to hide the title).
 - White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
-- **Pill nav** (LAP-style): a floating dark pill **fixed at the bottom of the screen on every page from the start** (rises in on load): logo, hamburger, Menu / Company coffee / Training, NL, yellow "Order beans" CTA. Current page link is yellow. On mobile: logo, hamburger, CTA. **No sidebar** — Daniël removed the escape-style white side bar.
+- **Pill nav** (LAP-style): a floating dark pill **fixed at the bottom of the screen on every page from the start** (rises in on load): logo, Home / Menu, NL, yellow "Company coffee" CTA. Current page link is yellow. **Hamburger only on phones** (≤760px; on desktop it was double) — phones show logo, hamburger, CTA; the overlay lists Home / Menu / Company coffee. **No sidebar** — Daniël removed the escape-style white side bar.
 - **Logo fades in** on load (fixed, **top centre, large**: clamp(72px, 8vw, 120px), 64px on phones) and simply **fades out** once the next section fills half the screen (`PILL_AT` in `main.js`; `past-hero` class), fades back in when scrolling up. Don't animate it across the screen — Daniël found the flying logo ugly. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
 - Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
@@ -28,22 +28,23 @@ Run locally: `npx serve .` or `python3 -m http.server`.
 ## Language (NL/EN)
 - English is the element's content; Dutch sits next to it in a `data-nl="…"` attribute (HTML-escaped; may contain markup such as `<br>` or the `.tag` link). **Every new piece of copy needs a `data-nl` too.**
 - Form label text is wrapped in `<span data-nl>`; `<option>`s and `<title>` have `data-nl`. Brand slogans ("hustle, drip, sip", "more espresso, less depresso") stay English.
-- `.js-lang` buttons toggle: `pill__lang` (pill, hidden below 1100px) and `menu__lang` (in the menu overlay, all sizes). Choice is saved in localStorage (`tdd-lang`) and applied on every page before the word light-up splits text.
+- `.js-lang` buttons toggle: `pill__lang` (pill, hidden on phones) and `menu__lang` (in the menu overlay, all sizes). Choice is saved in localStorage (`tdd-lang`) and applied on every page before the word light-up splits text.
 - Form field `name`s and email subjects stay English so TDD gets consistent emails.
 
 ## Pages
 All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the footer and `main.js` (each animation block only runs when its section exists).
 - `index.html` — home (below)
-- `company-coffee.html` — "Company coffee / order for your machine": hero, intro, 3 steps, bean cards, order form
-- `training.html` — coffee training: hero, intro, course list (photo appears on hover), photo strip, booking form
-Forms (`.js-mailform`) open a prefilled email to info@thedailydrip.nl — no backend yet.
+- `menu.html` — hero (drinks.webp) + DRINKS / LUNCH (yellow) / BAKES sections (`.carte`: sticky big title left, list right)
+- `company-coffee.html` — generic office-coffee page (Kantoorkoffie): hero, intro ("interested? email us"), contact form
+Forms (`.js-form`) post to **FormSubmit** (`formsubmit.co/ajax/info@thedailydrip.nl`, no account). The first submission triggers an activation email to info@thedailydrip.nl that must be confirmed once. Falls back to a prefilled mailto if the request fails. Honeypot field `_honey`.
+
+Removed for now (Daniël will add them back once the info is clear): the coffee-beans ordering (steps, bean cards, order form) and the **coffee training** page (`training.html`). Their photos are still in `img/`.
 
 ## Structure (index.html)
 1. **Hero** — 240vh, sticky; bg photo zooms slowly, portrait photo card rises through; corner texts.
 2. **Mission** — white; text lights up word by word on scroll; 3 floating photos with `data-speed` parallax.
-3. **Statement** — "More espresso, less depresso" over parallax bg; side text + See menu (PDF).
-4. **Doors** — two big photo cards linking to Company coffee and Coffee training.
-5. **Footer** — visit / hours / contact + logo.
+3. **Statement** — "More espresso, less depresso" over parallax bg; side text + See menu (→ menu.html).
+4. **Footer** — visit / hours / contact + logo.
 
 Removed on Daniël's request — don't bring back: the "A day at the Drip" stacked-photo section (felt like Tinder cards), the 4 menu cards on home (Flat white, Sandwich of the day…) the hero coordinates, the **Catering** section/menu item and **Visit** in the nav. He does like the card styling (`.cards` / `.card`) — reuse it on a future menu page.
 
@@ -57,7 +58,7 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 ## Open / to do
 - [x] Logo in + fade-in check
 - [x] Photos: every slot filled (22 TDD photos so far)
-- [ ] Real menu items + prices → HTML menu page later (PDF for now, Daniël's call)
+- [x] Menu as HTML page (from Daniël's Drinks / Lunch / Bakes menus; sandwiches & salads have no prices yet)
 - [x] Brand yellow from the brand file (`#ECB43F`)
 - [x] Coolvetica font files in `fonts/`
 - Copy uses TDD's real slogans where possible: "hustle, drip, sip" (cans/shirts) and "more espresso, less depresso" (mirror in the shop). Statement title is "More espresso, less depresso".
@@ -65,7 +66,8 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 - [x] NL/EN toggle
 - Instagram: https://www.instagram.com/thedailydrip_zuidas/ (footer + menu overlay)
 - All emails/forms go to info@thedailydrip.nl (confirmed by Daniël)
-- [ ] Real bean names/prices (company coffee) and course prices/durations (training)
-- [ ] Forms → real form handling (Formspree / Netlify Forms) instead of mailto
+- [ ] Bring back beans ordering + coffee training once Daniël has the info
+- [x] Forms → FormSubmit (confirm the activation email on info@ after the first test)
+- [ ] Hero card photo: Daniël wants to swap it for a new photo (`img/hero-card.webp`)
 - [ ] Optional: statement background as looping video (like the reference's wave)
 - [ ] SEO: LocalBusiness structured data, OG image

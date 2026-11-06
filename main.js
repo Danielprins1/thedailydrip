@@ -120,12 +120,42 @@ document.querySelectorAll('a[href*="#"]').forEach((a) => {
   });
 });
 
-/* ---------- Forms: open a prefilled email (no backend yet) ---------- */
-document.querySelectorAll('.js-mailform').forEach((form) => {
-  form.addEventListener('submit', (e) => {
+/* ---------- Forms: sent to info@thedailydrip.nl via FormSubmit ----------
+   FormSubmit (formsubmit.co) needs no account: the very first submission sends an
+   activation email to info@thedailydrip.nl — click the link in it once, and from then on
+   every answer arrives in that inbox. If the service can't be reached, we fall back to
+   a prefilled email so no enquiry gets lost. */
+const FORM_TO = 'info@thedailydrip.nl';
+const formText = {
+  en: { sending: 'Sending…', ok: 'Thanks! Your message is on its way. We\'ll get back to you soon.', missing: 'Please fill in your name, a valid email and a message.', fail: 'Sending didn\'t work, so we opened your email app instead.' },
+  nl: { sending: 'Versturen…', ok: 'Bedankt! Je bericht is verstuurd. We nemen snel contact met je op.', missing: 'Vul je naam, een geldig e-mailadres en een bericht in.', fail: 'Versturen lukte niet, daarom hebben we je mailprogramma geopend.' },
+};
+document.querySelectorAll('.js-form').forEach((form) => {
+  const status = form.querySelector('.form__status');
+  const btn = form.querySelector('button[type="submit"]');
+  const say = (key) => { status.textContent = formText[lang][key]; };
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const body = [...new FormData(form)].filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
-    location.href = `mailto:info@thedailydrip.nl?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
+    const invalid = [...form.querySelectorAll('[required]')].filter((f) => !f.checkValidity());
+    form.querySelectorAll('.is-invalid').forEach((f) => f.classList.remove('is-invalid'));
+    if (invalid.length) { invalid.forEach((f) => f.classList.add('is-invalid')); invalid[0].focus(); say('missing'); return; }
+    const data = Object.fromEntries(new FormData(form));
+    if (data._honey) return;                      // spam bot filled the hidden field
+    delete data._honey;
+    btn.disabled = true; say('sending');
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${FORM_TO}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, _subject: form.dataset.subject, _replyto: data.Email, _template: 'table', _captcha: 'false' }),
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset(); say('ok');
+    } catch (err) {
+      const body = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
+      location.href = `mailto:${FORM_TO}?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
+      say('fail');
+    } finally { btn.disabled = false; }
   });
 });
 
@@ -198,30 +228,16 @@ if (!reduceMotion && !lite) {
       scrollTrigger: { trigger: '.statement', start: 'top 60%', end: 'center center', scrub: true } });
   }
 
-  /* ---------- Company coffee: beans bg + title lines ---------- */
-  if ($('.beans')) {
-    gsap.to('.beans__bg', { yPercent: 18, ease: 'none',
-      scrollTrigger: { trigger: '.beans', start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.utils.toArray('.beans__title .line').forEach((line, i) => {
-      gsap.from(line, { y: 140 + i * 90, ease: 'none',
-        scrollTrigger: { trigger: '.beans', start: 'top bottom', end: 'top top', scrub: true } });
-    });
-  }
-
-  /* ---------- Menu / bean cards rise in a stagger ---------- */
+  /* ---------- Cards rise in a stagger ---------- */
   document.querySelectorAll('.cards').forEach((group) => {
     gsap.from(group.querySelectorAll('.card'), { y: 140, stagger: 0.08, ease: 'none',
       scrollTrigger: { trigger: group, start: 'top bottom', end: 'bottom 85%', scrub: true } });
   });
 
-  /* ---------- Steps / courses / doors slide up one after another ---------- */
-  // Side-by-side items (steps, doors) get staggered offsets; stacked rows (courses) one
-  // equal offset, so a row never slides over the one below it.
-  ['.step', '.door', '.course'].forEach((sel) => {
-    gsap.utils.toArray(sel).forEach((el, i) => {
-      gsap.from(el, { y: sel === '.course' ? 50 : 60 + (i % 3) * 50, ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 60%', scrub: true } });
-    });
+  /* ---------- Menu page: each list drifts up a little slower than the page ---------- */
+  gsap.utils.toArray('.carte__body').forEach((body) => {
+    gsap.from(body, { y: 120, ease: 'none',
+      scrollTrigger: { trigger: body.closest('section'), start: 'top bottom', end: 'top 25%', scrub: true } });
   });
 
   /* ---------- Text blocks + footer logo ---------- */
