@@ -33,7 +33,7 @@ Run locally: `npx serve .` or `python3 -m http.server`.
 - **No em dashes (—) anywhere** - Daniël wants a plain hyphen (-) instead. En dashes in times (08:00 – 16:00) are fine.
 
 ## Pages
-All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the footer and `main.js` (each animation block only runs when its section exists).
+All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, big display type, no numbers), the footer and `main.js` (each animation block only runs when its section exists).
 - `index.html` - home (below)
 - `menu.html` - hero (menu-bg.webp, sandwiches) + DRINKS / LUNCH (yellow) / BAKES sections (`.carte`: sticky big title left, list right)
 - `company-coffee.html` - generic office-coffee page (Kantoorkoffie): hero, intro ("interested? email us"), contact form
