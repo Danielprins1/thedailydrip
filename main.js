@@ -167,6 +167,14 @@ document.querySelectorAll('.js-form').forEach((form) => {
   });
 });
 
+/* ---------- Menu page: tab of the section in view is highlighted ---------- */
+document.querySelectorAll('.carte-tabs a').forEach((tab) => {
+  const sec = $(tab.getAttribute('href'));
+  if (!sec) return;
+  ScrollTrigger.create({ trigger: sec, start: 'top 50%', end: 'bottom 50%',
+    onToggle: (st) => { if (st.isActive) document.querySelectorAll('.carte-tabs a').forEach((t) => t.classList.toggle('is-active', t === tab)); } });
+});
+
 /* ---------- Logo turns dark over light sections ---------- */
 document.querySelectorAll('[data-logo="dark"]').forEach((sec) => {
   ScrollTrigger.create({ trigger: sec, start: 'top 70px', end: 'bottom 70px', toggleClass: { targets: '.logo', className: 'logo--dark' } });
@@ -244,7 +252,7 @@ if (!reduceMotion && !lite) {
 
   /* ---------- Menu page: each list drifts up a little slower than the page ---------- */
   gsap.utils.toArray('.carte__body').forEach((body) => {
-    gsap.from(body, { y: 120, ease: 'none',
+    gsap.from(body, { y: 60, ease: 'none',
       scrollTrigger: { trigger: body.closest('section'), start: 'top bottom', end: 'top 25%', scrub: true } });
   });
 

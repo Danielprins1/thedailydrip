@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
 
@@ -50,7 +50,7 @@
   <main id="top">
 
     <!-- HERO -->
-    <section class="page-hero">
+    <section class="page-hero page-hero--short">
       <div class="page-hero__bg media" data-label="menu-bg.webp - sandwiches">
         <img src="img/menu-bg.webp" srcset="img/menu-bg-sm.webp 1000w, img/menu-bg.webp 2000w" sizes="100vw" alt="" onerror="this.remove()">
       </div>
@@ -59,11 +59,18 @@
       <h1 class="page-hero__title"><span class="line">Menu</span></h1>
     </section>
 
+    <!-- Category tabs: sticky, jump to a section -->
+    <nav class="carte-tabs" aria-label="Menu sections">
+      <a href="#drinks" class="is-active">Drinks</a>
+      <a href="#lunch">Lunch</a>
+      <a href="#bakes">Bakes</a>
+    </nav>
+
     <!-- DRINKS -->
     <section class="carte" id="drinks" data-logo="dark">
       <h2 class="carte__title">DRINKS</h2>
       <div class="carte__body">
-        <ul class="carte__list">
+        <ul class="carte__list carte__list--grid">
           <li><span class="carte__name">americano</span></li>
           <li><span class="carte__name">espresso</span></li>
           <li><span class="carte__name">cappuccino</span></li>
@@ -85,18 +92,24 @@
     <section class="carte carte--yellow" id="lunch" data-logo="dark">
       <h2 class="carte__title">LUNCH</h2>
       <div class="carte__body">
-        <h3 class="carte__group">Sandwiches</h3>
-        <ul class="carte__list carte__list--desc">
-          <li><span class="carte__name">Classic Cheese</span><span class="carte__desc">KEF's old cheese, lettuce and whipped butter</span></li>
-          <li><span class="carte__name">Grilled Chicken Sausage <small>(grillworst)</small></span><span class="carte__desc">With honey mustard dressing, whipped butter and rocket</span></li>
-          <li><span class="carte__name">Chicken Curry</span><span class="carte__desc">Chicken roulade with curry mayonaise, crumbled bacon and lettuce</span></li>
-          <li><span class="carte__name">Tokyo Tuna</span><span class="carte__desc">With homemade tuna salad, pickled cucumber, spring onion and furikake</span></li>
-        </ul>
-        <h3 class="carte__group">Salads</h3>
-        <ul class="carte__list carte__list--desc">
-          <li><span class="carte__name">Caesar</span><span class="carte__desc">With romaine salad, grilled chicken, homemade caesar dressing, boiled egg and croutons</span></li>
-          <li><span class="carte__name">Mango Feta</span><span class="carte__desc">With baby spinach, maple syrup dressing, mango, white cheese, cucumber and walnuts</span></li>
-        </ul>
+        <div class="carte__cols">
+          <div>
+            <h3 class="carte__group">Sandwiches</h3>
+            <ul class="carte__list carte__list--desc">
+              <li><span class="carte__name">Classic Cheese</span><span class="carte__desc">KEF's old cheese, lettuce and whipped butter</span></li>
+              <li><span class="carte__name">Grilled Chicken Sausage <small>(grillworst)</small></span><span class="carte__desc">With honey mustard dressing, whipped butter and rocket</span></li>
+              <li><span class="carte__name">Chicken Curry</span><span class="carte__desc">Chicken roulade with curry mayonaise, crumbled bacon and lettuce</span></li>
+              <li><span class="carte__name">Tokyo Tuna</span><span class="carte__desc">With homemade tuna salad, pickled cucumber, spring onion and furikake</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="carte__group">Salads</h3>
+            <ul class="carte__list carte__list--desc">
+              <li><span class="carte__name">Caesar</span><span class="carte__desc">With romaine salad, grilled chicken, homemade caesar dressing, boiled egg and croutons</span></li>
+              <li><span class="carte__name">Mango Feta</span><span class="carte__desc">With baby spinach, maple syrup dressing, mango, white cheese, cucumber and walnuts</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -104,7 +117,7 @@
     <section class="carte" id="bakes" data-logo="dark">
       <h2 class="carte__title">BAKES</h2>
       <div class="carte__body">
-        <ul class="carte__list">
+        <ul class="carte__list carte__list--grid">
           <li><span class="carte__name">Powerbar</span></li>
           <li><span class="carte__name">Yoghurt</span></li>
           <li><span class="carte__name">Bananabread</span></li>
@@ -135,6 +148,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=16"></script>
+  <script src="main.js?v=17"></script>
 </body>
 </html>

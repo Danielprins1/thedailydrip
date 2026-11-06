@@ -35,7 +35,7 @@ Run locally: `npx serve .` or `python3 -m http.server`.
 ## Pages
 All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, big display type, no numbers), the footer and `main.js` (each animation block only runs when its section exists).
 - `index.html` - home (below)
-- `menu.html` - hero (menu-bg.webp, sandwiches) + DRINKS / LUNCH (yellow) / BAKES sections (`.carte`: sticky big title left, list right)
+- `menu.html` - short hero (70vh, menu-bg.webp sandwiches), **sticky tabs** Drinks / Lunch / Bakes (active tab follows the section in view), then DRINKS / LUNCH (yellow) / BAKES (`.carte`: title on top; drinks & bakes in a 3-column grid (2 on phones), lunch as Sandwiches | Salads columns). Daniël found the earlier one-long-list layout unclear - keep it compact.
 - `company-coffee.html` - generic office-coffee page (Kantoorkoffie): hero, intro ("interested? email us"), contact form
 Forms (`.js-form`) send **directly** via **FormSubmit** (`formsubmit.co/ajax/info@thedailydrip.nl`, no account) - never via the visitor's mail app (Daniël doesn't want that). If the background request fails, the form does a classic POST to `formsubmit.co/info@thedailydrip.nl` (`action`), which redirects back via `_next` (`?sent=1` shows the thank-you). The first submission triggers an activation email to info@thedailydrip.nl that must be confirmed once. Only works on a real URL, not a file opened from disk. Honeypot field `_honey`.
 

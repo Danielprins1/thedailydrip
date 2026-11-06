@@ -210,21 +210,36 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
 .form button[disabled] { opacity: .5; cursor: wait; }
 
 /* ============ Menu page (carte) ============ */
-.carte { display: grid; grid-template-columns: 1fr 1.35fr; gap: 6vw; padding: 18vh var(--gutter); background: var(--white); color: var(--black); }
+.page-hero--short { height: 70vh; min-height: 460px; }
+
+/* Sticky category tabs */
+.carte-tabs {
+  position: sticky; top: 0; z-index: 40; display: flex; gap: 8px; justify-content: center;
+  padding: 14px var(--gutter); background: var(--white); border-bottom: 1.5px solid var(--line);
+}
+.carte-tabs a {
+  font: 500 15px/1 var(--body); text-decoration: none; padding: 12px 22px; border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--black); transition: background .3s, color .3s;
+}
+.carte-tabs a:hover { background: var(--yellow); }
+.carte-tabs a.is-active { background: var(--black); color: var(--white); }
+
+/* Sections: title on top, content in columns below */
+.carte { padding: 12vh var(--gutter); background: var(--white); color: var(--black); scroll-margin-top: 60px; }
 .carte--yellow { background: var(--yellow); }
-.carte__title { font-size: clamp(64px, 10vw, 168px); line-height: .9; align-self: start; position: sticky; top: 14vh; }
+.carte__title { font-size: clamp(48px, 6vw, 104px); line-height: .9; margin-bottom: 6vh; }
 .carte:not(.carte--yellow) .carte__title { color: var(--yellow); }
-.carte__list { list-style: none; border-top: 1.5px solid var(--black); }
-.carte__list li { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 18px 0; border-bottom: 1.5px solid var(--line); }
-.carte--yellow .carte__list li { border-bottom-color: rgba(0,0,0,.22); }
-.carte__name { font: 400 clamp(20px, 1.8vw, 28px)/1.15 var(--display); }
+.carte__list { list-style: none; }
+.carte__list li { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 16px 0; border-top: 1.5px solid var(--line); }
+.carte--yellow .carte__list li { border-top-color: rgba(0,0,0,.22); }
+.carte__list--grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 48px; }
+.carte__name { font: 400 clamp(19px, 1.6vw, 26px)/1.15 var(--display); }
 .carte__name small { font: 400 13px/1 var(--body); opacity: .6; margin-left: 4px; }
-.carte__price { font: 500 clamp(17px, 1.3vw, 21px)/1 var(--body); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.carte__list--desc li { flex-direction: column; gap: 8px; }
-.carte__desc { font: 400 clamp(15px, 1.1vw, 18px)/1.45 var(--body); max-width: 46ch; }
-.carte__group { font-size: clamp(28px, 2.6vw, 44px); line-height: 1; margin: 0 0 20px; }
-.carte__list + .carte__group { margin-top: 10vh; }
-.carte__note { font: italic 400 clamp(15px, 1.1vw, 18px)/1.5 var(--body); margin-top: 28px; }
+.carte__list--desc li { flex-direction: column; gap: 6px; padding: 20px 0; }
+.carte__desc { font: 400 clamp(15px, 1.05vw, 17px)/1.45 var(--body); max-width: 44ch; }
+.carte__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
+.carte__group { font-size: clamp(26px, 2.2vw, 38px); line-height: 1; margin: 0 0 18px; }
+.carte__note { font: italic 400 clamp(15px, 1.05vw, 17px)/1.5 var(--body); margin-top: 24px; }
 
 /* ============ Footer ============ */
 .footer { background: var(--black); color: var(--white); padding: 14vh var(--gutter) 130px; overflow: hidden; }   /* bottom room for the pill */
@@ -276,8 +291,14 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
   .order { grid-template-columns: 1fr; padding: 14vh 20px; }
   .form { grid-template-columns: 1fr; }
   .footer__cols { grid-template-columns: 1fr; }
-  .carte { grid-template-columns: 1fr; gap: 28px; padding: 12vh 20px; }
-  .carte__title { position: static; }
+  .page-hero--short { height: 56vh; min-height: 380px; }
+  .carte-tabs { justify-content: flex-start; padding: 12px 20px; }
+  .carte-tabs a { padding: 10px 18px; font-size: 14px; }
+  .carte { padding: 8vh 20px 10vh; }
+  .carte__title { margin-bottom: 4vh; }
+  .carte__list--grid { grid-template-columns: 1fr 1fr; column-gap: 20px; }
+  .carte__list--grid li { padding: 14px 0; }
+  .carte__cols { grid-template-columns: 1fr; gap: 7vh; }
 }
 
 @media (prefers-reduced-motion: reduce) {
