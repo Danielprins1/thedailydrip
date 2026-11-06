@@ -1,4 +1,4 @@
-/* The Daily Drip — scroll & parallax
+/* The Daily Drip - scroll & parallax
    Heavy scroll = Lenis with a low lerp (lower = heavier/slower to settle).
    All scroll animations are GSAP ScrollTrigger with scrub.
    Shared by every page: each block only runs when its section exists. */
@@ -128,7 +128,7 @@ document.querySelectorAll('a[href*="#"]').forEach((a) => {
 
 /* ---------- Forms: sent straight to info@thedailydrip.nl via FormSubmit ----------
    FormSubmit (formsubmit.co) needs no account: the very first submission sends an
-   activation email to info@thedailydrip.nl — click the link in it once, and from then on
+   activation email to info@thedailydrip.nl - click the link in it once, and from then on
    every answer arrives in that inbox. The form is sent in the background (no mail app);
    if that request is blocked, the form posts itself to FormSubmit the classic way and
    FormSubmit sends the visitor back here (_next). Only works on a real web address,

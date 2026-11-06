@@ -1,5 +1,5 @@
 /* ============ Fonts ============ */
-/* Coolvetica (Typodermic) — self-hosted in fonts/ (converted from Daniël's .otf files) */
+/* Coolvetica (Typodermic) - self-hosted in fonts/ (converted from Daniël's .otf files) */
 @font-face {
   font-family: "Coolvetica";
   src: url("fonts/coolvetica-rg.woff2") format("woff2");
@@ -11,7 +11,7 @@
   font-weight: 400; font-style: italic; font-display: swap;
 }
 
-/* ============ Tokens — TDD brand: yellow, black, white ============ */
+/* ============ Tokens - TDD brand: yellow, black, white ============ */
 :root {
   --yellow: #ECB43F;      /* brand file: C2 M34 Y95 K0 */
   --black: #000;
@@ -166,7 +166,7 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
 .statement__side { position: relative; margin-left: auto; width: min(34vw, 480px); }
 .statement__side p { font: 400 clamp(18px, 1.5vw, 24px)/1.4 var(--body); margin-bottom: 28px; }
 
-/* Card grid — kept for bean cards (and a future menu page) */
+/* Card grid - kept for bean cards (and a future menu page) */
 .cards { position: relative; margin-top: auto; padding-top: 12vh; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .card { border: 1.5px solid rgba(255,255,255,.7); border-radius: var(--radius); padding: 22px 24px 100px; display: flex; justify-content: space-between; gap: 12px; backdrop-filter: blur(6px); background: rgba(0,0,0,.12); transition: background .4s; }
 .card:hover { background: rgba(255,255,255,.12); }

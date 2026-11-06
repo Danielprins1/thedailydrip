@@ -1,6 +1,6 @@
 # The Daily Drip
 
-New website for The Daily Drip — coffee & lunch in Amsterdam Zuidas.
+New website for The Daily Drip - coffee & lunch in Amsterdam Zuidas.
 
 Plain HTML/CSS/JS, no build step. Run locally:
 
