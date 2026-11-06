@@ -31,6 +31,7 @@ Run locally: `npx serve .` or `python3 -m http.server`.
 - `.js-lang` buttons toggle: `pill__lang` (pill, hidden on phones) and `menu__lang` (in the menu overlay, all sizes). Choice is saved in localStorage (`tdd-lang`) and applied on every page before the word light-up splits text.
 - Form field `name`s and email subjects stay English so TDD gets consistent emails.
 - **No em dashes (—) anywhere** - Daniël wants a plain hyphen (-) instead. En dashes in times (08:00 – 16:00) are fine.
+- Browser-tab titles use no dashes at all: `Page | The Daily Drip`.
 
 ## Pages
 All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, big display type, no numbers), the footer and `main.js` (each animation block only runs when its section exists).
