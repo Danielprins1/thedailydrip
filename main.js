@@ -7,6 +7,8 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 // Phones / tablets: native scroll + only the key animations, so scrolling stays smooth
 const lite = window.matchMedia('(hover: none) and (pointer: coarse), (max-width: 760px)').matches;
 const $ = (s) => document.querySelector(s);
+// Native touch scroll runs on the compositor; a little scrub smoothing hides the frame-to-frame jitter
+const SCRUB = lite ? 0.6 : true;
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });   // no re-layout when the address bar shows/hides
 
@@ -95,11 +97,15 @@ const setPill = (on) => {
   document.body.classList.toggle('past-hero', on);
 };
 
-const checkPill = () => {
+let pillLimit = 0;
+const measurePill = () => {
   const vh = document.documentElement.clientHeight;
-  const limit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight - vh * (1 - PILL_AT) : 0;
-  setPill(window.scrollY > limit);
+  pillLimit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight - vh * (1 - PILL_AT) : 0;
 };
+const checkPill = () => setPill(window.scrollY > pillLimit);
+measurePill();
+window.addEventListener('resize', () => { measurePill(); checkPill(); });
+window.addEventListener('load', measurePill);
 let ticking = false;
 window.addEventListener('scroll', () => {
   if (ticking) return;
@@ -120,41 +126,43 @@ document.querySelectorAll('a[href*="#"]').forEach((a) => {
   });
 });
 
-/* ---------- Forms: sent to info@thedailydrip.nl via FormSubmit ----------
+/* ---------- Forms: sent straight to info@thedailydrip.nl via FormSubmit ----------
    FormSubmit (formsubmit.co) needs no account: the very first submission sends an
    activation email to info@thedailydrip.nl — click the link in it once, and from then on
-   every answer arrives in that inbox. If the service can't be reached, we fall back to
-   a prefilled email so no enquiry gets lost. */
+   every answer arrives in that inbox. The form is sent in the background (no mail app);
+   if that request is blocked, the form posts itself to FormSubmit the classic way and
+   FormSubmit sends the visitor back here (_next). Only works on a real web address,
+   not on a file opened from disk. */
 const FORM_TO = 'info@thedailydrip.nl';
 const formText = {
-  en: { sending: 'Sending…', ok: 'Thanks! Your message is on its way. We\'ll get back to you soon.', missing: 'Please fill in your name, a valid email and a message.', fail: 'Sending didn\'t work, so we opened your email app instead.' },
-  nl: { sending: 'Versturen…', ok: 'Bedankt! Je bericht is verstuurd. We nemen snel contact met je op.', missing: 'Vul je naam, een geldig e-mailadres en een bericht in.', fail: 'Versturen lukte niet, daarom hebben we je mailprogramma geopend.' },
+  en: { sending: 'Sending…', ok: 'Thanks! Your message has been sent. We\'ll get back to you soon.', missing: 'Please fill in your name, a valid email and a message.' },
+  nl: { sending: 'Versturen…', ok: 'Bedankt! Je bericht is verstuurd. We nemen snel contact met je op.', missing: 'Vul je naam, een geldig e-mailadres en een bericht in.' },
 };
 document.querySelectorAll('.js-form').forEach((form) => {
   const status = form.querySelector('.form__status');
   const btn = form.querySelector('button[type="submit"]');
   const say = (key) => { status.textContent = formText[lang][key]; };
+  const next = form.querySelector('[name="_next"]');
+  if (next) next.value = `${location.origin}${location.pathname}?sent=1#${form.closest('section').id}`;
+  if (new URLSearchParams(location.search).get('sent')) say('ok');   // back from a classic post
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const invalid = [...form.querySelectorAll('[required]')].filter((f) => !f.checkValidity());
     form.querySelectorAll('.is-invalid').forEach((f) => f.classList.remove('is-invalid'));
     if (invalid.length) { invalid.forEach((f) => f.classList.add('is-invalid')); invalid[0].focus(); say('missing'); return; }
-    const data = Object.fromEntries(new FormData(form));
-    if (data._honey) return;                      // spam bot filled the hidden field
-    delete data._honey;
+    const data = new FormData(form);
+    if (data.get('_honey')) return;               // spam bot filled the hidden field
+    data.set('_replyto', data.get('Email'));
     btn.disabled = true; say('sending');
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${FORM_TO}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...data, _subject: form.dataset.subject, _replyto: data.Email, _template: 'table', _captcha: 'false' }),
-      });
-      if (!res.ok) throw new Error(res.status);
+      // FormData = a "simple" request, so no CORS preflight that browsers/blockers can trip over
+      const res = await fetch(`https://formsubmit.co/ajax/${FORM_TO}`, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || String(json.success) === 'false') throw new Error(json.message || res.status);
       form.reset(); say('ok');
     } catch (err) {
-      const body = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
-      location.href = `mailto:${FORM_TO}?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
-      say('fail');
+      console.warn('[form] background send failed, posting directly:', err);
+      HTMLFormElement.prototype.submit.call(form);  // classic POST to FormSubmit, never the mail app
     } finally { btn.disabled = false; }
   });
 });
@@ -174,14 +182,14 @@ gsap.from('.corner', { opacity: 0, y: 20, duration: 1.4, delay: 0.9, stagger: 0.
 if (!reduceMotion) {
   /* ---------- Home 1. Hero: card rises through a slow background ---------- */
   if ($('.hero')) {
-    const hero = { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true };
+    const hero = { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: SCRUB };
     gsap.to('.hero__card', {
       y: () => -(window.innerHeight + $('.hero__card').offsetHeight + 60),
-      ease: 'none', scrollTrigger: { ...hero, invalidateOnRefresh: true },
+      ease: 'none', force3D: true, scrollTrigger: { ...hero, invalidateOnRefresh: true },
     });
     if (!lite) gsap.to('.hero__bg', { yPercent: 8, scale: 1.08, ease: 'none', scrollTrigger: hero });
     gsap.to('.hero .corner', { y: -60, opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: '60% bottom', end: 'bottom bottom', scrub: true } });
+      scrollTrigger: { trigger: '.hero', start: '60% bottom', end: 'bottom bottom', scrub: SCRUB } });
   }
 
   /* ---------- Sub page hero: title lines rise in, bg drifts ---------- */
@@ -199,7 +207,7 @@ if (!reduceMotion) {
   document.querySelectorAll('.js-words').forEach((el) => {
     gsap.to(splitWords(el), {
       opacity: 1, stagger: 0.05, ease: 'none',
-      scrollTrigger: { trigger: el, start: 'top 75%', end: 'bottom 40%', scrub: true },
+      scrollTrigger: { trigger: el, start: 'top 75%', end: 'bottom 40%', scrub: SCRUB },
     });
   });
 

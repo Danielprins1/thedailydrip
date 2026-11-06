@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" href="fonts/coolvetica-rg.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=14">
+  <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -17,6 +17,7 @@
   <a href="index.html" class="logo" aria-label="The Daily Drip">
     <img src="img/logo.svg" alt="The Daily Drip" onerror="this.remove()">
     <span class="logo__placeholder">THE DAILY DRIP</span>
+    <span class="logo__payoff">Specialty Coffee and Sandwiches</span>
   </a>
 
   <!-- Menu overlay (phones: opened from the pill hamburger) -->
@@ -74,7 +75,11 @@
         <h2 data-nl="Interesse?">Interested?</h2>
         <p data-nl="Laat je gegevens achter, dan mailen we je zo snel mogelijk terug.">Leave your details and we'll email you back as soon as we can.</p>
       </div>
-      <form class="form js-form" data-subject="Company coffee — website enquiry" novalidate>
+      <form class="form js-form" action="https://formsubmit.co/info@thedailydrip.nl" method="POST" data-subject="Company coffee — website enquiry" novalidate>
+        <input type="hidden" name="_subject" value="Company coffee — website enquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="">
         <label><span data-nl="Naam">Name</span><input name="Name" required autocomplete="name"></label>
         <label><span data-nl="Bedrijf">Company</span><input name="Company" autocomplete="organization"></label>
         <label><span data-nl="E-mail">Email</span><input type="email" name="Email" required autocomplete="email"></label>
@@ -101,6 +106,6 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="main.js?v=14"></script>
+  <script src="main.js?v=15"></script>
 </body>
 </html>

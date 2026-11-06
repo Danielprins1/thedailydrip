@@ -15,10 +15,10 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - Font: **Coolvetica** (Typodermic) for headings/labels, Inter Tight for body. Headings in sentence case, weight 400 (no faux bold).
 - **Not brutalist**: Daniël found the first version too in-your-face. Keep type calm and orderly (`clamp()` max ~168px for the biggest titles), rounded corners (`--radius`), pill-shaped buttons, label column + content column grids. Small uppercase only for labels/corners.
 - **Menu** is an HTML page (`menu.html`), no PDF anymore. Menu copy is exactly as Daniël supplied it (casing, spelling, prices without €) — don't rewrite or translate it.
-- **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone. Because nothing moves there, layouts must work static: the mission photos sit in a grid on phones (not on top of each other), and every `.media` has `isolation: isolate` so its image never covers the text (without GSAP transforms the statement photo used to hide the title).
+- **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins — only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone. Scroll-linked animations use `SCRUB` (0.6 smoothing on phones, `true` on desktop) so the hero card doesn't jitter against native scroll; the pill check reads no layout while scrolling. Because nothing moves there, layouts must work static: the mission photos sit in a grid on phones (not on top of each other), and every `.media` has `isolation: isolate` so its image never covers the text (without GSAP transforms the statement photo used to hide the title).
 - White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
 - **Pill nav** (LAP-style): a floating dark pill **fixed at the bottom of the screen on every page from the start** (rises in on load): logo, Home / Menu, NL, yellow "Company coffee" CTA. Current page link is yellow. **Hamburger only on phones** (≤760px; on desktop it was double) — phones show logo, hamburger, CTA; the overlay lists Home / Menu / Company coffee. **No sidebar** — Daniël removed the escape-style white side bar.
-- **Logo fades in** on load (fixed, **top centre, large**: clamp(72px, 8vw, 120px), 64px on phones) and simply **fades out** once the next section fills half the screen (`PILL_AT` in `main.js`; `past-hero` class), fades back in when scrolling up. Don't animate it across the screen — Daniël found the flying logo ugly. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing.
+- **Logo fades in** on load (fixed, **top centre, large**: clamp(72px, 8vw, 120px), 64px on phones) and simply **fades out** once the next section fills half the screen (`PILL_AT` in `main.js`; `past-hero` class), fades back in when scrolling up. Don't animate it across the screen — Daniël found the flying logo ugly. Uses `img/logo.svg` (black SVG, made white with `filter: invert(1)`; turns black over sections marked `data-logo="dark"`). The text wordmark only shows while the file is missing. Under the logo sits the payoff **"Specialty Coffee and Sandwiches"** (`.logo__payoff`, small caps, English on both languages).
 - Second reference: **lap.coffee** — Daniël loves its navigation (floating rounded pill: logo, hamburger, links, yellow CTA) and overall UX/styling. (Not reachable from the cloud sandbox; work from Daniël's screenshots.)
 
 ## Stack
@@ -34,9 +34,9 @@ Run locally: `npx serve .` or `python3 -m http.server`.
 ## Pages
 All pages share the logo, the pill nav, the menu overlay (hamburger → full-screen dark list, numbered, big display type), the footer and `main.js` (each animation block only runs when its section exists).
 - `index.html` — home (below)
-- `menu.html` — hero (drinks.webp) + DRINKS / LUNCH (yellow) / BAKES sections (`.carte`: sticky big title left, list right)
+- `menu.html` — hero (menu-bg.webp, sandwiches) + DRINKS / LUNCH (yellow) / BAKES sections (`.carte`: sticky big title left, list right)
 - `company-coffee.html` — generic office-coffee page (Kantoorkoffie): hero, intro ("interested? email us"), contact form
-Forms (`.js-form`) post to **FormSubmit** (`formsubmit.co/ajax/info@thedailydrip.nl`, no account). The first submission triggers an activation email to info@thedailydrip.nl that must be confirmed once. Falls back to a prefilled mailto if the request fails. Honeypot field `_honey`.
+Forms (`.js-form`) send **directly** via **FormSubmit** (`formsubmit.co/ajax/info@thedailydrip.nl`, no account) — never via the visitor's mail app (Daniël doesn't want that). If the background request fails, the form does a classic POST to `formsubmit.co/info@thedailydrip.nl` (`action`), which redirects back via `_next` (`?sent=1` shows the thank-you). The first submission triggers an activation email to info@thedailydrip.nl that must be confirmed once. Only works on a real URL, not a file opened from disk. Honeypot field `_honey`.
 
 Removed for now (Daniël will add them back once the info is clear): the coffee-beans ordering (steps, bean cards, order form) and the **coffee training** page (`training.html`). Their photos are still in `img/`.
 
@@ -53,7 +53,7 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 - Home: all filled (hero-bg, hero-card, mission-1..3, statement-bg, door-company, door-training, catering, logo.svg)
 - Company coffee: all filled (company-bg, beans-bg = beans close-up)
 - Training: all filled (training-bg, course-*, training-1..3 = iced latte pour, latte + yellow lamp, can sealer)
-- Spare: `drinks.webp` (TDD juice cans) and `catering.webp` (man with sandwich tray, was the catering section) — for a future menu page.
+- Spare: `drinks.webp` (TDD juice cans, was the menu hero) and `catering.webp` (man with sandwich tray, was the catering section) — for a future menu page.
 
 ## Open / to do
 - [x] Logo in + fade-in check
@@ -68,6 +68,6 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 - All emails/forms go to info@thedailydrip.nl (confirmed by Daniël)
 - [ ] Bring back beans ordering + coffee training once Daniël has the info
 - [x] Forms → FormSubmit (confirm the activation email on info@ after the first test)
-- [ ] Hero card photo: Daniël wants to swap it for a new photo (`img/hero-card.webp`)
+- [x] Hero card photo = barista in the TDD t-shirt ("hustle, drip and sip")
 - [ ] Optional: statement background as looping video (like the reference's wave)
 - [ ] SEO: LocalBusiness structured data, OG image
