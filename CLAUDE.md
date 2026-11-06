@@ -14,7 +14,7 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 - **Lots of parallax** - full-bleed background photos moving slower than content; photos stacked on top of each other at different speeds.
 - Font: **Coolvetica** (Typodermic) for headings/labels, Inter Tight for body. Headings in sentence case, weight 400 (no faux bold).
 - **Not brutalist**: Daniël found the first version too in-your-face. Keep type calm and orderly (`clamp()` max ~168px for the biggest titles), rounded corners (`--radius`), pill-shaped buttons, label column + content column grids. Small uppercase only for labels/corners.
-- **Menu** is an HTML page (`menu.html`), no PDF anymore. Menu copy is exactly as Daniël supplied it (casing, spelling, prices without €) - don't rewrite or translate it.
+- **Menu** is an HTML page (`menu.html`), no PDF anymore. Menu copy is exactly as Daniël supplied it (casing, spelling). **No prices on the site** (Daniël removed them) - don't rewrite or translate it.
 - **Phones/tablets run a lite mode** (`lite` in `main.js`): native scroll (no Lenis), no parallax layers or slide-ins - only hero card, word light-up and the nav. Keep it that way; Daniël found it janky on his phone. Scroll-linked animations use `SCRUB` (0.6 smoothing on phones, `true` on desktop) so the hero card doesn't jitter against native scroll; the pill check reads no layout while scrolling. Because nothing moves there, layouts must work static: the mission photos sit in a grid on phones (not on top of each other), and every `.media` has `isolation: isolate` so its image never covers the text (without GSAP transforms the statement photo used to hide the title).
 - White text on photos: photos get a dark gradient (`::after`) + text-shadow. Check readability whenever a photo changes.
 - **Pill nav** (LAP-style): a floating dark pill **fixed at the bottom of the screen on every page from the start** (rises in on load): logo, Home / Menu, NL, yellow "Company coffee" CTA. Current page link is yellow. **Hamburger only on phones** (≤760px; on desktop it was double) - phones show logo, hamburger, CTA; the overlay lists Home / Menu / Company coffee. **No sidebar** - Daniël removed the escape-style white side bar.
@@ -59,7 +59,7 @@ Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed b
 ## Open / to do
 - [x] Logo in + fade-in check
 - [x] Photos: every slot filled (22 TDD photos so far)
-- [x] Menu as HTML page (from Daniël's Drinks / Lunch / Bakes menus; sandwiches & salads have no prices yet)
+- [x] Menu as HTML page (from Daniël's Drinks / Lunch / Bakes menus; no prices shown)
 - [x] Brand yellow from the brand file (`#ECB43F`)
 - [x] Coolvetica font files in `fonts/`
 - Copy uses TDD's real slogans where possible: "hustle, drip, sip" (cans/shirts) and "more espresso, less depresso" (mirror in the shop). Statement title is "More espresso, less depresso".
