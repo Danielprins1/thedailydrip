@@ -62,7 +62,8 @@ button.tag { border: 0; cursor: pointer; }
 .logo { position: fixed; top: 48px; left: 50%; translate: -50% 0; z-index: 58; text-decoration: none; color: var(--white); opacity: 0; transition: color .4s; }
 .logo__placeholder { font: 400 30px/1 var(--display); }
 .logo { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.logo__payoff { font: 400 clamp(12px, .95vw, 15px)/1 var(--display); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 18px rgba(0,0,0,.35); transition: text-shadow .4s; }
+.logo__payoff { font: 700 clamp(12px, .95vw, 15px)/1 "arpona-sans", var(--display); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 18px rgba(0,0,0,.35); transition: text-shadow .4s, opacity .5s, transform .5s; }
+.payoff-out .logo__payoff { opacity: 0; transform: translateY(-6px); }   /* home: gone as soon as the next section scrolls into view */
 .logo--dark .logo__payoff { text-shadow: none; }
 .menu-open .logo .logo__payoff { text-shadow: none; }
 .logo img { height: clamp(72px, 8vw, 120px); width: auto; filter: invert(1); transition: filter .4s; }   /* logo.svg is black → white by default */

@@ -97,12 +97,18 @@ const setPill = (on) => {
   document.body.classList.toggle('past-hero', on);
 };
 
-let pillLimit = 0;
+let pillLimit = 0, payoffLimit = 0;
+const hasPayoff = !!$('.logo__payoff');
 const measurePill = () => {
   const vh = document.documentElement.clientHeight;
-  pillLimit = firstSection ? firstSection.offsetTop + firstSection.offsetHeight - vh * (1 - PILL_AT) : 0;
+  const end = firstSection ? firstSection.offsetTop + firstSection.offsetHeight : 0;
+  pillLimit = end - vh * (1 - PILL_AT);
+  payoffLimit = end - vh;               // the moment the next section peeks in at the bottom
 };
-const checkPill = () => setPill(window.scrollY > pillLimit);
+const checkPill = () => {
+  setPill(window.scrollY > pillLimit);
+  if (hasPayoff) document.body.classList.toggle('payoff-out', window.scrollY > payoffLimit);
+};
 measurePill();
 window.addEventListener('resize', () => { measurePill(); checkPill(); });
 window.addEventListener('load', measurePill);
