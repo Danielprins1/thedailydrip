@@ -48,6 +48,8 @@ function tdd_handle_contact() {
 	if ( ! wp_mail( $to, $subject, $body, $headers ) ) $fail( 'mail failed', 500 );
 	set_transient( $ip_key, $count + 1, 10 * MINUTE_IN_SECONDS );
 
+	tdd_send_confirmation( $fields, 'nl' === ( $p['lang'] ?? '' ) ? 'nl' : 'en' );   // best effort, never blocks the enquiry
+
 	if ( $ajax ) wp_send_json( [ 'success' => true ] );
 	wp_safe_redirect( add_query_arg( 'sent', '1', wp_get_referer() ?: home_url( '/' ) ) . '#contact' );
 	exit;
@@ -56,3 +58,54 @@ add_action( 'wp_ajax_tdd_contact', 'tdd_handle_contact' );
 add_action( 'wp_ajax_nopriv_tdd_contact', 'tdd_handle_contact' );
 add_action( 'admin_post_tdd_contact', 'tdd_handle_contact' );
 add_action( 'admin_post_nopriv_tdd_contact', 'tdd_handle_contact' );
+
+/**
+ * Thank-you email to the visitor, from no-reply@<site domain>, with a copy of what they wrote.
+ * Branded: yellow header with the logo, black text on white, yellow accents.
+ */
+function tdd_send_confirmation( array $f, string $lang ) {
+	$host = preg_replace( '/^www\./', '', wp_parse_url( home_url(), PHP_URL_HOST ) ?: 'thedailydrip.nl' );
+	$from = 'no-reply@' . $host;
+	$nl   = 'nl' === $lang;
+	$t    = $nl ? [
+		'subject' => 'Bedankt voor je bericht | The Daily Drip',
+		'hi'      => 'Hoi ' . $f['Name'] . ',',
+		'thanks'  => 'Bedankt voor je mailtje!',
+		'reply'   => 'We nemen zo snel mogelijk contact met je op.',
+		'yours'   => 'Dit heb je ons gestuurd',
+		'Name' => 'Naam', 'Company' => 'Bedrijf', 'Email' => 'E-mail', 'Phone' => 'Telefoon', 'Message' => 'Bericht',
+		'auto'    => 'Dit is een automatisch bericht, je kunt hier niet op antwoorden. Mailen kan via',
+	] : [
+		'subject' => 'Thanks for your message | The Daily Drip',
+		'hi'      => 'Hi ' . $f['Name'] . ',',
+		'thanks'  => 'Thanks for your email!',
+		'reply'   => "We'll get back to you as soon as we can.",
+		'yours'   => 'What you sent us',
+		'Name' => 'Name', 'Company' => 'Company', 'Email' => 'Email', 'Phone' => 'Phone', 'Message' => 'Message',
+		'auto'    => 'This is an automatic message, please do not reply to it. You can email us at',
+	];
+	$info    = sanitize_email( tdd_get( 'email' ) ) ?: 'info@thedailydrip.nl';
+	$logo    = esc_url( TDD_URI . '/img/email-logo.png' );
+	$yellow  = '#ECB43F';
+	$rows    = '';
+	foreach ( [ 'Name', 'Company', 'Email', 'Phone', 'Message' ] as $k ) {
+		if ( '' === $f[ $k ] ) continue;
+		$rows .= '<tr><td style="padding:10px 0;border-top:1px solid #eeeeee;vertical-align:top;width:110px;font:600 12px/1.4 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#777777">' . esc_html( $t[ $k ] ) . '</td>'
+		       . '<td style="padding:10px 0;border-top:1px solid #eeeeee;font:400 16px/1.5 Arial,sans-serif;color:#000000">' . nl2br( esc_html( $f[ $k ] ) ) . '</td></tr>';
+	}
+	$html = '<!doctype html><html><body style="margin:0;padding:0;background:#f4f4f4">'
+	  . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4"><tr><td align="center" style="padding:24px 12px">'
+	  . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:18px;overflow:hidden">'
+	  . '<tr><td align="center" style="background:' . $yellow . ';padding:34px 20px"><img src="' . $logo . '" width="220" alt="The Daily Drip" style="display:block;border:0;width:220px;max-width:100%;height:auto"></td></tr>'
+	  . '<tr><td style="padding:34px 32px 8px"><p style="margin:0 0 6px;font:400 28px/1.2 Arial,sans-serif;color:#000000"><strong>' . esc_html( $t['thanks'] ) . '</strong></p>'
+	  . '<p style="margin:0 0 4px;font:400 16px/1.5 Arial,sans-serif;color:#000000">' . esc_html( $t['hi'] ) . '</p>'
+	  . '<p style="margin:0 0 24px;font:400 16px/1.5 Arial,sans-serif;color:#000000">' . esc_html( $t['reply'] ) . '</p></td></tr>'
+	  . '<tr><td style="padding:0 32px 28px"><p style="margin:0 0 8px;font:600 12px/1.4 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#000000;border-bottom:3px solid ' . $yellow . ';display:inline-block;padding-bottom:4px">' . esc_html( $t['yours'] ) . '</p>'
+	  . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">' . $rows . '</table></td></tr>'
+	  . '<tr><td style="background:#000000;padding:22px 32px"><p style="margin:0;font:400 13px/1.6 Arial,sans-serif;color:#ffffff">The Daily Drip<br>' . esc_html( str_replace( "\n", ', ', tdd_get( 'address' ) ) ) . '<br>' . ( $nl ? 'Ma-vr 08:00 - 16:00' : 'Mon-Fri 08:00 - 16:00' ) . '</p>'
+	  . '<p style="margin:10px 0 0;font:400 12px/1.5 Arial,sans-serif;color:#aaaaaa">' . esc_html( $t['auto'] ) . ' <a href="mailto:' . esc_attr( $info ) . '" style="color:' . $yellow . '">' . esc_html( $info ) . '</a>.</p></td></tr>'
+	  . '</table></td></tr></table></body></html>';
+
+	$headers = [ 'Content-Type: text/html; charset=UTF-8', 'From: The Daily Drip <' . $from . '>', 'Reply-To: ' . $info ];
+	wp_mail( $f['Email'], $t['subject'], $html, $headers );
+}

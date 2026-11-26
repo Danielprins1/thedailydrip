@@ -38,3 +38,5 @@ Geen FormSubmit meer nodig. Komen de mails niet aan of in de spam? Installeer **
 via de info@-mailbox versturen. Spambescherming: verborgen honeypot-veld, minimale invultijd en max. 5 berichten per 10 minuten per bezoeker.
 
 Bij een nieuwe themaversie (zip opnieuw uploaden) maakt WordPress ontbrekende pagina's, zoals Corporate lunch, vanzelf aan zodra je in de admin komt.
+
+De bezoeker krijgt direct een bedankmail (huisstijl, NL of EN naar de gekozen taal) van no-reply@thedailydrip.nl met een kopie van het ingevulde bericht; antwoorden daarop gaan naar het info@-adres uit de Customizer. Komt die mail niet aan: WP Mail SMTP.

@@ -160,6 +160,7 @@ document.querySelectorAll('.js-form').forEach((form) => {
     const data = new FormData(form);
     if (data.get('_honey')) return;               // spam bot filled the hidden field
     if (!WP) data.set('_replyto', data.get('Email'));
+    if (WP) { let l = 'en'; try { l = localStorage.getItem('tdd-lang') === 'nl' ? 'nl' : 'en'; } catch (e) {} data.set('lang', l); }   // language of the confirmation email
     btn.disabled = true; say('sending');
     try {
       // FormData = a "simple" request, so no CORS preflight that browsers/blockers can trip over
