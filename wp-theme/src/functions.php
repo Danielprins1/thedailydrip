@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'TDD_VERSION', '1.2.0' );
+define( 'TDD_VERSION', '1.2.1' );
 define( 'TDD_DIR', get_template_directory() );
 define( 'TDD_URI', get_template_directory_uri() );
 
