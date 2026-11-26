@@ -38,7 +38,8 @@ function tdd_handle_contact() {
 	$to      = sanitize_email( tdd_get( 'form_to' ) ) ?: get_option( 'admin_email' );
 	$topics  = [ 'coffee' => 'Corporate coffee', 'lunch' => 'Corporate lunch' ];
 	$subject = ( $topics[ sanitize_key( $p['topic'] ?? '' ) ] ?? 'Corporate coffee' ) . ' - website enquiry';
-	$body    = '';
+	$kind    = $topics[ sanitize_key( $p['topic'] ?? '' ) ] ?? 'Corporate coffee';
+	$body    = 'Request: ' . $kind . "\n\n";
 	foreach ( $fields as $label => $value ) {
 		if ( '' !== $value ) $body .= $label . ":\n" . $value . "\n\n";
 	}
