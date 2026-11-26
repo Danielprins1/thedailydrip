@@ -63,6 +63,7 @@ button.tag { border: 0; cursor: pointer; }
 .logo__placeholder { font: 400 30px/1 var(--display); }
 .logo { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .logo__payoff { margin-top: .3em; font: 700 clamp(17px, 1.6vw, 26px)/1.1 "arponasans", "arpona-sans", var(--display); letter-spacing: -.01em; text-transform: lowercase; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 18px rgba(0,0,0,.35); transition: text-shadow .4s, opacity .5s, transform .5s; }
+.logo__payoff::first-letter { text-transform: uppercase; }   /* only the S is a capital */
 .payoff-out .logo__payoff { opacity: 0; transform: translateY(-6px); }   /* home: gone as soon as the next section scrolls into view */
 .logo--dark .logo__payoff { text-shadow: none; }
 .menu-open .logo .logo__payoff { text-shadow: none; }
@@ -261,7 +262,7 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
   .corner--tl { top: 150px; bottom: auto; }
   .corner--tr { bottom: 140px; }
   .hero__card { width: 72vw; box-shadow: 0 16px 36px rgba(0,0,0,.16); }
-  .logo__payoff { display: none; }   /* phones: logo only */
+  .logo__payoff { font-size: 14px; }
   .mission, .intro { padding-top: 12vh; padding-bottom: 12vh; grid-template-columns: 1fr; }
   .mission { padding-bottom: 0; min-height: 0; }
   .mission__inner { grid-template-columns: 1fr; gap: 20px; }
