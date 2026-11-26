@@ -40,17 +40,16 @@ const setLang = (next, live) => {
     if (live && el.matches('.js-words') && !reduceMotion) gsap.set(splitWords(el), { opacity: 1 });
   });
   document.documentElement.lang = next;
+  // "NL / ENG" buttons: the active language is fully white, the other faded
   document.querySelectorAll('.js-lang').forEach((b) => {
-    const other = next === 'nl' ? 'en' : 'nl';
-    b.lang = other;
-    b.setAttribute('aria-label', other === 'nl' ? 'Nederlands' : 'English');
-    b.textContent = b.classList.contains('menu__lang') ? (other === 'nl' ? 'Nederlands' : 'English') : other.toUpperCase();
+    b.setAttribute('aria-label', next === 'nl' ? 'Switch to English' : 'Wissel naar Nederlands');
+    b.querySelectorAll('.lang-opt').forEach((o) => o.classList.toggle('is-on', o.dataset.l === next));
   });
   try { localStorage.setItem('tdd-lang', next); } catch (e) {}
 };
 let savedLang = null;
 try { savedLang = localStorage.getItem('tdd-lang'); } catch (e) {}
-if (savedLang === 'nl') setLang('nl', false);
+setLang(savedLang === 'nl' ? 'nl' : 'en', false);
 document.querySelectorAll('.js-lang').forEach((b) => b.addEventListener('click', () => setLang(lang === 'nl' ? 'en' : 'nl', true)));
 
 /* ---------- Heavy smooth scroll (desktop only) ---------- */

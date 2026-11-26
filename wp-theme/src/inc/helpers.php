@@ -60,7 +60,7 @@ function tdd_img( $key, $default_file, $alt = '', $sizes = '100vw' ) {
 	return '<img src="' . esc_url( $src ) . '"' . $srcset . ' alt="' . esc_attr( $alt ) . '">';
 }
 
-/** URL of the page that uses one of our templates ('menu' or 'company-coffee'). */
+/** URL of the page that uses one of our templates ('menu', 'company-coffee' or 'corporate-lunch'). */
 function tdd_page_url( $which ) {
 	static $cache = [];
 	if ( isset( $cache[ $which ] ) ) return $cache[ $which ];

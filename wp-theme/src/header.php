@@ -26,9 +26,10 @@ $logo      = esc_url( TDD_URI . '/img/logo.svg' );
     <ol class="menu__list">
       <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo tdd_current( 'home' ); ?>>Home</a></li>
       <li><a href="<?php echo esc_url( tdd_page_url( 'menu' ) ); ?>"<?php echo tdd_current( 'menu' ); ?>>Menu</a></li>
-      <li><a href="<?php echo esc_url( tdd_page_url( 'company-coffee' ) ); ?>"<?php echo tdd_current( 'company-coffee' ); ?> data-nl="Kantoorkoffie">Company coffee</a></li>
+      <li><a href="<?php echo esc_url( tdd_page_url( 'company-coffee' ) ); ?>"<?php echo tdd_current( 'company-coffee' ); ?> data-nl="Kantoorkoffie">Corporate coffee</a></li>
+      <li><a href="<?php echo esc_url( tdd_page_url( 'corporate-lunch' ) ); ?>"<?php echo tdd_current( 'corporate-lunch' ); ?> data-nl="Zakelijke lunch">Corporate lunch</a></li>
     </ol>
-    <button class="menu__lang js-lang" lang="nl" aria-label="Nederlands">Nederlands</button>
+    <button class="menu__lang js-lang" aria-label="Nederlands / English"><span class="lang-opt" data-l="nl">NL</span><span class="lang-sep">/</span><span class="lang-opt" data-l="en">ENG</span></button>
     <div class="menu__foot">
       <p><?php echo tdd_text( 'address' ); ?></p>
       <p<?php echo tdd_nl( 'hours_short' ); ?>><?php echo tdd_text( 'hours_short' ); ?></p>
@@ -43,9 +44,10 @@ $logo      = esc_url( TDD_URI . '/img/logo.svg' );
     <nav class="pill__links">
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo tdd_current( 'home' ); ?>>Home</a>
       <a href="<?php echo esc_url( tdd_page_url( 'menu' ) ); ?>"<?php echo tdd_current( 'menu' ); ?>>Menu</a>
+      <a href="<?php echo esc_url( tdd_page_url( 'company-coffee' ) ); ?>"<?php echo tdd_current( 'company-coffee' ); ?> data-nl="Kantoorkoffie">Corporate coffee</a>
     </nav>
-    <button class="pill__lang js-lang" lang="nl" aria-label="Nederlands">NL</button>
-    <a class="pill__cta" href="<?php echo esc_url( tdd_page_url( 'company-coffee' ) ); ?>"<?php echo tdd_current( 'company-coffee' ); ?> data-nl="Kantoorkoffie">Company coffee</a>
+    <button class="pill__lang js-lang" aria-label="Nederlands / English"><span class="lang-opt" data-l="nl">NL</span><span class="lang-sep">/</span><span class="lang-opt" data-l="en">ENG</span></button>
+    <a class="pill__cta" href="<?php echo esc_url( tdd_page_url( 'corporate-lunch' ) ); ?>"<?php echo tdd_current( 'corporate-lunch' ); ?> data-nl="Zakelijke lunch">Corporate lunch</a>
   </header>
 
   <main id="top">

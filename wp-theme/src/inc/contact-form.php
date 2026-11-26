@@ -1,7 +1,7 @@
 <?php
 /**
- * Company coffee form: sent straight from WordPress (wp_mail) to the address in
- * Customize > The Daily Drip > Company coffee page ("Form answers are sent to").
+ * Corporate coffee + Corporate lunch forms: sent straight from WordPress (wp_mail) to the address in
+ * Customize > The Daily Drip > General ("Form answers are sent to").
  * main.js posts it in the background (admin-ajax); without JavaScript the form posts
  * to admin-post.php and returns to the page with ?sent=1.
  *
@@ -36,7 +36,8 @@ function tdd_handle_contact() {
 	if ( '' === $fields['Name'] || ! is_email( $fields['Email'] ) || '' === $fields['Message'] ) $fail( 'missing fields' );
 
 	$to      = sanitize_email( tdd_get( 'form_to' ) ) ?: get_option( 'admin_email' );
-	$subject = 'Company coffee - website enquiry';
+	$topics  = [ 'coffee' => 'Corporate coffee', 'lunch' => 'Corporate lunch' ];
+	$subject = ( $topics[ sanitize_key( $p['topic'] ?? '' ) ] ?? 'Corporate coffee' ) . ' - website enquiry';
 	$body    = '';
 	foreach ( $fields as $label => $value ) {
 		if ( '' !== $value ) $body .= $label . ":\n" . $value . "\n\n";

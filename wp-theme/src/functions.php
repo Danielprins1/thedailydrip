@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'TDD_VERSION', '1.0.1' );
+define( 'TDD_VERSION', '1.1.0' );
 define( 'TDD_DIR', get_template_directory() );
 define( 'TDD_URI', get_template_directory_uri() );
 
@@ -17,6 +17,7 @@ require TDD_DIR . '/inc/helpers.php';
 require TDD_DIR . '/inc/customizer.php';
 require TDD_DIR . '/inc/menu-items.php';
 require TDD_DIR . '/inc/contact-form.php';
+require TDD_DIR . '/inc/enquiry-page.php';
 require TDD_DIR . '/inc/setup.php';
 
 add_action( 'after_setup_theme', function () {

@@ -1,7 +1,7 @@
 <?php
 /**
  * Fallback for any other page or post (e.g. privacy policy): simple text page in the site's style.
- * Home = front-page.php, Menu = template-menu.php, Company coffee = template-company-coffee.php.
+ * Home = front-page.php, Menu = template-menu.php, Corporate coffee = template-company-coffee.php, Corporate lunch = template-corporate-lunch.php.
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 get_header(); ?>

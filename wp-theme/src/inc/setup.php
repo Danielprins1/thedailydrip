@@ -1,7 +1,7 @@
 <?php
 /**
  * One-time setup when the theme is activated:
- *  - makes sure there is a "Menu" and a "Company coffee" page using our templates
+ *  - makes sure there is a "Menu" and "Corporate coffee" and "Corporate lunch" pages using our templates
  *    (an existing page with slug menu / company-coffee is reused, its content is kept but not shown)
  *  - fills the Menu card with the current menu if it's still empty
  * The home page is front-page.php, so it works whatever is set under Settings > Reading.
@@ -10,8 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function tdd_setup_pages() {
 	$pages = [
-		'menu'           => 'Menu',
-		'company-coffee' => 'Company coffee',
+		'menu'            => 'Menu',
+		'company-coffee'  => 'Corporate coffee',
+		'corporate-lunch' => 'Corporate lunch',
 	];
 	foreach ( $pages as $slug => $title ) {
 		$template = 'template-' . $slug . '.php';
@@ -40,5 +41,14 @@ function tdd_seed_menu() {
 add_action( 'after_switch_theme', function () {
 	tdd_setup_pages();
 	tdd_seed_menu();
+	update_option( 'tdd_setup_version', TDD_VERSION );
+	flush_rewrite_rules();
+} );
+
+/* Theme updated (new zip uploaded): add pages that newer versions need, e.g. Corporate lunch */
+add_action( 'admin_init', function () {
+	if ( get_option( 'tdd_setup_version' ) === TDD_VERSION || ! current_user_can( 'edit_theme_options' ) ) return;
+	tdd_setup_pages();
+	update_option( 'tdd_setup_version', TDD_VERSION );
 	flush_rewrite_rules();
 } );
