@@ -33,7 +33,7 @@ function tdd_handle_contact() {
 		'Phone'   => sanitize_text_field( $p['Phone'] ?? '' ),
 		'Message' => sanitize_textarea_field( $p['Message'] ?? '' ),
 	];
-	if ( '' === $fields['Name'] || ! is_email( $fields['Email'] ) || '' === $fields['Message'] ) $fail( 'missing fields' );
+	if ( '' === $fields['Name'] || '' === $fields['Company'] || '' === $fields['Phone'] || ! is_email( $fields['Email'] ) || '' === $fields['Message'] ) $fail( 'missing fields' );
 
 	$to      = sanitize_email( tdd_get( 'form_to' ) ) ?: get_option( 'admin_email' );
 	$topics  = [ 'coffee' => 'Corporate coffee', 'lunch' => 'Corporate lunch' ];

@@ -37,9 +37,9 @@ function tdd_enquiry_page( $p, $topic, $default_img, $hero_class = '' ) {
         <input type="hidden" name="topic" value="<?php echo esc_attr( $topic ); ?>">
         <input type="hidden" name="_t" value="<?php echo time(); ?>">
         <label><span data-nl="Naam">Name</span><input name="Name" required autocomplete="name"></label>
-        <label><span data-nl="Bedrijf">Company</span><input name="Company" autocomplete="organization"></label>
+        <label><span data-nl="Bedrijf">Company</span><input name="Company" required autocomplete="organization"></label>
         <label><span data-nl="E-mail">Email</span><input type="email" name="Email" required autocomplete="email"></label>
-        <label><span data-nl="Telefoon">Phone</span><input type="tel" name="Phone" autocomplete="tel"></label>
+        <label><span data-nl="Telefoon">Phone</span><input type="tel" name="Phone" required autocomplete="tel"></label>
         <label class="form__wide"><span data-nl="Bericht">Message</span><textarea name="Message" rows="4" required></textarea></label>
         <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="tag tag--lg" type="submit" data-nl="Verstuur">Send</button>
