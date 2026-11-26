@@ -81,7 +81,7 @@ function tdd_current( $which ) {
 	return $on ? ' aria-current="page"' : '';
 }
 
-/** Hours line for the hero corners, e.g. "MON–FRI<br>08:00 – 16:00". */
+/** Hours line for the hero corners, e.g. "MON-FRI<br>08:00 - 16:00". */
 function tdd_hours_corner() {
 	return '<p class="corner corner--tr"' . tdd_nl( 'hours_short' ) . '>' . tdd_text( 'hours_short' ) . '</p>';
 }

@@ -22,14 +22,14 @@ function tdd_fields() {
 	$f = [
 		/* ---------- General ---------- */
 		'address'         => [ 'tdd_general', 'Address', 'textarea', "Antonio Vivaldistraat 58\n1083 HP Amsterdam" ],
-		'hours'           => [ 'tdd_general', 'Opening hours (footer)', 'textarea', "Monday to Friday\n08:00 – 16:00" ],
-		'hours_nl'        => [ 'tdd_general', 'Opening hours (footer) (NL)', 'textarea', "Maandag t/m vrijdag\n08:00 – 16:00" ],
-		'hours_short'     => [ 'tdd_general', 'Opening hours, short (photo corners)', 'textarea', "MON–FRI\n08:00 – 16:00" ],
-		'hours_short_nl'  => [ 'tdd_general', 'Opening hours, short (NL)', 'textarea', "MA–VR\n08:00 – 16:00" ],
+		'hours'           => [ 'tdd_general', 'Opening hours (footer)', 'textarea', "Monday to Friday\n08:00 - 16:00" ],
+		'hours_nl'        => [ 'tdd_general', 'Opening hours (footer) (NL)', 'textarea', "Maandag t/m vrijdag\n08:00 - 16:00" ],
+		'hours_short'     => [ 'tdd_general', 'Opening hours, short (photo corners)', 'textarea', "MON-FRI\n08:00 - 16:00" ],
+		'hours_short_nl'  => [ 'tdd_general', 'Opening hours, short (NL)', 'textarea', "MA-VR\n08:00 - 16:00" ],
 		'email'           => [ 'tdd_general', 'Email address (shown on the site)', 'email', 'info@thedailydrip.nl' ],
 		'instagram'       => [ 'tdd_general', 'Instagram link', 'url', 'https://www.instagram.com/thedailydrip_zuidas/' ],
 		'slogan'          => [ 'tdd_general', 'Slogan in the photo corners', 'textarea', "HUSTLE,\nDRIP, SIP." ],
-		'seo_description' => [ 'tdd_general', 'Google description (meta description)', 'textarea', 'Specialty coffee and fresh lunch in Amsterdam Zuidas. Antonio Vivaldistraat 58. Monday to Friday, 08:00–16:00.' ],
+		'seo_description' => [ 'tdd_general', 'Google description (meta description)', 'textarea', 'Specialty coffee and fresh lunch in Amsterdam Zuidas. Antonio Vivaldistraat 58. Monday to Friday, 08:00-16:00.' ],
 
 		/* ---------- Home ---------- */
 		'payoff'          => [ 'tdd_home', 'Payoff under the logo', 'text', 'Specialty Coffee and Sandwiches' ],

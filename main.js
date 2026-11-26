@@ -56,7 +56,7 @@ document.querySelectorAll('.js-lang').forEach((b) => b.addEventListener('click',
 let lenis = null;
 if (!reduceMotion && !lite) {
   lenis = new Lenis({
-    lerp: 0.055,          // 0.1 = default; 0.04–0.06 feels heavy. Tune here.
+    lerp: 0.055,          // 0.1 = default; 0.04-0.06 feels heavy. Tune here.
     wheelMultiplier: 0.8, // less distance per wheel tick = more weight
     smoothWheel: true,
   });

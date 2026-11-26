@@ -3,7 +3,7 @@
 Daniël (CMD student, freelance designer, DJP Design) is building a new website for client **The Daily Drip (TDD)**, a coffee & lunch spot in Amsterdam Zuidas. Communicate with Daniël in **Dutch**. Site copy is **English by default with a working NL toggle**.
 
 ## Client facts
-- Antonio Vivaldistraat 58, 1083 HP Amsterdam - Mon–Fri 08:00–16:00 - info@thedailydrip.nl
+- Antonio Vivaldistraat 58, 1083 HP Amsterdam - Mon-Fri 08:00-16:00 - info@thedailydrip.nl
 - Current site: https://thedailydrip.nl (WordPress/Elementor, one long page, menu as PDF)
 - Audience: Zuidas office workers. Catering for offices is a key business line.
 - Brand: hand-drawn "THE DAILY DRIP" logo. Colours: **yellow `#ECB43F`** (C2 M34 Y95 K0), **black**, **white** - nothing else (greys only for photo placeholders). Illustrations exist (yellow car "BiroKoffieNew", koffievrouw line drawing). Style: minimal, bold, playful.
@@ -38,7 +38,7 @@ The live site moves to TDD's WordPress as a custom classic theme. **The static s
 - Form label text is wrapped in `<span data-nl>`; `<option>`s and `<title>` have `data-nl`. Brand slogans ("hustle, drip, sip", "more espresso, less depresso") stay English.
 - `.js-lang` buttons toggle: `pill__lang` (pill, hidden on phones) and `menu__lang` (in the menu overlay, all sizes). Choice is saved in localStorage (`tdd-lang`) and applied on every page before the word light-up splits text.
 - Form field `name`s and email subjects stay English so TDD gets consistent emails.
-- **No em dashes (—) anywhere** - Daniël wants a plain hyphen (-) instead. En dashes in times (08:00 – 16:00) are fine.
+- **No em dashes (—) and no en dashes (–) anywhere** - Daniël wants a plain hyphen (-) instead, also in times (08:00 - 16:00) and ranges (Mon-Fri).
 - Browser-tab titles use no dashes at all: `Page | The Daily Drip`.
 
 ## Pages
@@ -60,7 +60,7 @@ Removed for now (Daniël will add them back once the info is clear): the coffee-
 Removed on Daniël's request - don't bring back: the "A day at the Drip" stacked-photo section (felt like Tinder cards), the 4 menu cards on home (Flat white, Sandwich of the day…) the hero coordinates, the **Catering** section/menu item and **Visit** in the nav. He does like the card styling (`.cards` / `.card`) - reuse it on a future menu page.
 
 ## Images
-Photos live in `img/` as **.webp** (~100–250 KB, max 2000px wide; full-bleed backgrounds also have a 1000px `-sm.webp` used via `srcset`). CSS/JS links carry `?v=N` - bump it when you change them so browsers/GitHub Pages don't serve a stale copy. Placeholders show the expected filename until the file exists. Filled so far from Daniël's first 5 photos (latte art top-down, storefront, interior seating, baguettes, bar counter) - mission-2/3 and the door images are crops of those and should be replaced by real photos:
+Photos live in `img/` as **.webp** (~100-250 KB, max 2000px wide; full-bleed backgrounds also have a 1000px `-sm.webp` used via `srcset`). CSS/JS links carry `?v=N` - bump it when you change them so browsers/GitHub Pages don't serve a stale copy. Placeholders show the expected filename until the file exists. Filled so far from Daniël's first 5 photos (latte art top-down, storefront, interior seating, baguettes, bar counter) - mission-2/3 and the door images are crops of those and should be replaced by real photos:
 - Home: all filled (hero-bg, hero-card, mission-1..3, statement-bg, door-company, door-training, catering, logo.svg)
 - Company coffee: all filled (company-bg, beans-bg = beans close-up)
 - Training: all filled (training-bg, course-*, training-1..3 = iced latte pour, latte + yellow lamp, can sealer)
