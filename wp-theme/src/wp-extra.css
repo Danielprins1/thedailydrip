@@ -1,0 +1,11 @@
+
+/* ============ WordPress: plain text pages (privacy policy etc.) ============ */
+.plain { background: var(--white); color: var(--black); padding: 22vh var(--gutter) 16vh; }
+.plain__inner { max-width: 760px; margin: 0 auto; }
+.plain__title { font-size: clamp(44px, 6vw, 96px); line-height: .95; margin-bottom: 6vh; }
+.plain__content { font: 400 18px/1.6 var(--body); }
+.plain__content > * + * { margin-top: 1em; }
+.plain__content h2, .plain__content h3 { font-family: var(--display); font-weight: 400; line-height: 1.1; margin-top: 1.6em; }
+.plain__content a { text-decoration: underline; }
+.plain__content ul, .plain__content ol { padding-left: 1.2em; }
+.plain__content img { height: auto; }

@@ -132,17 +132,17 @@ document.querySelectorAll('a[href*="#"]').forEach((a) => {
   });
 });
 
-/* ---------- Forms: sent straight to info@thedailydrip.nl via FormSubmit ----------
-   FormSubmit (formsubmit.co) needs no account: the very first submission sends an
-   activation email to info@thedailydrip.nl - click the link in it once, and from then on
-   every answer arrives in that inbox. The form is sent in the background (no mail app);
-   if that request is blocked, the form posts itself to FormSubmit the classic way and
-   FormSubmit sends the visitor back here (_next). Only works on a real web address,
-   not on a file opened from disk. */
+/* ---------- Forms: sent straight to info@thedailydrip.nl, never via the mail app ----------
+   WordPress theme (window.TDD is set): posted in the background to WordPress, which emails it.
+   Static site: posted to FormSubmit (formsubmit.co). FormSubmit needs no account: the very first
+   submission sends an activation email to info@thedailydrip.nl - click the link in it once.
+   If the background request fails, the form posts itself the classic way (to WordPress or
+   FormSubmit), which sends the visitor back here with ?sent=1. */
 const FORM_TO = 'info@thedailydrip.nl';
+const WP = window.TDD && window.TDD.ajaxUrl;
 const formText = {
-  en: { sending: 'Sending…', ok: 'Thanks! Your message has been sent. We\'ll get back to you soon.', missing: 'Please fill in your name, a valid email and a message.' },
-  nl: { sending: 'Versturen…', ok: 'Bedankt! Je bericht is verstuurd. We nemen snel contact met je op.', missing: 'Vul je naam, een geldig e-mailadres en een bericht in.' },
+  en: { sending: 'Sending…', ok: 'Thanks! Your message has been sent. We\'ll get back to you soon.', missing: 'Please fill in your name, a valid email and a message.', fail: `Sending didn't work. Please email us at ${FORM_TO}.` },
+  nl: { sending: 'Versturen…', ok: 'Bedankt! Je bericht is verstuurd. We nemen snel contact met je op.', missing: 'Vul je naam, een geldig e-mailadres en een bericht in.', fail: `Versturen lukte niet. Mail ons via ${FORM_TO}.` },
 };
 document.querySelectorAll('.js-form').forEach((form) => {
   const status = form.querySelector('.form__status');
@@ -150,7 +150,9 @@ document.querySelectorAll('.js-form').forEach((form) => {
   const say = (key) => { status.textContent = formText[lang][key]; };
   const next = form.querySelector('[name="_next"]');
   if (next) next.value = `${location.origin}${location.pathname}?sent=1#${form.closest('section').id}`;
-  if (new URLSearchParams(location.search).get('sent')) say('ok');   // back from a classic post
+  const sent = new URLSearchParams(location.search).get('sent');
+  if (sent === '1') say('ok');                  // back from a classic post
+  if (sent === '0' || status.dataset.state === 'fail') say('fail');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const invalid = [...form.querySelectorAll('[required]')].filter((f) => !f.checkValidity());
@@ -158,17 +160,19 @@ document.querySelectorAll('.js-form').forEach((form) => {
     if (invalid.length) { invalid.forEach((f) => f.classList.add('is-invalid')); invalid[0].focus(); say('missing'); return; }
     const data = new FormData(form);
     if (data.get('_honey')) return;               // spam bot filled the hidden field
-    data.set('_replyto', data.get('Email'));
+    if (!WP) data.set('_replyto', data.get('Email'));
     btn.disabled = true; say('sending');
     try {
       // FormData = a "simple" request, so no CORS preflight that browsers/blockers can trip over
-      const res = await fetch(`https://formsubmit.co/ajax/${FORM_TO}`, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      const url = WP || `https://formsubmit.co/ajax/${FORM_TO}`;
+      const res = await fetch(url, { method: 'POST', body: data, headers: { Accept: 'application/json' }, credentials: 'same-origin' });
       const json = await res.json().catch(() => ({}));
+      if (WP && res.status >= 400 && res.status < 500) { say('fail'); return; }   // refused (spam check / missing fields)
       if (!res.ok || String(json.success) === 'false') throw new Error(json.message || res.status);
       form.reset(); say('ok');
     } catch (err) {
       console.warn('[form] background send failed, posting directly:', err);
-      HTMLFormElement.prototype.submit.call(form);  // classic POST to FormSubmit, never the mail app
+      HTMLFormElement.prototype.submit.call(form);  // classic POST, never the mail app
     } finally { btn.disabled = false; }
   });
 });

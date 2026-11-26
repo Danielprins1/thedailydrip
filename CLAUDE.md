@@ -25,6 +25,14 @@ Visual reference: **escape.cafe** (Montreal coffee brand). Take the *feel*, not 
 Plain HTML/CSS/JS, no build step. CDN: Lenis 1.1.13, GSAP 3.12.5 + ScrollTrigger. Fonts: Coolvetica self-hosted (`fonts/coolvetica-rg.woff2` + `-it.woff2`, converted from Daniël's .otf; he also has Cond, Cram and Heavy Comp if needed), Inter Tight from Google Fonts.
 Run locally: `npx serve .` or `python3 -m http.server`.
 
+## WordPress theme (`wp-theme/`)
+The live site moves to TDD's WordPress as a custom classic theme. **The static site in the repo root stays the design source**: `wp-theme/build.sh` builds `wp-theme/dist/thedailydrip.zip` from the root `styles.css` (+ `src/style-header.css`, `src/wp-extra.css`), root `main.js`, `fonts/` and only the photos the theme uses, plus the PHP in `wp-theme/src/`. After a design change: change the root files, rebuild, Daniël uploads the zip. Install guide for Daniël: `wp-theme/README.md`.
+- Templates: `front-page.php` (home), `template-menu.php` ("TDD - Menu"), `template-company-coffee.php` ("TDD - Company coffee"), `index.php` (plain text pages, `.plain`). Shared `header.php` / `footer.php`.
+- **Client-editable**: texts + photos in the Customizer (panel "The Daily Drip", fields defined in `inc/customizer.php` → `tdd_fields()`, every text has an `_nl` twin that feeds `data-nl`); the menu in the "Menu card" post type (`inc/menu-items.php`: section, description, order; trailing "(…)" rendered small). Section titles DRINKS/LUNCH/BAKES and form labels are fixed in the templates.
+- On activation (`inc/setup.php`): creates/reuses the Menu + Company coffee pages with our templates and seeds the Menu card once.
+- Form: `inc/contact-form.php` - WordPress `wp_mail` via admin-ajax (JS) or admin-post (no JS), to the Customizer "form_to" address. `main.js` uses WordPress when `window.TDD.ajaxUrl` is set, FormSubmit otherwise (static site).
+- Adobe Fonts kit only enqueued on the front page. Tested locally on WordPress 6.8 + SQLite (PHP 8.3).
+
 ## Language (NL/EN)
 - English is the element's content; Dutch sits next to it in a `data-nl="…"` attribute (HTML-escaped; may contain markup such as `<br>` or the `.tag` link). **Every new piece of copy needs a `data-nl` too.**
 - Form label text is wrapped in `<span data-nl>`; `<option>`s and `<title>` have `data-nl`. Brand slogans ("hustle, drip, sip", "more espresso, less depresso") stay English.
