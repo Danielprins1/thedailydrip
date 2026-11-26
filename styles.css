@@ -70,7 +70,7 @@ button.tag { border: 0; cursor: pointer; }
 .logo img { height: clamp(72px, 8vw, 120px); width: auto; filter: invert(1); transition: filter .4s; }   /* logo.svg is black → white by default */
 .logo--dark { color: var(--black); }                   /* over white / yellow sections (data-logo="dark") */
 .logo--dark img { filter: none; }
-.menu-open .logo { color: var(--white); }
+.menu-open .logo { color: var(--white); opacity: 0 !important; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }   /* menu overlay open: logo + payoff out of the way */
 .menu-open .logo img { filter: invert(1); }
 .logo img + .logo__placeholder { display: none; }   /* text wordmark only while logo.svg is missing */
 
