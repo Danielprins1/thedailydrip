@@ -31,6 +31,7 @@ The live site moves to TDD's WordPress as a custom classic theme. **The static s
 - **Client-editable**: texts + photos in the Customizer (panel "The Daily Drip", fields defined in `inc/customizer.php` → `tdd_fields()`, every text has an `_nl` twin that feeds `data-nl`); the menu in the "Menu card" post type (`inc/menu-items.php`: section, description, order; trailing "(…)" rendered small). Section titles DRINKS/LUNCH/BAKES and form labels are fixed in the templates.
 - On activation (`inc/setup.php`): creates/reuses the Menu + Company coffee pages with our templates and seeds the Menu card once.
 - Form: `inc/contact-form.php` - WordPress `wp_mail` via admin-ajax (JS) or admin-post (no JS), to the Customizer "form_to" address, plus a branded thank-you mail to the visitor from no-reply@<domain> (`tdd_send_confirmation()`, NL/EN via hidden `lang` field set in main.js, logo `img/email-logo.png`). `main.js` uses WordPress when `window.TDD.ajaxUrl` is set, FormSubmit otherwise (static site).
+- SMTP: `inc/smtp.php` sends all mail through the info@ mailbox (TransIP smtp.transip.email:465 SSL), settings + password in Customizer "Email (SMTP)" (password entered by Daniël himself, never by Claude). No plugin: the host blocks downloads from wordpress.org. Last mail error shown in wp-admin.
 - Adobe Fonts kit only enqueued on the front page. Tested locally on WordPress 6.8 + SQLite (PHP 8.3).
 
 ## Language (NL/EN)

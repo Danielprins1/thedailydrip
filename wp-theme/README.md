@@ -40,3 +40,7 @@ via de info@-mailbox versturen. Spambescherming: verborgen honeypot-veld, minima
 Bij een nieuwe themaversie (zip opnieuw uploaden) maakt WordPress ontbrekende pagina's, zoals Corporate lunch, vanzelf aan zodra je in de admin komt.
 
 De bezoeker krijgt direct een bedankmail (huisstijl, NL of EN naar de gekozen taal) van no-reply@thedailydrip.nl met een kopie van het ingevulde bericht; antwoorden daarop gaan naar het info@-adres uit de Customizer. Komt die mail niet aan: WP Mail SMTP.
+
+## E-mail (SMTP)
+
+WordPress mailt via de info@-mailbox (TransIP: smtp.transip.email, poort 465, SSL). Instellen: Customizer > The Daily Drip > **Email (SMTP)** > vul het wachtwoord van de mailbox in. Zonder wachtwoord gebruikt WordPress de standaard (onbetrouwbare) PHP-mail. Mislukt een mail, dan staat er een foutmelding bovenaan in wp-admin. Wordt no-reply@ geweigerd, zet dan "Send everything from the mailbox" op yes.

@@ -13,6 +13,7 @@ function tdd_sections() {
 		'tdd_menu'    => 'Menu page',
 		'tdd_company' => 'Corporate coffee page',
 		'tdd_lunch'   => 'Corporate lunch page',
+		'tdd_smtp'    => 'Email (SMTP)',
 	];
 }
 
@@ -76,6 +77,14 @@ function tdd_fields() {
 		'lunch_button'    => [ 'tdd_lunch', 'Button to the form', 'text', 'Email us' ],
 		'lunch_button_nl' => [ 'tdd_lunch', 'Button to the form (NL)', 'text', 'Mail ons' ],
 
+		/* ---------- Email (SMTP) ---------- */
+		'smtp_info'       => [ 'tdd_smtp', 'How it works', 'info', 'Form mails are sent through the info@ mailbox so they arrive. TransIP: server smtp.transip.email, port 465, username = the full email address, password = the mailbox password. Nothing is sent via SMTP until a password is filled in.' ],
+		'smtp_host'       => [ 'tdd_smtp', 'SMTP server', 'text', 'smtp.transip.email' ],
+		'smtp_port'       => [ 'tdd_smtp', 'Port (465 = SSL, 587 = TLS)', 'text', '465' ],
+		'smtp_user'       => [ 'tdd_smtp', 'Username (full email address)', 'text', 'info@thedailydrip.nl' ],
+		'smtp_pass'       => [ 'tdd_smtp', 'Password of that mailbox', 'password', '' ],
+		'smtp_force_from' => [ 'tdd_smtp', 'Send everything "from" the mailbox (set to yes if no-reply@ is refused)', 'text', 'no' ],
+
 		/* ---------- Both forms (corporate coffee + lunch) ---------- */
 		'form_title'      => [ 'tdd_general', 'Corporate forms: title', 'text', 'Interested?' ],
 		'form_title_nl'   => [ 'tdd_general', 'Corporate forms: title (NL)', 'text', 'Interesse?' ],
@@ -107,6 +116,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 			'url'      => 'esc_url_raw',
 			'textarea' => 'sanitize_textarea_field',
 			'text'     => 'sanitize_text_field',
+			'password' => 'sanitize_text_field',
 		][ $field['type'] ];
 		$wp->add_setting( $id, [ 'default' => $field['default'], 'sanitize_callback' => $sanitize ] );
 		if ( 'image' === $field['type'] ) {
