@@ -259,7 +259,7 @@ body:not(.past-hero) .logo { transition: opacity .6s .2s, visibility 0s; }
   .logo { top: 32px; }
   .logo img { height: 64px; }
   .corner--tl { top: 150px; bottom: auto; }
-  .corner--tr { bottom: 90px; }
+  .corner--tr { bottom: 140px; }
   .hero__card { width: 72vw; box-shadow: 0 16px 36px rgba(0,0,0,.16); }
   .logo__payoff { font-size: 11px; }
   .mission, .intro { padding-top: 12vh; padding-bottom: 12vh; grid-template-columns: 1fr; }
