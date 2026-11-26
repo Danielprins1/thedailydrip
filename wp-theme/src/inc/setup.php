@@ -17,7 +17,8 @@ function tdd_setup_pages() {
 		$template = 'template-' . $slug . '.php';
 		$using = get_posts( [ 'post_type' => 'page', 'post_status' => 'any', 'meta_key' => '_wp_page_template', 'meta_value' => $template, 'posts_per_page' => 1, 'fields' => 'ids' ] );
 		if ( $using ) continue;
-		$page = get_page_by_path( $slug );
+		$page = get_page_by_path( $slug, OBJECT, 'page' );
+		if ( $page && 'page' !== $page->post_type ) $page = null;   // get_page_by_path() also matches attachments (e.g. a Menu.pdf)
 		$id   = $page ? $page->ID : wp_insert_post( [ 'post_type' => 'page', 'post_title' => $title, 'post_name' => $slug, 'post_status' => 'publish' ] );
 		if ( $id && ! is_wp_error( $id ) ) update_post_meta( $id, '_wp_page_template', $template );
 	}
